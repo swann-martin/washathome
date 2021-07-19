@@ -1,9 +1,33 @@
+// Ajout du fichier de variables
+@use 'src/styles/vars';
+
 .searchbar {
-  
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px vars.$color-action;
+  border: none;
+  background-color: vars.$white;
+  height: 30px;
+  min-width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 0.5rem;
+  margin: 1rem;
   &-bar {
-    
+    border: none;
+    background-color: vars.$white;
+    height: 25px;
   }
   &-button {
-
+    border-radius: 25px;
+    border: none;
+    color: vars.$color-bg-hero;
+    background-color: vars.$white;
+    height: 25px;
+    &:active{
+      background-color: vars.$color-hover;
+      border-radius: 25px;
+    }
   }
 }
