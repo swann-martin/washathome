@@ -28,6 +28,10 @@
   }
   &-form {
     width: 90vw;
+    @media screen and (min-width: 700px) {
+      width: 60vw;
+      text-align: center;
+    }
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,9 +39,9 @@
     &-input,
     &-btn,
     &-register {
-      height: 3.5rem;
+      height: 3rem;
       width: 100%;
-      font-size: 1.4rem;
+      font-size: 1rem;
       border-radius: 10px;
       padding: 0.5rem;
       margin-bottom: 1rem;
@@ -52,6 +56,11 @@
       &:active {
         background-color: lighten(vars.$color-action, 10%);
       }
+      width: 100%;
+      @media screen and (min-width: 700px) {
+        max-width: 15rem;
+        margin-top: 3rem;
+      }
     }
     &-register {
       border: solid 1px vars.$color-action;
@@ -64,10 +73,14 @@
       &:active {
         background-color: lighten(vars.$white, 10%);
       }
+      width: 100%;
+      @media screen and (min-width: 700px) {
+        max-width: 15rem;
+      }
     }
     &-text {
       color: vars.$white;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       margin-bottom: 1rem;
     }
   }

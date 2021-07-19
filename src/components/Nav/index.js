@@ -4,7 +4,7 @@ import logo from 'src/assets/logoWash.png';
 // import style
 import './style.scss';
 
-const Nav = ({ isConnected, handleIsConnected }) => (
+const Nav = ({ handleIsConnected }) => (
   <nav className="nav">
     <NavLink exact className="link nav-item nav-item--mobile" activeClassName="link--active" to="/">
 
