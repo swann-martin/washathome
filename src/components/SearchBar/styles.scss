@@ -7,13 +7,13 @@
   border: none;
   background-color: vars.$white;
   height: 30px;
-  min-width: 80vw;
+  max-width: 60vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
   padding: 0 0.5rem;
-  margin: 1rem;
+  margin: auto;
   &-bar {
     border: none;
     background-color: vars.$white;
@@ -26,7 +26,7 @@
     color: vars.$color-bg-hero;
     background-color: vars.$white;
     height: 25px;
-    &:active{
+    &:active {
       background-color: vars.$color-hover;
       border-radius: 25px;
     }
