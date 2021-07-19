@@ -2,6 +2,7 @@
 import React from 'react';
 import Header from '../Header';
 import Nav from '../Nav';
+import AddWasherForm from 'src/components/AddWasherForm';
 // == Import
 
 import './styles.scss';
@@ -11,6 +12,7 @@ const App = () => (
   <div className="app">
     <Nav />
     <Header />
+    <AddWasherForm />
   </div>
 );
 
