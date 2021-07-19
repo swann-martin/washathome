@@ -1,0 +1,74 @@
+@use 'src/styles/vars.scss';
+
+.connect {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba($color: #000, $alpha: 0.4);
+
+  &-btn {
+    color: vars.$color-action;
+    font-size: 1.4rem;
+    background-color: vars.$white;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1.8rem;
+    align-self: flex-end;
+    cursor: pointer;
+    &:hover,
+    &:active {
+      background-color: lighten(vars.$white, 10%);
+    }
+  }
+  &-form {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &-input,
+    &-btn,
+    &-register {
+      height: 3.5rem;
+      width: 100%;
+      font-size: 1.4rem;
+      border-radius: 10px;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    &-input {
+      color: vars.$color-action;
+    }
+    &-btn {
+      background-color: vars.$color-action;
+      color: vars.$white;
+      &:hover,
+      &:active {
+        background-color: lighten(vars.$color-action, 10%);
+      }
+    }
+    &-register {
+      border: solid 1px vars.$color-action;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: vars.$color-action;
+      background-color: vars.$white;
+      &:hover,
+      &:active {
+        background-color: lighten(vars.$white, 10%);
+      }
+    }
+    &-text {
+      color: vars.$white;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
