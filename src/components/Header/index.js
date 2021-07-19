@@ -6,7 +6,7 @@ import SearchBar from 'src/components/SearchBar';
 
 const Header = () => (
   <header className="header">
-    <h2>Header</h2>
+
     <img className="header-logo" src={logo} alt="logo-Wash@Home" />
     <SearchBar />
   </header>

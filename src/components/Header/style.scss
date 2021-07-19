@@ -3,16 +3,23 @@
 .header {
   background-color: vars.$color-bg-hero;
   min-width: 100vw;
+  min-height: 90vh;
+  margin: 0 auto;
   text-align: center;
+  position: relative;
+
   &-logo {
     // display mobile first
     max-width: 60px;
     max-height: 60px;
     // display for desktop
-    @media screen and (max-width: 700px) {
-      &-logo {
-        display: none;
-      }
+    margin-top: 5rem;
+    @media screen and (min-width: 700px) {
+      display: none;
     }
+  }
+  .searchbar {
+    position: relative;
+    top: 5rem;
   }
 }
