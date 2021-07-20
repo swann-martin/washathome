@@ -5,7 +5,9 @@ import { Route, Switch } from 'react-router-dom';
 // Import components 
 import Header from '../Header';
 import Nav from '../Nav';
+
 import Footer from '../Footer';
+// == Import
 import Connect from '../Connect';
 import Register from '../../pages/Register';
 import Cgv from '../../pages/Cgv';
