@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './styles.scss';
 
 const AddWasherForm = () => (
@@ -13,7 +12,7 @@ const AddWasherForm = () => (
     ><i className="fas fa-times" />
     </div>
     <h1 className="addwasherform-title"> Ajouter une Machine </h1>
-    <form className="addwasherform-form" encType="multipart/form-data">
+    <form className="addwasherform-form" onSubmit={(evt) => {evt.preventDefault();}} encType="multipart/form-data">
 
       <input className="addwasherform-form-input" type="text" placeholder="Nom" name="name" />
       <input className="addwasherform-form-input" type="text" placeholder="Adresse de la machine" name="address" />
