@@ -1,0 +1,32 @@
+@use 'src/styles/vars';
+
+.card {
+  font-weight: bold;
+  width: 375px;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+  padding: 0.25rem;
+  text-align: center;
+  &-img {
+    border-radius: 10px;
+    padding: 5px;
+    width: 100px;
+  }
+  &-content {
+    display: flex;
+    &-city {
+    }
+    &-distance {
+
+    }
+    &-price {
+
+    }
+    &-note {
+
+    }
+  }
+}
