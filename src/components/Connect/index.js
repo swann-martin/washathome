@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
-const Connect = ({ handleIsConnected }) => (
+const Connect = ({ handlePressedConnected }) => (
   <div className="connect">
     <div
       className="connect-btn"
       title="fermer cette fenêtre"
       onClick={() => {
-        console.log('fermer le composant login'); handleIsConnected();
+        console.log('fermer le composant login'); handlePressedConnected();
       }}
     ><i className="fas fa-times" />
     </div>
@@ -24,7 +24,7 @@ const Connect = ({ handleIsConnected }) => (
         type="submit"
         className="connect-form-btn"
         onClick={() => {
-          console.log('clicked on se connecter'); handleIsConnected();
+          console.log('clicked on se connecter'); handlePressedConnected();
         }}
       >Se connecter
       </button>
@@ -33,7 +33,7 @@ const Connect = ({ handleIsConnected }) => (
         className="connect-form-register"
         to="/register"
         onClick={() => {
-          handleIsConnected();
+          handlePressedConnected();
         }}
       >S'inscrire
       </Link>

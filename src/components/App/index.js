@@ -5,35 +5,37 @@ import { Route, Switch } from 'react-router-dom';
 // Import components 
 import Header from '../Header';
 import Nav from '../Nav';
-
 import Footer from '../Footer';
+
 // == Import
 import Connect from '../Connect';
+import AddWasherForm from '../AddWasherForm';
 import Register from '../../pages/Register';
 import Cgv from '../../pages/Cgv';
 // Import style
 import './styles.scss';
 
-
-// == Composant
 const App = () => {
   const [isConnected, setIsConnected] = useState(false);
+  const [pressedConnected, setPressedConnected] = useState(false);
 
-  const handleIsConnected = () => {
-    setIsConnected(!isConnected);
+
+  const handlePressedConnected = () => {
+    setPressedConnected(!pressedConnected);
   };
   return (
     <div className="app">
-      <Nav isConnected={isConnected} handleIsConnected={handleIsConnected} />
+      <Nav isConnected={isConnected} handlePressedConnected={handlePressedConnected} />
       <Switch>
         <Route exact path="/">
           <Header />
         </Route>
         <Route exact path="/cgv" component={Cgv} />
         <Route path="/register" component={Register} />
+        <Route path="/addwasher" component={AddWasherForm} />
       </Switch>
+      {pressedConnected && <Connect pressedConnected={pressedConnected} handlePressedConnected={handlePressedConnected} />}
       <Footer />
-      {isConnected && <Connect isConnected={isConnected} handleIsConnected={handleIsConnected} />}
 
     </div>
   );

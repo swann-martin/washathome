@@ -26,7 +26,8 @@
     color: vars.$color-bg-hero;
     background-color: vars.$white;
     height: 25px;
-    &:active {
+    &:active,
+    &:hover {
       background-color: vars.$color-hover;
       border-radius: 25px;
     }

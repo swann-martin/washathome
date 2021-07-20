@@ -4,7 +4,7 @@ import logo from 'src/assets/logoWash.png';
 // import style
 import './style.scss';
 
-const Nav = ({ handleIsConnected }) => (
+const Nav = ({ handlePressedConnected }) => (
   <nav className="nav">
     <NavLink exact className="link nav-item nav-item--mobile" activeClassName="link--active" to="/">
 
@@ -36,7 +36,7 @@ const Nav = ({ handleIsConnected }) => (
       className="nav-item nav-btn nav-btn--user "
       onClick={() => {
         console.log('clicked on btn-nav-user');
-        handleIsConnected();
+        handlePressedConnected();
       }}
     >
       <i className="far fa-user" title="se connecter" />

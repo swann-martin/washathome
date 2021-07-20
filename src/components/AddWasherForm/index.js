@@ -1,18 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
 const AddWasherForm = () => (
   <div className="addwasherform">
-    <div
+    <Link
+      to="/"
       className="addwasherform-btn"
       title="fermer cette fenêtre"
       onClick={() => {
         console.log('fermer le composant addwasher');
       }}
     ><i className="fas fa-times" />
-    </div>
+    </Link>
     <h1 className="addwasherform-title"> Ajouter une Machine </h1>
-    <form className="addwasherform-form" onSubmit={(evt) => {evt.preventDefault();}} encType="multipart/form-data">
+    <form className="addwasherform-form" onSubmit={(evt) => { evt.preventDefault(); }} encType="multipart/form-data">
 
       <input className="addwasherform-form-input" type="text" placeholder="Nom" name="name" />
       <input className="addwasherform-form-input" type="text" placeholder="Adresse de la machine" name="address" />
