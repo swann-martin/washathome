@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 // Import components 
 import Header from '../Header';
 import Nav from '../Nav';
+import Footer from '../Footer';
 import Connect from '../Connect';
 import Register from '../../pages/Register';
 import Cgv from '../../pages/Cgv';
@@ -29,6 +30,7 @@ const App = () => {
         <Route exact path="/cgv" component={Cgv} />
         <Route path="/register" component={Register} />
       </Switch>
+      <Footer />
       {isConnected && <Connect isConnected={isConnected} handleIsConnected={handleIsConnected} />}
 
     </div>
