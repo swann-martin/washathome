@@ -5,6 +5,8 @@ import { Route, Switch } from 'react-router-dom';
 // Import components 
 import Header from '../Header';
 import Nav from '../Nav';
+import AddWasherForm from 'src/components/AddWasherForm';
+// == Import
 import Connect from '../Connect';
 import Register from '../Register';
 
@@ -12,6 +14,13 @@ import Register from '../Register';
 import './styles.scss';
 
 // == Composant
+const App = () => (
+  <div className="app">
+    <Nav />
+    {/* <Header /> */}
+    <AddWasherForm />
+  </div>
+);
 const App = () => {
   const [isConnected, setIsConnected] = useState(false);
 
