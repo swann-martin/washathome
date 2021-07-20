@@ -25,7 +25,7 @@ const Register = () => (
       <div className="register-form-input register-form-input--check">
         <label htmlFor="cgv" className="">
           <input type="checkbox" name="cgv" id="cgv" placeholder="confirmation du mot de passe" />
-          <span>J'ai lu les conditions générales de vente et j'accèpte tout</span>
+          <span>J'ai lu les <Link to="/cgv" className="register-form-input--check-link">conditions générales de vente</Link> et j'accèpte tout</span>
         </label>
       </div>
 

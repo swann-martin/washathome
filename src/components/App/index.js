@@ -6,10 +6,11 @@ import { Route, Switch } from 'react-router-dom';
 import Header from '../Header';
 import Nav from '../Nav';
 import Connect from '../Connect';
-import Register from '../Register';
-
+import Register from '../../pages/Register';
+import Cgv from '../../pages/Cgv';
 // Import style
 import './styles.scss';
+
 
 // == Composant
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         <Route exact path="/">
           <Header />
         </Route>
+        <Route exact path="/cgv" component={Cgv} />
         <Route path="/register" component={Register} />
       </Switch>
       {isConnected && <Connect isConnected={isConnected} handleIsConnected={handleIsConnected} />}

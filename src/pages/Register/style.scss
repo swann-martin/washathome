@@ -48,9 +48,13 @@
       color: vars.$color-action;
       &--check {
         color: vars.$white;
-        &:hover,
-        &:active {
-          color: vars.$color-action;
+        &-link {
+          font-weight: bold;
+
+          &:hover,
+          &:active {
+            color: vars.$color-action;
+          }
         }
       }
     }

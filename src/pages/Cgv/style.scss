@@ -1,0 +1,25 @@
+@use "src/styles/vars.scss";
+.cgv {
+  background-color: vars.$color-bg-hero;
+  color: vars.$white;
+  padding: 0.5rem;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &-title {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  &-paragraph {
+    margin: 1rem 0;
+    &-title {
+      margin: 0.5rem 0;
+      font-weight: bold;
+    }
+    &-text {
+      text-align: justify;
+    }
+  }
+}
