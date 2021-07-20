@@ -39,7 +39,7 @@ const Nav = ({ handleIsConnected }) => (
         handleIsConnected();
       }}
     >
-      <i className="far fa-user" />
+      <i className="far fa-user" title="se connecter" />
       <span className="nav-item-text">connexion</span>
     </button>
   </nav>
