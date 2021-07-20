@@ -1,0 +1,61 @@
+@use 'src/styles/vars.scss';
+@import 'src/styles/vars.scss';
+
+.profile {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba($color: vars.$color-cards, $alpha: 0.8);
+  min-height: 100vh;
+  color: vars.$white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 0.5rem;
+  &-btn {
+    @include btn-white;
+    &:hover,
+    &:active {
+      background-color: lighten(vars.$white, 10%);
+    }
+  }
+  &-credentials {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    text-align: justify;
+
+    &-label {
+      margin: 0.5rem 0;
+      &-input {
+        height: 3rem;
+        width: 100%;
+        font-size: 1rem;
+        border-radius: 10px;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      &-input {
+        color: vars.$color-action;
+      }
+    }
+    &-btn {
+      &-container {
+        text-align: center;
+      }
+      @include btn-green;
+      &:hover,
+      &:active {
+        background-color: lighten(vars.$color-action, 10%);
+      }
+      &--delete {
+        background-color: vars.$red;
+        &:hover,
+        &:active {
+          background-color: lighten(vars.$red, 10%);
+        }
+      }
+    }
+  }
+}

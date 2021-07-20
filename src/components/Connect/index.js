@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
-const Connect = ({ handlePressedConnected }) => (
+const Connect = ({ handlePressedConnected, handleIsConnected }) => (
   <div className="connect">
     <div
       className="connect-btn"
@@ -25,6 +25,7 @@ const Connect = ({ handlePressedConnected }) => (
         className="connect-form-btn"
         onClick={() => {
           console.log('clicked on se connecter'); handlePressedConnected();
+          handleIsConnected();
         }}
       >Se connecter
       </button>
