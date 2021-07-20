@@ -8,10 +8,11 @@ import Nav from '../Nav';
 import AddWasherForm from 'src/components/AddWasherForm';
 // == Import
 import Connect from '../Connect';
-import Register from '../Register';
-
+import Register from '../../pages/Register';
+import Cgv from '../../pages/Cgv';
 // Import style
 import './styles.scss';
+
 
 // == Composant
 const App = () => (
@@ -34,6 +35,7 @@ const App = () => {
         <Route exact path="/">
           <Header />
         </Route>
+        <Route exact path="/cgv" component={Cgv} />
         <Route path="/register" component={Register} />
       </Switch>
       {isConnected && <Connect isConnected={isConnected} handleIsConnected={handleIsConnected} />}
