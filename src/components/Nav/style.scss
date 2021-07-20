@@ -1,0 +1,76 @@
+@use 'src/styles/vars.scss';
+
+.nav {
+  background-color: vars.$color-bg-hero;
+  color: vars.$white;
+  position: fixed;
+  bottom: 0;
+  min-width: 100vw;
+  min-height: 3rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem;
+  text-align: center;
+  @media screen and (min-width: 700px) {
+    position: initial;
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    &-text {
+      font-size: 0.8rem;
+    }
+    &:active {
+      color: vars.$color-action;
+    }
+    &:hover {
+      color: vars.$color-hover;
+    }
+    &--desktop {
+      display: none;
+      @media screen and (min-width: 700px) {
+        display: block;
+      }
+    }
+    &--mobile {
+      display: flex;
+      @media screen and (min-width: 700px) {
+        display: none;
+      }
+    }
+  }
+
+  &-title {
+    display: flex;
+    align-items: center;
+    &-logo {
+      max-height: 46px;
+      max-width: 46px;
+    }
+    &-text {
+      font-family: 'Lobster Two', cursive;
+      font-size: 1.8rem;
+    }
+  }
+  &-btn {
+    outline: none;
+    background-color: vars.$color-bg-hero;
+    border: transparent;
+    color: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    &:hover {
+      color: vars.$color-action;
+    }
+
+    &--user {
+      .nav-item-text {
+        @media screen and (min-width: 700px) {
+          display: none;
+        }
+      }
+    }
+  }
+}

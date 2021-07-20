@@ -1,0 +1,71 @@
+@use 'src/styles/vars.scss';
+
+.register {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: vars.$color-bg-hero;
+  color: vars.$white;
+  margin-bottom: 4rem;
+
+  &-btn {
+    color: vars.$white;
+    font-size: 1.4rem;
+    background-color: vars.$color-action;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1.8rem;
+    align-self: flex-end;
+    cursor: pointer;
+    &:hover,
+    &:active {
+      background-color: darken(vars.$color-action, 10%);
+    }
+  }
+
+  &-title {
+    font-size: 2rem;
+  }
+
+  &-form {
+    width: 90vw;
+    @media screen and (min-width: 700px) {
+      width: 60vw;
+      text-align: center;
+    }
+    &-input,
+    &-btn {
+      height: 3rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    &-input {
+      width: 100%;
+      color: vars.$color-action;
+      &--check {
+        color: vars.$white;
+        &:hover,
+        &:active {
+          color: vars.$color-action;
+        }
+      }
+    }
+
+    &-btn {
+      color: vars.$white;
+      width: 100%;
+      @media screen and (min-width: 700px) {
+        max-width: 15rem;
+      }
+      background-color: vars.$color-action;
+      &:hover,
+      &:active {
+        background-color: lighten(vars.$color-action, 10%);
+      }
+    }
+  }
+}
