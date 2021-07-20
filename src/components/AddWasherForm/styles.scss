@@ -1,0 +1,99 @@
+@use 'src/styles/vars';
+
+.addwasherform {
+
+    min-height: 90vh;
+    min-width: 100vw;
+    background-color: vars.$color-bg-hero;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color : vars.$white;
+    &-btn {
+        color: vars.$color-action;
+        font-size: 1.4rem;
+        background-color: vars.$white;
+        padding: 1rem;
+        border-radius: 10px;
+        margin: 1.8rem;
+        align-self: flex-end;
+        cursor: pointer;
+        &:hover,
+        &:active {
+          background-color: lighten(vars.$white, 10%);
+        }
+      }
+    &-title{
+        text-align: center;
+        margin: 1rem auto;
+    }
+    &-form {
+        text-align: center;
+        width: 90vw;
+        &-input, &-submit{
+            height: 3rem;
+            width: 100%;
+            font-size: 1rem;
+            border-radius: 10px;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            &--description {
+                max-width: 95vw;
+                min-height: 5rem;
+            }
+        }
+        &-capacity {
+            text-align: left;
+            &-select{
+                &-text{
+                    margin-right: .5rem;
+                    font-weight: bold;
+                }
+          
+                &-option {
+                    height: 3rem;
+                    font-size: 1rem;
+                    border-radius: 10px;
+                    padding: 0.5rem;
+                    color: vars.$color-action;
+                    background-color: vars.$white;
+                    &-item{
+                      
+                    }
+                    
+                }
+            }
+        }
+        
+        &-image {
+            display: flex;
+            align-items : center;
+            text-align: left;
+            margin-top: .5rem;
+            &-subtitle {
+            font-weight: bold;
+            }
+            &-input{
+                margin-left: .5rem;
+            background-color : vars.$white;
+            border-radius: 20px;
+            }
+        }    
+        &-submit {
+                margin : 1rem 0; 
+                background-color: vars.$color-action;
+                color: vars.$white;
+                &:hover,
+                &:active {
+                  background-color: lighten(vars.$color-action, 10%);
+                }
+                width: 100%;
+                @media screen and (min-width: 700px) {
+                  max-width: 15rem;
+                  margin-top: 3rem;
+                }
+              
+        }
+    }
+}

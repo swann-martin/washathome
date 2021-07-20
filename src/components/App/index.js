@@ -11,7 +11,7 @@ import './styles.scss';
 const App = () => (
   <div className="app">
     <Nav />
-    <Header />
+    {/* <Header /> */}
     <AddWasherForm />
   </div>
 );
