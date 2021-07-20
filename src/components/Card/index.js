@@ -4,7 +4,7 @@ import './styles.scss';
 
 const Card = () => (
   <article>
-    <img/>
+    <img src="https://dummyimage.com/250/000/eee" alt="la machine" />
     <div>
       <p>Ville</p>
       <p>Distance</p>
