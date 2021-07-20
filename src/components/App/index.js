@@ -5,7 +5,8 @@ import { Route, Switch } from 'react-router-dom';
 // Import components 
 import Header from '../Header';
 import Nav from '../Nav';
-import AddWasherForm from 'src/components/AddWasherForm';
+
+import Footer from '../Footer';
 // == Import
 import Connect from '../Connect';
 import Register from '../../pages/Register';
@@ -15,13 +16,6 @@ import './styles.scss';
 
 
 // == Composant
-const App = () => (
-  <div className="app">
-    <Nav />
-    {/* <Header /> */}
-    <AddWasherForm />
-  </div>
-);
 const App = () => {
   const [isConnected, setIsConnected] = useState(false);
 
@@ -38,6 +32,7 @@ const App = () => {
         <Route exact path="/cgv" component={Cgv} />
         <Route path="/register" component={Register} />
       </Switch>
+      <Footer />
       {isConnected && <Connect isConnected={isConnected} handleIsConnected={handleIsConnected} />}
 
     </div>
