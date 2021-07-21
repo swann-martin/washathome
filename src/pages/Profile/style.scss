@@ -1,5 +1,5 @@
 @use 'src/styles/vars.scss';
-@import 'src/styles/vars.scss';
+@import 'src/styles/mixins.scss';
 
 .profile {
   position: absolute;
@@ -7,11 +7,15 @@
   right: 0;
   background-color: rgba($color: vars.$color-cards, $alpha: 0.8);
   min-height: 100vh;
+  min-width: 100vw;
   color: vars.$white;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-left: 0.5rem;
+  @media screen and (min-width: 700px) {
+    min-width: 25vw;
+  }
   &-btn {
     @include btn-white;
     &:hover,
@@ -34,7 +38,6 @@
         font-size: 1rem;
         border-radius: 10px;
         padding: 0.5rem;
-        margin-bottom: 1rem;
       }
       &-input {
         color: vars.$color-action;
