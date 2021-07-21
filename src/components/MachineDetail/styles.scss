@@ -1,1 +1,34 @@
 @use 'src/styles/vars';
+
+.machinedetail {
+  &-address {
+    &-city {
+
+    }
+    &-zipcode {
+
+    }
+  }
+  &-name {
+
+  }
+  &-form {
+    &-title {
+
+    }
+    &-select {
+      &-day {
+
+      }
+      &-hour {
+        
+      }
+      &-temperature {
+        
+      }
+      &-option {
+        
+      }
+    }
+  }
+}

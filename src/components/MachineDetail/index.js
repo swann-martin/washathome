@@ -8,9 +8,7 @@ const MachineDetail = () => (
       <span className="machinedetail-address-city">Bastia</span>
       <span className="machinedetail-address-zipcode">20200</span>
     </div>
-    <div className="machinedetail">
-      <span className="machinedetail">Machine</span>
-    </div>
+    <span className="machinedetail-name">Machine</span>
     <div className="machinedetail-form">
       <h4 className="machinedetail-form-title">Programmes disponibles</h4>
       <form>
