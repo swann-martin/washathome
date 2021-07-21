@@ -4,6 +4,7 @@ import './style.scss';
 
 const Profile = () => (
   <div className="profile">
+
     <Link
       to="/"
       className="profile-btn"
@@ -11,6 +12,7 @@ const Profile = () => (
 
     ><i className="fas fa-times" />
     </Link>
+    <h2 className="profile-title">Mon profil</h2>
     <form
       onSubmit={(e) => {
         e.preventDefault();

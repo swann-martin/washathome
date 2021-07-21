@@ -2,11 +2,8 @@
 @import 'src/styles/mixins.scss';
 
 .profile {
-  position: absolute;
-  top: 0;
-  right: 0;
   background-color: rgba($color: vars.$color-cards, $alpha: 0.8);
-  min-height: 100vh;
+  min-height: 90vh;
   min-width: 100vw;
   color: vars.$white;
   display: flex;
@@ -24,6 +21,9 @@
     &:active {
       background-color: lighten(vars.$white, 10%);
     }
+  }
+  &-title {
+    font-weight: bold;
   }
   &-credentials {
     display: flex;
@@ -55,7 +55,7 @@
         background-color: lighten(vars.$color-action, 10%);
       }
       &--delete {
-        background-color: vars.$red;
+        background-color: vars.$black;
         &:hover,
         &:active {
           background-color: lighten(vars.$red, 10%);
