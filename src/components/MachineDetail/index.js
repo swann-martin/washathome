@@ -24,7 +24,7 @@ const MachineDetail = () => (
         <select className="machinedetail-form-select">
           <option className="machinedetail-form-select-option">Options</option>
         </select>
-        <button type="submit">Reserver</button>
+        <button className="machinedetail-form-submit" type="submit">Reserver</button>
       </form>
     </div>
   </div>
