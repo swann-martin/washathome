@@ -4,14 +4,16 @@ import './styles.scss';
 
 const MachineDetail = () => (
   <div className="machinedetail">
-    <div className="machinedetail-address">
-      <span className="machinedetail-address-city">Bastia</span>
-      <span className="machinedetail-address-zipcode">20200</span>
+    <div className="machinedetail-infos">
+      <div className="machinedetail-infos-address">
+        <span className="machinedetail-infos-address-city">Bastia</span>
+        <span className="machinedetail-infos-address-zipcode">20200</span>
+      </div>
+      <span className="machinedetail-infos-name">Machine</span>
     </div>
-    <span className="machinedetail-name">Machine</span>
-    <div className="machinedetail-form">
+    <div>
       <h4 className="machinedetail-form-title">Infos de reservation</h4>
-      <form>
+      <form className="machinedetail-form">
 
         <select className="machinedetail-form-select" name="day" id="day-select">
           <option className="machinedetail-form-select-day" value="">Jours disponibles</option>
@@ -33,13 +35,13 @@ const MachineDetail = () => (
           <option className="machinedetail-form-select-temperature" value="">Températures disponibles</option>
           <option className="machinedetail-form-select-temperature" value="30">30°</option>
         </select>
-        <div>
+        <div className="machinedetail-form-options">
           <h4>Options disponibles</h4>
-          <label htmlFor="option">
+          <label className="machinedetail-form-options-item" htmlFor="option">
             <input type="checkbox" />
             Sechage au sèche-linge 3€
           </label>
-          <label htmlFor="option">
+          <label className="machinedetail-form-options-item" htmlFor="option">
             <input type="checkbox" />
             Pliage 2€
           </label>
