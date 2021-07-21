@@ -1,0 +1,47 @@
+@mixin btn-white {
+  color: vars.$color-action;
+  font-size: 1rem;
+  width: 15rem;
+  min-height: 2rem;
+  background-color: vars.$white;
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+}
+@mixin btn-green {
+  color: vars.$white;
+  font-size: 1rem;
+  width: 15rem;
+  min-height: 2rem;
+  background-color: vars.$color-action;
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+@mixin btn-shape {
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 15rem;
+  min-height: 2rem;
+  border-radius: 10px;
+  margin: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+}
+@mixin btn-close {
+  color: vars.$color-action;
+  background-color: vars.$white;
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 2rem;
+  min-height: 2rem;
+  border-radius: 10px;
+  margin: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+}
