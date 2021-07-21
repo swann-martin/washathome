@@ -3,28 +3,28 @@ import React from 'react';
 import './styles.scss';
 
 const MachineDetail = () => (
-  <div>
-    <div>
-      <span>Bastia</span>
-      <span>20200</span>
+  <div className="machinedetail">
+    <div className="machinedetail-address">
+      <span className="machinedetail-address-city">Bastia</span>
+      <span className="machinedetail-address-zipcode">20200</span>
     </div>
-    <div>
-      <span>Machine</span>
+    <div className="machinedetail">
+      <span className="machinedetail">Machine</span>
     </div>
-    <div>
-      <h4>Programmes disponibles</h4>
+    <div className="machinedetail-form">
+      <h4 className="machinedetail-form-title">Programmes disponibles</h4>
       <form>
-        <select>
-          <option>Jours disponibles</option>
+        <select className="machinedetail-form-select">
+          <option className="machinedetail-form-select-day">Jours disponibles</option>
         </select>
-        <select>
-          <option>Heures disponibles</option>
+        <select className="machinedetail-form-select">
+          <option className="machinedetail-form-select-hour">Heures disponibles</option>
         </select>
-        <select>
-          <option>Températures disponibles</option>
+        <select className="machinedetail-form-select">
+          <option className="machinedetail-form-select-temperature">Températures disponibles</option>
         </select>
-        <select>
-          <option>Options</option>
+        <select className="machinedetail-form-select">
+          <option className="machinedetail-form-select-option">Options</option>
         </select>
         <button type="submit">Reserver</button>
       </form>
