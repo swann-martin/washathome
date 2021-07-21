@@ -4,7 +4,7 @@ import logo from 'src/assets/logoWash.png';
 // import style
 import './style.scss';
 
-const Nav = ({ handlePressedConnected, isConnected, handleOpenProfile }) => (
+const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu }) => (
   <nav className="nav">
     <NavLink exact className="link nav-item nav-item--mobile" activeClassName="link--active" to="/">
 
@@ -52,7 +52,7 @@ const Nav = ({ handlePressedConnected, isConnected, handleOpenProfile }) => (
         type="button"
         className="nav-item nav-btn nav-btn--user"
         onClick={() => {
-          handleOpenProfile();
+          handleOpenMenu();
           console.log('cliked on profile picture');
         }}
       >

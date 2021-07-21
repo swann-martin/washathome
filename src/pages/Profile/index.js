@@ -1,18 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './style.scss';
 
-const Profile = ({ handleOpenProfile }) => (
+const Profile = () => (
   <div className="profile">
-    <div
+    <Link
+      to="/"
       className="profile-btn"
       title="fermer cette fenêtre"
-      onClick={() => {
-        console.log('fermer le composant login'); handleOpenProfile();
-      }}
+
     ><i className="fas fa-times" />
-    </div>
-    <button type="button" className="profile-btn profile-btn--settings"><i className="fas fa-cog" /> user settings</button>
-    <form onSubmit={(e) => { e.preventDefault() }} className="profile-credentials">
+    </Link>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+      className="profile-credentials"
+    >
       <label className="profile-credentials-label">Login&nbsp;<input className="profile-credentials-label-input" value="data.pseudo" /></label>
       <label className="profile-credentials-label">Nom&nbsp;<input className="profile-credentials-label-input" value="data.lastName" /></label>
       <label className="profile-credentials-label">Prénom&nbsp;<input className="profile-credentials-label-input" value="data.firstName" /></label>

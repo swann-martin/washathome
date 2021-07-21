@@ -15,11 +15,12 @@ import Cgv from '../../pages/Cgv';
 // Import style
 import './styles.scss';
 import Profile from '../../pages/Profile';
+import Menu from '../Menu';
 
 const App = () => {
   const [isConnected, setIsConnected] = useState(true);
   const [pressedConnected, setPressedConnected] = useState(false);
-  const [openProfile, setOpenProfile] = useState(true);
+  const [openMenu, setOpenMenu] = useState(true);
 
   const handleIsConnected = () => {
     setIsConnected(!isConnected);
@@ -29,15 +30,15 @@ const App = () => {
     setPressedConnected(!pressedConnected);
   };
 
-  const handleOpenProfile = () => {
-    setOpenProfile(!openProfile);
+  const handleOpenMenu = () => {
+    setOpenMenu(!openMenu);
   };
   return (
     <div className="app">
       <Nav
         isConnected={isConnected}
         handlePressedConnected={handlePressedConnected}
-        handleOpenProfile={handleOpenProfile}
+        handleOpenMenu={handleOpenMenu}
       />
       <Switch>
         <Route exact path="/">
@@ -46,6 +47,7 @@ const App = () => {
         <Route exact path="/cgv" component={Cgv} />
         <Route path="/register" component={Register} />
         <Route path="/addwasher" component={AddWasherForm} />
+        <Route path="/profile" component={Profile} />
       </Switch>
       {pressedConnected
         && (
@@ -56,7 +58,7 @@ const App = () => {
           />
         )}
 
-      {openProfile && <Profile handleOpenProfile={handleOpenProfile} />}
+      {openMenu && <Menu handleOpenMenu={handleOpenMenu} />}
       <Footer />
     </div>
   );

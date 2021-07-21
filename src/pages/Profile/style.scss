@@ -17,7 +17,9 @@
     min-width: 25vw;
   }
   &-btn {
-    @include btn-white;
+    @include btn-close;
+    align-self: flex-end;
+    margin-right: 1.8rem;
     &:hover,
     &:active {
       background-color: lighten(vars.$white, 10%);
