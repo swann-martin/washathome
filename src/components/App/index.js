@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-// Import components 
+// Import components
 import Header from '../Header';
 import Nav from '../Nav';
 
