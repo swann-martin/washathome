@@ -4,7 +4,7 @@ import logo from 'src/assets/logoWash.png';
 // import style
 import './style.scss';
 
-const Nav = ({ handleIsConnected }) => (
+const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu }) => (
   <nav className="nav">
     <NavLink exact className="link nav-item nav-item--mobile" activeClassName="link--active" to="/">
 
@@ -24,6 +24,7 @@ const Nav = ({ handleIsConnected }) => (
       ajouter une machine
     </NavLink>
     <button
+      type="button"
       className="nav-item nav-btn nav-btn--search nav-item--mobile"
       onClick={() => {
         console.log('clicked on btn-nav-user');
@@ -32,16 +33,33 @@ const Nav = ({ handleIsConnected }) => (
       <i className="fas fa-search-location" />
       <span className="nav-item-text">search location</span>
     </button>
-    <button
-      className="nav-item nav-btn nav-btn--user "
-      onClick={() => {
-        console.log('clicked on btn-nav-user');
-        handleIsConnected();
-      }}
-    >
-      <i className="far fa-user" title="se connecter" />
-      <span className="nav-item-text">connexion</span>
-    </button>
+    {!isConnected && (
+      <button
+        type="button"
+        className="nav-item nav-btn nav-btn--user "
+        onClick={() => {
+          console.log('clicked on btn-nav-user');
+          handlePressedConnected();
+        }}
+      >
+        <i className="far fa-user" title="se connecter" />
+        <span className="nav-item-text">connexion</span>
+      </button>
+    )}
+
+    {isConnected && (
+      <button
+        type="button"
+        className="nav-item nav-btn nav-btn--user"
+        onClick={() => {
+          handleOpenMenu();
+          console.log('cliked on profile picture');
+        }}
+      >
+        <img className="nav-item nav-btn nav-btn--user-profile" src="https://randomuser.me/api/portraits/women/60.jpg" alt="random-user" />
+      </button>
+    )}
+
   </nav>
 );
 export default Nav;
