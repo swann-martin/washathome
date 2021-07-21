@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // Import components
+
+import MachineDetail from 'src/components/MachineDetail';
 import Header from '../Header';
 import Nav from '../Nav';
 
@@ -32,6 +34,7 @@ const App = () => {
         <Route exact path="/cgv" component={Cgv} />
         <Route path="/register" component={Register} />
       </Switch>
+      <MachineDetail />
       <Footer />
       {isConnected && <Connect isConnected={isConnected} handleIsConnected={handleIsConnected} />}
 

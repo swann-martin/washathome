@@ -10,20 +10,40 @@ const MachineDetail = () => (
     </div>
     <span className="machinedetail-name">Machine</span>
     <div className="machinedetail-form">
-      <h4 className="machinedetail-form-title">Programmes disponibles</h4>
+      <h4 className="machinedetail-form-title">Infos de reservation</h4>
       <form>
-        <select className="machinedetail-form-select">
-          <option className="machinedetail-form-select-day">Jours disponibles</option>
+
+        <select className="machinedetail-form-select" name="day" id="day-select">
+          <option className="machinedetail-form-select-day" value="">Jours disponibles</option>
+          <option className="machinedetail-form-select-day" value="">23 Aout</option>
+          <option className="machinedetail-form-select-day" value="">24 Aout</option>
+          <option className="machinedetail-form-select-day" value="">25 Aout</option>
+          <option className="machinedetail-form-select-day" value="">26 Aout</option>
+          <option className="machinedetail-form-select-day" value="">27 Aout</option>
         </select>
-        <select className="machinedetail-form-select">
-          <option className="machinedetail-form-select-hour">Heures disponibles</option>
+
+        <select className="machinedetail-form-select" name="hour" id="hour-select">
+          <option className="machinedetail-form-select-hour" value="">Heures disponibles</option>
+          <option className="machinedetail-form-select-hour" value="">10h</option>
+          <option className="machinedetail-form-select-hour" value="">11h</option>
+          <option className="machinedetail-form-select-hour" value="">13h</option>
         </select>
-        <select className="machinedetail-form-select">
-          <option className="machinedetail-form-select-temperature">Températures disponibles</option>
+
+        <select className="machinedetail-form-select" id="temperature-select" name="temperature">
+          <option className="machinedetail-form-select-temperature" value="">Températures disponibles</option>
+          <option className="machinedetail-form-select-temperature" value="30">30°</option>
         </select>
-        <select className="machinedetail-form-select">
-          <option className="machinedetail-form-select-option">Options</option>
-        </select>
+        <div>
+          <h4>Options disponibles</h4>
+          <label htmlFor="option">
+            <input type="checkbox" />
+            Sechage au sèche-linge 3€
+          </label>
+          <label htmlFor="option">
+            <input type="checkbox" />
+            Pliage 2€
+          </label>
+        </div>
         <button className="machinedetail-form-submit" type="submit">Reserver</button>
       </form>
     </div>
