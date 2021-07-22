@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
+import Field from '../Field';
+
 const Connect = ({
   handlePressedConnected, handleIsConnected, mail, password, changeField,
 }) => (
@@ -20,8 +22,9 @@ const Connect = ({
         evt.preventDefault();
       }}
     >
-      <input className="connect-form-input" type="text" name="mail" value={mail} onChange={changeField} placeholder="votre email" />
-      <input type="password" className="connect-form-input" name="password" value={password} onChange={changeField} placeholder="mot de passe" />
+      <Field type="text" name="mail" value={mail} onChange={changeField} placeholder="votre email"/>
+      <Field type="password" name="password" value={password} onChange={changeField} placeholder="mot de passe"/>
+
       <button
         type="submit"
         className="connect-form-btn"
