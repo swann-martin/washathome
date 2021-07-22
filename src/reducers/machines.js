@@ -1,4 +1,4 @@
-import { SET_MACHINES, INPUT_CHANGE } from 'src/actions/machines';
+import { SET_MACHINES, SEARCH_INPUT_CHANGE } from 'src/actions/machines';
 import { SET_LOADING } from 'src/actions/setLoading';
 
 export const initialState = {
@@ -18,7 +18,7 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case INPUT_CHANGE:
+    case SEARCH_INPUT_CHANGE:
       return {
         ...state,
         inputs: {

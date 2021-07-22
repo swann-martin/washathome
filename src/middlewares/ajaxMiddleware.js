@@ -5,9 +5,21 @@ import {
   LOGIN_ERROR,
   loginSuccess,
 } from 'src/actions/user';
+import { FETCH_MACHINES_BY_ZIP_CODE } from '../actions/machines';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
+    case FETCH_MACHINES_BY_ZIP_CODE: {
+      const { search } = store.getState().machines.inputs;
+      api.get(`/machine/${search}`)
+        .then((result) => {
+          console.log('Voici vos machines', result.data);
+        })
+        .catch((err) => {
+          console.log('error pas de machine', err);
+        });
+      return next(action);
+    }
     case LOGIN_FORM_SUBMIT: {
       // On récupère les valeurs du state de redux
       // Ici on veut email et password se trouvant dans

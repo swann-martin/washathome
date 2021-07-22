@@ -11,8 +11,8 @@ export const setMachines = (machines) => ({
   machines,
 });
 
-export const INPUT_CHANGE = 'INPUT_CHANGE';
+export const SEARCH_INPUT_CHANGE = 'SEARCH_INPUT_CHANGE';
 export const inputChange = (payload) => ({
-  type: INPUT_CHANGE,
+  type: SEARCH_INPUT_CHANGE,
   payload,
 });
