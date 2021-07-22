@@ -14,14 +14,16 @@
   background-color: rgba($color: #000, $alpha: 0.4);
 
   &-btn {
-    &:hover,
-    &:active {
-      background-color: lighten(vars.$white, 10%);
-    }
     &--close {
       @include btn-close;
       margin-right: 1.8rem;
       align-self: flex-end;
+    }
+    &:hover,
+    &:active {
+      background-color: lighten(vars.$white, 10%);
+      color: vars.$color-action;
+      transform: scale(1.1);
     }
   }
   &-form {
@@ -39,6 +41,7 @@
       &:hover,
       &:active {
         background-color: lighten(vars.$color-action, 10%);
+        transform: scale(1.1);
       }
       width: 100%;
       @media screen and (min-width: 700px) {
@@ -55,6 +58,7 @@
       &:hover,
       &:active {
         background-color: lighten(vars.$white, 10%);
+        transform: scale(1.1);
       }
       width: 100%;
       @media screen and (min-width: 700px) {

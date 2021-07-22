@@ -10,6 +10,7 @@
   cursor: pointer;
   cursor: pointer;
   text-align: center;
+  transition: all 0.2s ease-in-out;
 }
 @mixin btn-green {
   color: vars.$white;
@@ -23,6 +24,7 @@
   cursor: pointer;
   cursor: pointer;
   text-align: center;
+  transition: all 0.2s ease-in-out;
 }
 
 @mixin btn-shape {
@@ -46,4 +48,5 @@
   margin: 0.5rem;
   cursor: pointer;
   text-align: center;
+  transition: all 0.2s ease-in-out;
 }

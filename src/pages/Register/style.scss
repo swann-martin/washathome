@@ -1,4 +1,5 @@
 @use 'src/styles/vars.scss';
+@import 'src/styles/mixins.scss';
 
 .register {
   width: 100vw;
@@ -10,17 +11,15 @@
   color: vars.$white;
 
   &-btn {
-    color: vars.$white;
-    font-size: 1.4rem;
-    background-color: vars.$color-action;
-    padding: 1rem;
-    border-radius: 10px;
-    margin: 1.8rem;
-    align-self: flex-end;
-    cursor: pointer;
-    &:hover,
-    &:active {
-      background-color: darken(vars.$color-action, 10%);
+    &--close {
+      @include btn-close;
+      align-self: flex-end;
+      margin-right: 1.8rem;
+      &:hover,
+      &:active {
+        background-color: darken($color: vars.$color-action, $amount: 10%);
+        color: vars.$white;
+      }
     }
   }
 
@@ -34,13 +33,13 @@
       width: 60vw;
       text-align: center;
     }
-    &-input,
+
     &-btn {
-      height: 3rem;
-      font-size: 1rem;
-      border-radius: 10px;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
+      @include btn-green;
+      &:hover,
+      &:active {
+        background-color: lighten(vars.$color-action, 10%);
+      }
     }
     &-input {
       width: 100%;

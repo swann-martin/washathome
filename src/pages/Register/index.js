@@ -7,7 +7,7 @@ const Register = ({ lastname, pseudo, firstname, mail, phone, password, avatar }
   <div className="register">
     <Link
       to="/"
-      className="register-btn"
+      className="register-btn register-btn--close"
       title="fermer cette fenêtre"
       onClick={() => {
         console.log('fermer le composant ');
