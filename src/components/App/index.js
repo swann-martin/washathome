@@ -8,7 +8,7 @@ import Nav from '../Nav';
 import Footer from '../Footer';
 
 // == Import
-import Connect from '../Connect';
+import Connect from 'src/containers/Connect';
 import AddWasherForm from '../AddWasherForm';
 import Register from '../../pages/Register';
 import Cgv from '../../pages/Cgv';

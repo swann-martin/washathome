@@ -22,7 +22,21 @@ const reducer = (state = initialState, action = {}) => {
           ...action.payload,
         },
       };
+    case LOGIN_FORM_SUBMIT:
+      return {
+        ...state,
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        logged: false,
+      };
     case LOGIN_ERROR:
+      return {
+        ...state,
+        isConnected: false,
+      };
+    case USER_LOGOUT:
       return {
         ...state,
         isConnected: false,

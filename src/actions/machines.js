@@ -1,7 +1,7 @@
-export const FETCH_MACHINES = 'FETCH_MACHINES';
+export const FETCH_MACHINES_BY_ZIP_CODE = 'FETCH_MACHINES_BY_ZIP_CODE';
 
-export const fetchMachines = () => ({
-  type: FETCH_MACHINES,
+export const fetchMachinesByZipCode = () => ({
+  type: FETCH_MACHINES_BY_ZIP_CODE,
 });
 
 export const SET_MACHINES = 'SET_MACHINES';

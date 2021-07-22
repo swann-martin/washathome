@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './style.scss';
 
 import Field from '../Field';
 
 const Connect = ({
-  handlePressedConnected, handleIsConnected, mail, password, changeField,
+  handlePressedConnected, handleIsConnected, mail, password, changeField, handleLoggin
 }) => (
   <div className="connect">
     <div
@@ -20,10 +21,12 @@ const Connect = ({
       className="connect-form"
       onSubmit={(evt) => {
         evt.preventDefault();
+        handleLoggin();
+
       }}
     >
-      <Field type="text" name="mail" value={mail} onChange={changeField} placeholder="votre email"/>
-      <Field type="password" name="password" value={password} onChange={changeField} placeholder="mot de passe"/>
+      <Field type="text" name="mail" value={mail} onChange={changeField} placeholder="votre email" />
+      <Field type="password" name="password" value={password} onChange={changeField} placeholder="mot de passe" />
 
       <button
         type="submit"
@@ -46,4 +49,5 @@ const Connect = ({
     </form>
   </div>
 );
+
 export default Connect;
