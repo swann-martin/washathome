@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
 import Field from '../Field';
 
 const Connect = ({
-  handlePressedConnected, handleIsConnected, mail, password, changeField, handleLoggin
+  handlePressedConnected, handleIsConnected, mail, password, changeField, handleLoggin,
 }) => (
   <div className="connect">
     <div
@@ -49,5 +50,23 @@ const Connect = ({
     </form>
   </div>
 );
+
+Connect.propTypes = {
+  handlePressedConnected: PropTypes.func,
+  handleIsConnected: PropTypes.func,
+  mail: PropTypes.string,
+  password: PropTypes.string,
+  changeField: PropTypes.func,
+  handleLoggin: PropTypes.func,
+};
+
+Connect.defaultProps = {
+  handlePressedConnected: () => {},
+  handleIsConnected: () => {},
+  changeField: () => {},
+  handleLoggin: () => {},
+  mail: '',
+  password: '',
+};
 
 export default Connect;
