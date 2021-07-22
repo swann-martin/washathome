@@ -14,6 +14,7 @@ import Footer from '../Footer';
 // == Import
 import Register from '../../pages/Register';
 import Cgv from '../../pages/Cgv';
+import Team from '../../pages/Team';
 // Import style
 import './styles.scss';
 import Profile from '../../pages/Profile';
@@ -44,6 +45,7 @@ const App = ({ isConnected, pressedConnected, foundMachines }) => {
         <Route path="/addwasher" component={AddWasherForm} />
         <Route path="/profile" component={Profile} />
         <Route path="/searchresult" component={Cards} />
+        <Route path="/team" component={Team} />
       </Switch>
       {pressedConnected && <Connect />}
 

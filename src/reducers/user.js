@@ -15,7 +15,7 @@ export const initialState = {
     mail: '',
     password: '',
     phone: '',
-    avatar: '',
+    avatar: 'https://randomuser.me/api/portraits/women/60.jpg',
   },
   token: '',
 };
