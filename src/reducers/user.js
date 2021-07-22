@@ -7,8 +7,16 @@ export const initialState = {
   inputs: {
     mail: '',
     password: '',
+
   },
-  user: {},
+  user: {
+    lastname: 'mon petit nom',
+    firstname: '',
+    mail: '',
+    password: '',
+    phone: '',
+    avatar: '',
+  },
   token: '',
 };
 

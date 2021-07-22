@@ -16,3 +16,9 @@ export const inputChange = (payload) => ({
   type: SEARCH_INPUT_CHANGE,
   payload,
 });
+
+export const ADD_MACHINE_INPUT_CHANGE = 'ADD_MACHINE_INPUT_CHANGE';
+export const addMachineInputChange = (payload) => ({
+  type: ADD_MACHINE_INPUT_CHANGE,
+  payload,
+});
