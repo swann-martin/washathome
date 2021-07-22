@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './styles.scss';
 
-const Card = () => (
+const Card = ({ picture, city, price }) => (
   <article className="card">
-    <img className="card-img" src="https://dummyimage.com/250/000/eee" alt="la machine" />
+    <img className="card-img" src={picture} alt="la machine" />
     <div className="card-content">
       <div className="card-content-city">
         <span className="card-content-city-name">{city}</span>
@@ -12,10 +13,25 @@ const Card = () => (
       </div>
       <div className="card-content-infos">
         <span className="card-content-infos-price">{price}€</span>
-        <span className="card-content-infos-grade">{note}/5</span>
       </div>
     </div>
   </article>
 );
+
+Card.propTypes = {
+  picture: PropTypes.string,
+  capacity: PropTypes.number,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  zip_code: PropTypes.number.isRequired,
+  address: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+};
+
+Card.defaultProps = {
+  picture: 'https://dummyimage.com/250/000/eee',
+  capacity: 6,
+};
 
 export default Card;

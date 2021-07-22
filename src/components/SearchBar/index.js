@@ -5,10 +5,11 @@ import './styles.scss';
 
 const SearchBar = ({ changeField, search, handleSearchSubmit }) => (
   <form
-    className="searchbar" onSubmit={(e) => {
-      e.preventDefault()
-      handleSearchSubmit()}
-    }
+    className="searchbar"
+    onSubmit={(e) => {
+      e.preventDefault();
+      handleSearchSubmit();
+    }}
   >
     <Field classn="searchbar-bar" value={search} name="search" onChange={changeField} placeholder="Entre ton code postal" />
     <button

@@ -8,9 +8,9 @@ const Cards = ({ machines }) => (
   <div className="cards">
     <h2 className="cards-title">Resultats de votre recherche</h2>
     {
-      machines.map((machine) => {
-        <Card />
-      })
+      machines.map((machine) => (
+        <Card {...machine} />
+      ))
     }
   </div>
 );

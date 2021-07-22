@@ -5,7 +5,7 @@ import {
   LOGIN_ERROR,
   loginSuccess,
 } from 'src/actions/user';
-import { FETCH_MACHINES_BY_ZIP_CODE } from '../actions/machines';
+import { FETCH_MACHINES_BY_ZIP_CODE, setMachines } from '../actions/machines';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -13,7 +13,7 @@ export default (store) => (next) => (action) => {
       const { search } = store.getState().machines.inputs;
       api.get(`/machine/${search}`)
         .then((result) => {
-          console.log('Voici vos machines', result.data);
+          store.dispatch(setMachines(result.data));
         })
         .catch((err) => {
           console.log('error pas de machine', err);
