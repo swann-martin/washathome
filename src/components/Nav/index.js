@@ -17,10 +17,10 @@ const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu, avatar }) =>
         <span className="nav-title-text">Wash@Home</span>
       </h1>
     </NavLink>
-    <NavLink className="link link-desktop nav-item nav-item--desktop" activeClassName="link--active" to="/team">
+    <NavLink className="link link-desktop nav-item nav-item--desktop" activeClassName="nav-item--active" to="/team">
       l'équipe
     </NavLink>
-    <NavLink className="link link-desktop nav-item nav-item--desktop" activeClassName="link--active" to="/addwasher">
+    <NavLink className="link link-desktop nav-item nav-item--desktop" activeClassName="nav-item--active" to="/addwasher">
       ajouter une machine
     </NavLink>
     <button

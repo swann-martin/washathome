@@ -38,7 +38,7 @@
       &-role {
         font-weight: bold;
         margin: 1rem 0;
-        color: vars.$color-action;
+        color: vars.$color-bg-hero;
         text-align: center;
       }
       &-specialty {
@@ -46,7 +46,7 @@
         margin: 1rem 0;
       }
       &-github {
-        color: vars.$color-bg-hero;
+        color: vars.$color-action;
         font-weight: bold;
       }
     }
