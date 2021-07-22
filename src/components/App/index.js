@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // Import components
+import Connect from 'src/containers/Connect';
+import AddWasherForm from 'src/containers/AddWasherForm';
 import Header from '../Header';
 import Nav from '../Nav';
 import Footer from '../Footer';
 
 // == Import
-import Connect from '../Connect';
-import AddWasherForm from '../AddWasherForm';
 import Register from '../../pages/Register';
 import Cgv from '../../pages/Cgv';
 // Import style
@@ -18,9 +18,9 @@ import Profile from '../../pages/Profile';
 import Menu from '../Menu';
 
 const App = () => {
-  const [isConnected, setIsConnected] = useState(true);
+  const [isConnected, setIsConnected] = useState(false);
   const [pressedConnected, setPressedConnected] = useState(false);
-  const [openMenu, setOpenMenu] = useState(true);
+  const [openMenu, setOpenMenu] = useState(false);
 
   const handleIsConnected = () => {
     setIsConnected(!isConnected);
@@ -58,7 +58,7 @@ const App = () => {
           />
         )}
 
-      {openMenu && <Menu handleOpenMenu={handleOpenMenu} />}
+      {openMenu && <Menu handleOpenMenu={handleOpenMenu} handleIsConnected={handleIsConnected} />}
       <Footer />
     </div>
   );

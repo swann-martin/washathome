@@ -20,7 +20,7 @@ const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu }) => (
     <NavLink className="link link-desktop nav-item nav-item--desktop" activeClassName="link--active" to="/findmachine">
       trouver une machine
     </NavLink>
-    <NavLink className="link link-desktop nav-item nav-item--desktop" activeClassName="link--active" to="/addmachine">
+    <NavLink className="link link-desktop nav-item nav-item--desktop" activeClassName="link--active" to="/addwasher">
       ajouter une machine
     </NavLink>
     <button

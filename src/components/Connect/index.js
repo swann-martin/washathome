@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import './style.scss';
 
-const Connect = ({ handlePressedConnected, handleIsConnected }) => (
+import Field from '../Field';
+
+const Connect = ({
+  handlePressedConnected, handleIsConnected, mail, password, changeField, handleLoggin,
+}) => (
   <div className="connect">
     <div
       className="connect-btn"
@@ -16,15 +22,18 @@ const Connect = ({ handlePressedConnected, handleIsConnected }) => (
       className="connect-form"
       onSubmit={(evt) => {
         evt.preventDefault();
+        handleLoggin();
       }}
     >
-      <input className="connect-form-input" type="text" name="login" placeholder="login" />
-      <input type="password" className="connect-form-input" name="password" placeholder="mot de passe" />
+      <Field type="text" name="mail" value={mail} onChange={changeField} placeholder="votre email" />
+      <Field type="password" name="password" value={password} onChange={changeField} placeholder="mot de passe" />
+
       <button
         type="submit"
         className="connect-form-btn"
         onClick={() => {
-          console.log('clicked on se connecter'); handlePressedConnected();
+          console.log('clicked on se connecter');
+          handlePressedConnected();
           handleIsConnected();
         }}
       >Se connecter
@@ -41,4 +50,23 @@ const Connect = ({ handlePressedConnected, handleIsConnected }) => (
     </form>
   </div>
 );
+
+Connect.propTypes = {
+  handlePressedConnected: PropTypes.func,
+  handleIsConnected: PropTypes.func,
+  mail: PropTypes.string,
+  password: PropTypes.string,
+  changeField: PropTypes.func,
+  handleLoggin: PropTypes.func,
+};
+
+Connect.defaultProps = {
+  handlePressedConnected: () => {},
+  handleIsConnected: () => {},
+  changeField: () => {},
+  handleLoggin: () => {},
+  mail: '',
+  password: '',
+};
+
 export default Connect;
