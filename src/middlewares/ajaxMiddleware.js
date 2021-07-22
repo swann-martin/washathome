@@ -1,4 +1,6 @@
 import api from 'src/api';
+import { FETCH_MACHINES_BY_ZIP_CODE } from '../actions/machines';
+
 
 export default (store) => (next) => (action) => {
   switch (action.type) {

@@ -18,9 +18,9 @@ import Profile from '../../pages/Profile';
 import Menu from '../Menu';
 
 const App = () => {
-  const [isConnected, setIsConnected] = useState(true);
+  const [isConnected, setIsConnected] = useState(false);
   const [pressedConnected, setPressedConnected] = useState(false);
-  const [openMenu, setOpenMenu] = useState(true);
+  const [openMenu, setOpenMenu] = useState(false);
 
   const handleIsConnected = () => {
     setIsConnected(!isConnected);
