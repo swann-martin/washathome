@@ -9,7 +9,7 @@ const Cards = ({ machines }) => (
     <h2 className="cards-title">Resultats de votre recherche</h2>
     {
       machines.map((machine) => (
-        <Card {...machine} />
+        <Card {...machine} key={machine.id} />
       ))
     }
   </div>

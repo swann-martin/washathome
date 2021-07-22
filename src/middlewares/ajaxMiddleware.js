@@ -27,7 +27,7 @@ export default (store) => (next) => (action) => {
       const { mail, password } = store.getState().user.inputs;
       api.post('/login', { mail, password })
         .then((result) => {
-          console.log('Coucou je suis une action');
+          console.log('res data', result.data);
           store.dispatch(loginSuccess(result.data));
         })
         .catch((e) => {

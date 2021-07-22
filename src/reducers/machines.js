@@ -16,7 +16,7 @@ export const initialState = {
       user_id: 2,
     },
     {
-      id: 50,
+      id: 51,
       capacity: 12,
       name: 'la machine de test',
       description: 'une machine fictive',
