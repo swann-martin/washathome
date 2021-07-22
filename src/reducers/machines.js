@@ -1,6 +1,5 @@
-import { SET_MACHINES } from 'src/actions/machines';
+import { SET_MACHINES, INPUT_CHANGE } from 'src/actions/machines';
 import { SET_LOADING } from 'src/actions/setLoading';
-import { INPUT_CHANGE } from 'src/actions/machines';
 
 export const initialState = {
   foundMachines: [],
@@ -13,6 +12,7 @@ export const initialState = {
     price: '',
     description: '',
     picture: '',
+    search: '',
   },
 };
 
@@ -25,7 +25,7 @@ const reducer = (state = initialState, action = {}) => {
           ...state.inputs,
           ...action.payload,
         },
-      }
+      };
     case SET_MACHINES:
       return {
         // Pour l'instant le state C'EST list, donc déverser le state
