@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+
 import './style.scss';
 
 import Field from '../Field';
@@ -22,7 +22,6 @@ const Connect = ({
       onSubmit={(evt) => {
         evt.preventDefault();
         handleLoggin();
-
       }}
     >
       <Field type="text" name="mail" value={mail} onChange={changeField} placeholder="votre email" />
@@ -32,7 +31,8 @@ const Connect = ({
         type="submit"
         className="connect-form-btn"
         onClick={() => {
-          console.log('clicked on se connecter'); handlePressedConnected();
+          console.log('clicked on se connecter');
+          handlePressedConnected();
           handleIsConnected();
         }}
       >Se connecter

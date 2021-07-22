@@ -10,3 +10,9 @@ export const setMachines = (machines) => ({
   type: SET_MACHINES,
   machines,
 });
+
+export const INPUT_CHANGE = 'INPUT_CHANGE';
+export const inputChange = (payload) => ({
+  type: INPUT_CHANGE,
+  payload,
+});

@@ -1,13 +1,31 @@
 import { SET_MACHINES } from 'src/actions/machines';
 import { SET_LOADING } from 'src/actions/setLoading';
+import { INPUT_CHANGE } from 'src/actions/machines';
 
 export const initialState = {
   foundMachines: [],
   loading: true,
+  inputs: {
+    name: '',
+    address: '',
+    zip_code: '',
+    city: '',
+    price: '',
+    description: '',
+    picture: '',
+  },
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case INPUT_CHANGE:
+      return {
+        ...state,
+        inputs: {
+          ...state.inputs,
+          ...action.payload,
+        },
+      }
     case SET_MACHINES:
       return {
         // Pour l'instant le state C'EST list, donc déverser le state

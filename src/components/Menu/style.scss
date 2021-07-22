@@ -39,6 +39,14 @@
       &:active {
         background-color: lighten(vars.$white, 10%);
       }
+    &--logout {
+      background-color: vars.$black ;
+      color: vars.$white;
+      &:hover,
+      &:active {
+        background-color: lighten(vars.$red, 10%);
+      }
     }
   }
+}
 }

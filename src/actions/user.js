@@ -1,12 +1,12 @@
-export const LOGIN_INPUT_CHANGE = 'LOGIN_INPUT_CHANGE';
+export const INPUT_CHANGE = 'INPUT_CHANGE';
 export const LOGIN_FORM_SUBMIT = 'LOGIN_FORM_SUBMIT';
 export const USER_LOGOUT = 'USER_LOGOUT';
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 
-export const loginInputChange = (payload) => ({
-  type: LOGIN_INPUT_CHANGE,
+export const inputChange = (payload) => ({
+  type: INPUT_CHANGE,
   payload,
 });
 

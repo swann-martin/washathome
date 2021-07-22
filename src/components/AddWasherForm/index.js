@@ -15,6 +15,7 @@ const AddWasherForm = ({
   price,
   description,
   picture,
+  changeField,
 }) => (
   <div className="addwasherform">
     <Link
@@ -28,12 +29,12 @@ const AddWasherForm = ({
     </Link>
     <h1 className="addwasherform-title"> Ajouter une Machine </h1>
     <form className="addwasherform-form" onSubmit={handleWasherFormSubmit} encType="multipart/form-data">
-      <Field placeholder="Nom" value={name} name="name" />
-      <Field placeholder="Adresse de la machine" value={address} name="address" />
-      <Field placeholder="Code Postal" value={zip_code} type="number" name="zip_code" />
-      <Field placeholder="Ville" value={city} name="city" />
-      <Field placeholder="Prix en € pour un lavage simple ex: 3" value={price} type="number" name="price" />
-      <textarea className="addwasherform-form-input addwasherform-form-input--description" placeholder="Ecrivez ce que vous souhaitez à propos de votre machine" name="description" value={description} />
+      <Field placeholder="Nom" value={name} name="name" onChange={changeField} type="text" />
+      <Field placeholder="Adresse de la machine" value={address} name="address" onChange={changeField} type="text"/>
+      <Field placeholder="Code Postal" value={zip_code} type="number" name="zip_code" onChange={changeField} />
+      <Field placeholder="Ville" value={city} name="city" onChange={changeField} />
+      <Field placeholder="Prix en € pour un lavage simple ex: 3" value={price} type="number" name="price" onChange={changeField} />
+      <textarea className="addwasherform-form-input addwasherform-form-input--description" placeholder="Ecrivez ce que vous souhaitez à propos de votre machine" name="description" value={description} onChange={changeField} />
 
       <div className="addwasherform-form-capacity">
         <label htmlFor="capacity" className="addwasherform-form-capacity-select">
@@ -49,7 +50,7 @@ const AddWasherForm = ({
       </div>
       <div className="addwasherform-form-image">
         <h2 className="addwasherform-form-image-subtitle">Photo de la machine (facultatif)</h2>
-        <Field className="addwasherform-form-image-input" type="file" name="avatar" accept="image/png, image/jpeg" value={picture} />
+        <Field className="addwasherform-form-image-input" type="file" name="avatar" accept="image/png, image/jpeg" value={picture} onChange={changeField} />
       </div>
       <button className="addwasherform-form-submit" type="submit">Valider</button>
     </form>
@@ -57,17 +58,27 @@ const AddWasherForm = ({
 );
 
 AddWasherForm.propTypes = {
-  name: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired,
-  zip_code: PropTypes.number.isRequired,
-  city: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  description: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  address: PropTypes.string,
+  zip_code: PropTypes.string,
+  city: PropTypes.string,
+  price: PropTypes.string,
+  description: PropTypes.string,
   picture: PropTypes.string,
+  handleWasherFormSubmit: PropTypes.func,
+  changeField: PropTypes.func,
 };
 
 AddWasherForm.defaultProps = {
-  picture: 'https://thispersondoesnotexist.com/',
+  handleWasherFormSubmit: () => {},
+  changeField: () => {},
+  name: '',
+  address: '',
+  zip_code: '',
+  city: '',
+  price: '',
+  description: '',
+  picture: '',
 };
 
 export default AddWasherForm;

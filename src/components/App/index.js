@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // Import components
+import Connect from 'src/containers/Connect';
+import AddWasherForm from 'src/containers/AddWasherForm';
 import Header from '../Header';
 import Nav from '../Nav';
 import Footer from '../Footer';
 
 // == Import
-import Connect from 'src/containers/Connect';
-import AddWasherForm from '../AddWasherForm';
 import Register from '../../pages/Register';
 import Cgv from '../../pages/Cgv';
 // Import style
@@ -58,7 +58,7 @@ const App = () => {
           />
         )}
 
-      {openMenu && <Menu handleOpenMenu={handleOpenMenu} />}
+      {openMenu && <Menu handleOpenMenu={handleOpenMenu} handleIsConnected={handleIsConnected} />}
       <Footer />
     </div>
   );

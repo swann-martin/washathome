@@ -1,4 +1,4 @@
-import { LOGIN_INPUT_CHANGE, LOGIN_FORM_SUBMIT, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT } from '../actions/user';
+import { INPUT_CHANGE, LOGIN_FORM_SUBMIT, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT } from '../actions/user';
 
 export const initialState = {
   isConnected: true,
@@ -14,7 +14,7 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case LOGIN_INPUT_CHANGE:
+    case INPUT_CHANGE:
       return {
         ...state,
         inputs: {
