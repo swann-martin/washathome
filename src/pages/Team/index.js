@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './style.scss';
 
 const Team = () => {
@@ -9,7 +8,7 @@ const Team = () => {
       name: 'Magali',
       role: 'dev back-end',
       specialty: ' Scrum Master, sql, squitch',
-      avatar: 'https://avatars.githubusercontent.com/u/78724241?v=4',
+      avatar: 'https://cockpit.oclock.io/uploads/profiles/pictures/thumb/79723ede5a1c39fa0a455586ea3c78eb.jpeg',
       github: '/Magali-Sinbad21',
     },
     {
@@ -17,15 +16,15 @@ const Team = () => {
       name: 'Guilhem',
       role: 'lead dev back-end',
       specialty: 'node, deploiement aws',
-      avatar: 'https://avatars.githubusercontent.com/u/73582716?v=4',
+      avatar: 'https://cockpit.oclock.io/uploads/profiles/pictures/thumb/dc4b9d4cfaffd12dfca2d5b9f015fef1.jpeg',
       github: '/rocketgui1',
     },
     {
       id: 3,
       name: 'Nico',
       role: 'dev front-end',
-      specialty: 'Product Owner, api,redux',
-      avatar: 'https://avatars.githubusercontent.com/u/68157275?v=4',
+      specialty: 'Product Owner, git Padawan',
+      avatar: 'https://ca.slack-edge.com/T01KS87Q58D-U01N0JZGSBA-564542ef78be-512',
       github: '/Sunburst009',
     },
     {
@@ -54,7 +53,7 @@ const Team = () => {
         }
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Team
+export default Team;
