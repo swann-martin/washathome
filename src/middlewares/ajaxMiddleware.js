@@ -11,7 +11,7 @@ export default (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_MACHINES_BY_ZIP_CODE: {
       const { search } = store.getState().machines.inputs;
-      api.get(`/machine/${search}`)
+      api.get(`/search/${search}`)
         .then((result) => {
           store.dispatch(setMachines(result.data));
         })
@@ -27,7 +27,7 @@ export default (store) => (next) => (action) => {
       const { mail, password } = store.getState().user.inputs;
       api.post('/login', { mail, password })
         .then((result) => {
-          console.log('Coucou je suis une action');
+          console.log('res data', result.data);
           store.dispatch(loginSuccess(result.data));
         })
         .catch((e) => {

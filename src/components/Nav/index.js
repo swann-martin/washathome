@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from 'src/assets/logoWash.png';
+import logo from 'src/assets/logoWash1.png';
 // import style
 import './style.scss';
 
-const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu }) => (
+const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu, avatar }) => (
   <nav className="nav">
     <NavLink exact className="link nav-item nav-item--mobile" activeClassName="link--active" to="/">
 
@@ -17,10 +17,10 @@ const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu }) => (
         <span className="nav-title-text">Wash@Home</span>
       </h1>
     </NavLink>
-    <NavLink className="link link-desktop nav-item nav-item--desktop" activeClassName="link--active" to="/findmachine">
-      trouver une machine
+    <NavLink className="link link-desktop nav-item nav-item--desktop" activeClassName="nav-item--active" to="/team">
+      l'équipe
     </NavLink>
-    <NavLink className="link link-desktop nav-item nav-item--desktop" activeClassName="link--active" to="/addwasher">
+    <NavLink className="link link-desktop nav-item nav-item--desktop" activeClassName="nav-item--active" to="/addwasher">
       ajouter une machine
     </NavLink>
     <button
@@ -56,7 +56,7 @@ const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu }) => (
           console.log('cliked on profile picture');
         }}
       >
-        <img className="nav-item nav-btn nav-btn--user-profile" src="https://randomuser.me/api/portraits/women/60.jpg" alt="random-user" />
+        <img className="nav-item nav-btn nav-btn--user-profile" src={avatar} alt="user-avatar" />
       </button>
     )}
 

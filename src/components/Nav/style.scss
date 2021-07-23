@@ -40,6 +40,9 @@
         display: none;
       }
     }
+    &--active {
+      color: vars.$color-cards;
+    }
   }
 
   &-title {

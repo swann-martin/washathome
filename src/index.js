@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 // == Import : local
 // Composants
-import App from 'src/components/App';
+import App from 'src/containers/App';
 import { Provider } from 'react-redux';
 import store from './store';
 

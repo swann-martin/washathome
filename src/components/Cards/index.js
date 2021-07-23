@@ -6,12 +6,14 @@ import './styles.scss';
 
 const Cards = ({ machines }) => (
   <div className="cards">
-    <h2 className="cards-title">Resultats de votre recherche</h2>
-    {
-      machines.map((machine) => (
-        <Card {...machine} />
-      ))
-    }
+    <h2 className="cards-title">Resultats de votre recherche&nbsp;:&nbsp;{machines.length > 1 ? `${machines.length} machines trouvées` : `${machines.length} machine trouvée`}</h2>
+    <section className="cards-list">
+      {
+        machines.map((machine) => (
+          <Card {...machine} key={machine.id} />
+        ))
+      }
+    </section>
   </div>
 );
 

@@ -1,69 +1,63 @@
 // == Import npm
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // Import components
 import Connect from 'src/containers/Connect';
-import AddWasherForm from 'src/containers/AddWasherForm';
 import Cards from 'src/containers/Cards';
+import Nav from 'src/containers/Nav';
+import AddWasherForm from '../../containers/AddWasherForm';
 import Header from '../Header';
-import Nav from '../Nav';
 import Footer from '../Footer';
 
 // == Import
 import Register from '../../pages/Register';
 import Cgv from '../../pages/Cgv';
+import Team from '../../pages/Team';
 // Import style
 import './styles.scss';
 import Profile from '../../pages/Profile';
 import Menu from '../Menu';
 
-const App = () => {
-  const [isConnected, setIsConnected] = useState(false);
-  const [pressedConnected, setPressedConnected] = useState(false);
+const App = ({ isConnected, pressedConnected, foundMachines }) => {
   const [openMenu, setOpenMenu] = useState(false);
-
-  const handleIsConnected = () => {
-    setIsConnected(!isConnected);
-  };
-
-  const handlePressedConnected = () => {
-    setPressedConnected(!pressedConnected);
-  };
 
   const handleOpenMenu = () => {
     setOpenMenu(!openMenu);
   };
+
+  useEffect(() => { }, [foundMachines]);
+
   return (
     <div className="app">
       <Nav
         isConnected={isConnected}
-        handlePressedConnected={handlePressedConnected}
         handleOpenMenu={handleOpenMenu}
       />
       <Switch>
         <Route exact path="/">
           <Header />
+          <Cards />
         </Route>
         <Route exact path="/cgv" component={Cgv} />
         <Route path="/register" component={Register} />
         <Route path="/addwasher" component={AddWasherForm} />
         <Route path="/profile" component={Profile} />
         <Route path="/searchresult" component={Cards} />
+        <Route path="/team" component={Team} />
       </Switch>
-      {pressedConnected
-        && (
-          <Connect
-            pressedConnected={pressedConnected}
-            handlePressedConnected={handlePressedConnected}
-            handleIsConnected={handleIsConnected}
-          />
-        )}
+      {pressedConnected && <Connect />}
 
-      {openMenu && <Menu handleOpenMenu={handleOpenMenu} handleIsConnected={handleIsConnected} />}
+      {openMenu && <Menu handleOpenMenu={handleOpenMenu} />}
       <Footer />
-    </div>
+    </div >
   );
+};
+
+App.propTypes = {
+  isConnected: PropTypes.bool.isRequired,
+  pressedConnected: PropTypes.bool.isRequired,
 };
 // == Export
 export default App;

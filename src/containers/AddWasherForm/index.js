@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import AddWasherForm from 'src/components/AddWasherForm';
-import { inputChange } from '../../actions/machines';
+import AddWasherForm from '../../components/AddWasherForm';
+import { addMachineInputChange } from '../../actions/machines';
 
 const mapStateToProps = (state) => ({
   inputs: {
@@ -18,7 +18,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeField: (value, name) => {
     console.log(value, name);
-    const action = inputChange({ [name]: value });
+    const action = addMachineInputChange({ [name]: value });
     dispatch(action);
   },
 });

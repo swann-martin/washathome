@@ -4,6 +4,7 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const TOGGLE_CONNECTED = 'TOGGLE_CONNECTED';
 
 export const inputChange = (payload) => ({
   type: INPUT_CHANGE,
@@ -25,4 +26,8 @@ export const loginSuccess = (payload) => ({
 
 export const loginError = () => ({
   type: LOGIN_ERROR,
+});
+
+export const toggleConnected = () => ({
+  type: TOGGLE_CONNECTED,
 });

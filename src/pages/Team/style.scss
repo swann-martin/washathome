@@ -1,0 +1,54 @@
+@use 'src/styles/vars.scss';
+
+.team {
+  background-color: vars.$color-bg-hero;
+  min-height: 90vh;
+  color: vars.$white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-card {
+    display: flex;
+    flex-direction: column;
+    @media screen and (min-width: 700px) {
+      flex-direction: row;
+    }
+    justify-content: center;
+    align-items: center;
+    &-member {
+      background-color: vars.$color-cards;
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem;
+
+      width: 20rem;
+      &-avatar {
+        display: block;
+        max-width: 6rem;
+        max-height: 6rem;
+        border-radius: 50%;
+        margin: auto;
+      }
+      &-name {
+        text-align: center;
+        font-size: 2rem;
+        margin: 1rem 0;
+        color: vars.$color-hover;
+      }
+      &-role {
+        font-weight: bold;
+        margin: 1rem 0;
+        color: vars.$color-bg-hero;
+        text-align: center;
+      }
+      &-specialty {
+        font-style: italic;
+        margin: 1rem 0;
+      }
+      &-github {
+        color: vars.$color-action;
+        font-weight: bold;
+      }
+    }
+  }
+}
