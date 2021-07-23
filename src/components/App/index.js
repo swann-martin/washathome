@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 // Import components
 import Connect from 'src/containers/Connect';
 import AddWasherForm from 'src/containers/AddWasherForm';
+import Cards from 'src/containers/Cards';
 import Header from '../Header';
 import Nav from '../Nav';
 import Footer from '../Footer';
@@ -48,6 +49,7 @@ const App = () => {
         <Route path="/register" component={Register} />
         <Route path="/addwasher" component={AddWasherForm} />
         <Route path="/profile" component={Profile} />
+        <Route path="/searchresult" component={Cards} />
       </Switch>
       {pressedConnected
         && (

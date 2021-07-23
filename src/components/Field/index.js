@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 const Field = ({
-  onChange, name, value, placeholder, type,
+  onChange, name, value, placeholder, type, classn,
 }) => {
   const handleFieldChange = (evt) => {
     onChange(evt.target.value, name);
@@ -13,7 +13,14 @@ const Field = ({
   return (
     <div className="field">
       <label className="field-label" htmlFor={inputId}>
-        <input className="field-input" type={type} name={name} value={value} onChange={handleFieldChange} placeholder={placeholder} />
+        <input
+          className={classn}
+          type={type}
+          name={name}
+          value={value}
+          onChange={handleFieldChange}
+          placeholder={placeholder}
+        />
       </label>
     </div>
   );
@@ -25,6 +32,7 @@ Field.propTypes = {
   value: PropTypes.string,
   placeholder: PropTypes.string,
   type: PropTypes.string,
+  classn: PropTypes.string,
 };
 
 Field.defaultProps = {
@@ -33,5 +41,6 @@ Field.defaultProps = {
   value: '',
   placeholder: '',
   type: 'text',
+  classn: 'field-input',
 };
 export default Field;
