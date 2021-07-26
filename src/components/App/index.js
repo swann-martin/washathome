@@ -17,7 +17,7 @@ import Cgv from '../../pages/Cgv';
 import Team from '../../pages/Team';
 // Import style
 import './styles.scss';
-import Profile from '../../pages/Profile';
+import Profile from '../../containers/Profile';
 import Menu from '../Menu';
 
 const App = ({ isConnected, pressedConnected, foundMachines }) => {
@@ -38,6 +38,7 @@ const App = ({ isConnected, pressedConnected, foundMachines }) => {
       <Switch>
         <Route exact path="/">
           <Header />
+          <AddWasherForm />
           <Cards />
         </Route>
         <Route exact path="/cgv" component={Cgv} />

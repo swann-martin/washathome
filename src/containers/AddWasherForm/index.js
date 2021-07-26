@@ -3,15 +3,14 @@ import AddWasherForm from '../../components/AddWasherForm';
 import { addMachineInputChange } from '../../actions/machines';
 
 const mapStateToProps = (state) => ({
-  inputs: {
-    name: state.machines.inputs.name,
-    address: state.machines.inputs.address,
-    zip_code: state.machines.inputs.zip_code,
-    city: state.machines.inputs.city,
-    price: state.machines.inputs.price,
-    description: state.machines.inputs.description,
-    picture: state.machines.inputs.picture,
-  },
+
+  name: state.machines.inputs.name,
+  address: state.machines.inputs.address,
+  zip_code: state.machines.inputs.zip_code,
+  city: state.machines.inputs.city,
+  price: state.machines.inputs.price,
+  description: state.machines.inputs.description,
+  picture: state.machines.inputs.picture,
 
 });
 
