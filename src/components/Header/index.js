@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.scss';
+import './styles.scss';
 import logo from 'src/assets/logoWash1.png';
 import SearchBar from 'src/containers/SearchBar';
 

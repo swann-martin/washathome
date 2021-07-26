@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from 'src/assets/logoWash1.png';
 // import style
-import './style.scss';
+import './styles.scss';
 
 const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu, avatar }) => (
   <nav className="nav">
