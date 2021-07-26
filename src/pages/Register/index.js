@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Field from '../../components/Field';
 import './style.scss';
@@ -42,6 +43,6 @@ const Register = ({ lastname, pseudo, firstname, mail, phone, password, avatar }
     </form>
   </div>
 
-)
+);
 
 export default Register;

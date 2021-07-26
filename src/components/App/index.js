@@ -14,7 +14,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 
 // == Import
-import Register from '../../pages/Register';
+import Register from '../../containers/Register';
 import Cgv from '../../pages/Cgv';
 import Team from '../../pages/Team';
 
@@ -40,7 +40,7 @@ const App = ({ isConnected, pressedConnected, foundMachines }) => {
       <Switch>
         <Route exact path="/">
           <Header />
-          <AddWasherForm />
+          <Register />
           <Cards />
         </Route>
         <Route exact path="/cgv" component={Cgv} />
