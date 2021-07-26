@@ -2,14 +2,13 @@ import { connect } from 'react-redux';
 import Register from '../../pages/Register';
 
 const mapStateToProps = (state) => ({
-  user: {
-    lastname: state.user.user.lastname,
-    first: state.user.user.firstname,
-    pseudo: state.user.user.pseudo,
-    mail: state.user.user.mail,
-    password: state.user.user.lastname,
-    avatar: state.user.user.avatar,
-  },
+
+  lastname: state.user.user.lastname,
+  first: state.user.user.firstname,
+  pseudo: state.user.user.pseudo,
+  mail: state.user.user.mail,
+  password: state.user.user.lastname,
+  avatar: '',
 
 });
 
