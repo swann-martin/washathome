@@ -1,7 +1,7 @@
 import React from 'react';
 import "./style.scss";
 
-const Cgv = () => (
+const Cgu = () => (
   <div className="cgv">
     <h2 className="cgv-title">Nos conditions générales de ventes et Rgpd</h2>
     <div className="cgv-paragraph">
@@ -15,4 +15,4 @@ const Cgv = () => (
   </div>
 );
 
-export default Cgv;
+export default Cgu;

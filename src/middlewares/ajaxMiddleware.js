@@ -4,6 +4,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   loginSuccess,
+  REGISTER_USER_FORM_SUBMIT,
 } from 'src/actions/user';
 import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT } from '../actions/machines';
 
@@ -61,8 +62,26 @@ export default (store) => (next) => (action) => {
         .catch((err) => {
           console.error(err);
         });
+      return next(action);
     }
-      break;
+    case REGISTER_USER_FORM_SUBMIT: {
+      const { 
+        lastname,
+        firstname,
+        pseudo,
+        mail,
+        password,
+        passwordConfirm,
+        phone,    } = store.getState().user.register;
+      api.post('/signup', {lastname, firstname, pseudo, mail, password, passwordConfirm, phone} )
+        .then((result) => {
+          console.log('result.data du post Register User Form', result.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+      return next(action);
+      }
     default:
       return next(action);
   }

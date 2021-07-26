@@ -1,4 +1,14 @@
-import { INPUT_CHANGE, LOGIN_FORM_SUBMIT, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT, TOGGLE_CONNECTED } from '../actions/user';
+import {
+  INPUT_CHANGE,
+  LOGIN_FORM_SUBMIT,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+  USER_LOGOUT,
+  TOGGLE_CONNECTED,
+  REGISTER_USER_INPUT_CHANGE,
+  PROFILE_USER_INPUT_CHANGE,
+  DELETE_USER_FORM_SUBMIT,
+} from '../actions/user';
 
 export const initialState = {
   isConnected: false,
@@ -10,12 +20,26 @@ export const initialState = {
 
   },
   user: {
-    lastname: 'mon petit nom',
+    lastname: '',
     firstname: '',
+    pseudo: '',
     mail: '',
     password: '',
+    passwordConfirm: '',
     phone: '',
-    avatar: 'https://randomuser.me/api/portraits/women/60.jpg',
+    avatar: '',
+    cgu: false,
+  },
+  register: {
+    lastname: '',
+    firstname: '',
+    pseudo: '',
+    mail: '',
+    password: '',
+    passwordConfirm: '',
+    phone: '',
+    avatar: '',
+    cgu: false,
   },
   token: '',
 };
@@ -56,6 +80,22 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         pressedConnected: !state.pressedConnected,
+      };
+    case REGISTER_USER_INPUT_CHANGE:
+      return {
+        ...state,
+        register: {
+          ...state.register,
+          ...action.payload,
+        },
+      };
+    case PROFILE_USER_INPUT_CHANGE:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.payload,
+        },
       };
     default:
       return state;
