@@ -5,7 +5,7 @@ import {
   LOGIN_ERROR,
   loginSuccess,
 } from 'src/actions/user';
-import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT, addMachineFormSubmit } from '../actions/machines';
+import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT } from '../actions/machines';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
