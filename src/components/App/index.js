@@ -8,17 +8,19 @@ import Connect from 'src/containers/Connect';
 import Cards from 'src/containers/Cards';
 import Nav from 'src/containers/Nav';
 import AddWasherForm from '../../containers/AddWasherForm';
+import Profile from '../../containers/Profile';
+import Menu from '../../containers/Menu';
 import Header from '../Header';
 import Footer from '../Footer';
 
 // == Import
-import Register from '../../pages/Register';
+import Register from '../../containers/Register';
 import Cgv from '../../pages/Cgv';
 import Team from '../../pages/Team';
+
+
 // Import style
 import './styles.scss';
-import Profile from '../../pages/Profile';
-import Menu from '../Menu';
 
 const App = ({ isConnected, pressedConnected, foundMachines }) => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -38,6 +40,7 @@ const App = ({ isConnected, pressedConnected, foundMachines }) => {
       <Switch>
         <Route exact path="/">
           <Header />
+          <Register />
           <Cards />
         </Route>
         <Route exact path="/cgv" component={Cgv} />
@@ -51,7 +54,7 @@ const App = ({ isConnected, pressedConnected, foundMachines }) => {
 
       {openMenu && <Menu handleOpenMenu={handleOpenMenu} />}
       <Footer />
-    </div >
+    </div>
   );
 };
 

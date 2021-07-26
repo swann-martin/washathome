@@ -22,3 +22,8 @@ export const addMachineInputChange = (payload) => ({
   type: ADD_MACHINE_INPUT_CHANGE,
   payload,
 });
+
+export const ADD_MACHINE_FORM_SUBMIT = 'ADD_MACHINE_FORM_SUBMIT';
+export const addMachineFormSubmit = () => ({
+  type: ADD_MACHINE_FORM_SUBMIT,
+});
