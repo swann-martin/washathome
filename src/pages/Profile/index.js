@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './style.scss';
 
 const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, phone }) => (
@@ -38,5 +39,26 @@ const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, phone })
 
   </div>
 );
+
+Profile.propTypes = {
+  firstname: PropTypes.string,
+  lastname: PropTypes.string,
+  pseudo: PropTypes.string,
+  avatar: PropTypes.string,
+  mail: PropTypes.string,
+  password: PropTypes.string,
+  phone: PropTypes.number,
+};
+
+Profile.defaultProps = {
+  firstname: '',
+  lastname: '',
+  pseudo: '',
+  avatar: '',
+  mail: '',
+  password: '',
+  phone: '',
+
+};
 
 export default Profile;

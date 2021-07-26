@@ -15,6 +15,7 @@ const AddWasherForm = ({
   price,
   description,
   picture,
+  capacity,
   changeField,
 }) => {
   const handleFieldChange = (evt) => {
@@ -43,7 +44,7 @@ const AddWasherForm = ({
         <div className="addwasherform-form-capacity">
           <label htmlFor="capacity" className="addwasherform-form-capacity-select">
             <span className="addwasherform-form-capacity-select-text">Quelle est le poids maximal de votre machine&nbsp;?</span>
-            <select className="addwasherform-form-capacity-select-option" name="capacity" id="capacity">
+            <select className="addwasherform-form-capacity-select-option" name="capacity" id="capacity" onChange={handleFieldChange}>
               <option className="addwasherform-form-capacity-select-option-item" value="6">6kg</option>
               <option className="addwasherform-form-capacity-select-option-item" value="7">7kg</option>
               <option className="addwasherform-form-capacity-select-option-item" value="8">8kg</option>
@@ -69,6 +70,7 @@ AddWasherForm.propTypes = {
   city: PropTypes.string,
   price: PropTypes.string,
   description: PropTypes.string,
+  capacity: PropTypes.string,
   picture: PropTypes.string,
   handleWasherFormSubmit: PropTypes.func,
   changeField: PropTypes.func,
@@ -84,6 +86,7 @@ AddWasherForm.defaultProps = {
   price: '',
   description: '',
   picture: '',
+  capacity: 6,
 };
 
 export default AddWasherForm;

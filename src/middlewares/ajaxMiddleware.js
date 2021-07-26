@@ -5,7 +5,7 @@ import {
   LOGIN_ERROR,
   loginSuccess,
 } from 'src/actions/user';
-import { FETCH_MACHINES_BY_ZIP_CODE, setMachines } from '../actions/machines';
+import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT, addMachineFormSubmit } from '../actions/machines';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -30,8 +30,8 @@ export default (store) => (next) => (action) => {
           console.log('res data', result.data);
           store.dispatch(loginSuccess(result.data));
         })
-        .catch((e) => {
-          console.error(e);
+        .catch((err) => {
+          console.error(err);
         });
       return next(action);
     }
@@ -43,6 +43,26 @@ export default (store) => (next) => (action) => {
       api.defaults.headers.common.Authorization = `Bearer ${action.token}`;
       return next(action);
     }
+    case ADD_MACHINE_FORM_SUBMIT: {
+      const {
+        title,
+        adress,
+        zip_code,
+        city, price,
+        description,
+        picture,
+        capacity,
+      } = store.getState().machines.inputs;
+
+      api.post('/machine', { title, adress, zip_code, city, price, description, picture, capacity })
+        .then((result) => {
+          console.log('result.data du post addwasher', result.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+      break;
     default:
       return next(action);
   }
