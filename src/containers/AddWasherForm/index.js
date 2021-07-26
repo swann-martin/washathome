@@ -4,7 +4,7 @@ import { addMachineInputChange } from '../../actions/machines';
 
 const mapStateToProps = (state) => ({
 
-  name: state.machines.inputs.name,
+  title: state.machines.inputs.title,
   address: state.machines.inputs.address,
   zip_code: state.machines.inputs.zip_code,
   city: state.machines.inputs.city,

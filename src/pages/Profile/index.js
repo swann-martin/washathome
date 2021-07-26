@@ -12,7 +12,7 @@ const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, phone })
 
     ><i className="fas fa-times" />
     </Link>
-    <h2 className="profile-title">Mon profil test {pseudo}</h2>
+    <h2 className="profile-title">Mon profil {pseudo}</h2>
     <form
       onSubmit={(e) => {
         e.preventDefault();
@@ -24,8 +24,12 @@ const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, phone })
       <label className="profile-credentials-label">Prénom&nbsp;<input className="profile-credentials-label-input" value={lastname} /></label>
       <label className="profile-credentials-label">email&nbsp;<input className="profile-credentials-label-input" value={mail} /></label>
       <label className="profile-credentials-label">password&nbsp;<input className="profile-credentials-label-input" value={password} /></label>
-      <label className="profile-credentials-label">tél&nbsp;<input className="profile-credentials-label-input" value={phone} /></label>
-      <label className="profile-credentials-label">Washer&nbsp;<input className="profile-credentials-label-input" value={avatar} /></label>
+      <label className="profile-credentials-label">tél&nbsp;<span>+33</span><input className="profile-credentials-label-input" value={phone} /></label>
+      <label className="profile-credentials-label">Avatar&nbsp;
+        <div className="profile-credentials-label">
+          <img className="profile-credentials-label-avatar" src={avatar} alt="votre-avatar" /><input className="profile-credentials-label-input" value={avatar} />
+        </div>
+      </label>
       <div className="profile-credentials-btn-container">
         <button type="button" className="profile-credentials-btn profile-credentials-btn--delete">Supprimer mon compte</button>
         <button type="submit" className="profile-credentials-btn profile-credentials-btn--validate">Valider</button>

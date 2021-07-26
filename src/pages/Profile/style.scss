@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding-left: 0.5rem;
   @media screen and (min-width: 700px) {
     min-width: 25vw;
@@ -26,13 +27,12 @@
     font-weight: bold;
   }
   &-credentials {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    text-align: justify;
-
     &-label {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-evenly;
+      text-align: justify;
       margin: 0.5rem 0;
       &-input {
         height: 3rem;
@@ -40,9 +40,12 @@
         font-size: 1rem;
         border-radius: 10px;
         padding: 0.5rem;
-      }
-      &-input {
         color: vars.$color-action;
+      }
+      &-avatar {
+        border-radius: 50%;
+        max-height: 50px;
+        max-width: 50px;
       }
     }
     &-btn {
