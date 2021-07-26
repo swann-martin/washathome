@@ -30,7 +30,7 @@ export const initialState = {
   ],
   loading: true,
   inputs: {
-    title: 'test',
+    title: '',
     address: '',
     zip_code: '',
     city: '',

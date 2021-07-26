@@ -18,7 +18,7 @@ const AddWasherForm = ({
   changeField,
 }) => {
   const handleFieldChange = (evt) => {
-    changeField(evt.target.value, name);
+    changeField(evt.target.value, evt.target.name);
   };
   return (
     <div className="addwasherform">
@@ -33,14 +33,12 @@ const AddWasherForm = ({
       </Link>
       <h1 className="addwasherform-title"> Ajouter une Machine </h1>
       <form className="addwasherform-form" onSubmit={handleWasherFormSubmit} encType="multipart/form-data">
-        <Field placeholder="Nom" value={title} name="title" onChange={changeField} type="text" />
-        <Field placeholder="Adresse de la machine" value={address} name="address" onChange={changeField} type="text" />
-        <Field placeholder="Code Postal" value={zip_code} type="number" name="zip_code" onChange={changeField} />
-        <Field placeholder="Ville" value={city} name="city" onChange={changeField} />
+        <Field placeholder="Nom ex: Nom de la machine" value={title} name="title" onChange={changeField} type="text" />
+        <Field placeholder="Adresse de la machine ex: 15, rue du test" value={address} name="address" onChange={changeField} type="text" />
+        <Field placeholder="Code Postal ex: 13000" value={zip_code} type="number" name="zip_code" onChange={changeField} />
+        <Field placeholder="Ville ex: Marseille" value={city} name="city" onChange={changeField} />
         <Field placeholder="Prix en € pour un lavage simple ex: 3" value={price} type="number" name="price" onChange={changeField} />
-        <textarea className="addwasherform-form-input addwasherform-form-input--description" placeholder="Ecrivez ce que vous souhaitez à propos de votre machine" name="description" onChange={handleFieldChange}>
-          {description}
-        </textarea>
+        <textarea className="addwasherform-form-input addwasherform-form-input--description" placeholder="Ecrivez ce que vous souhaitez à propos de votre machine" name="description" onChange={handleFieldChange} value={description} />
 
         <div className="addwasherform-form-capacity">
           <label htmlFor="capacity" className="addwasherform-form-capacity-select">
