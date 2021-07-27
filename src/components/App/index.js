@@ -15,35 +15,26 @@ import Footer from '../Footer';
 
 // == Import
 import Register from '../../containers/Register';
-import Cgv from '../../pages/Cgv';
+import Cgu from '../../pages/Cgu';
 import Team from '../../pages/Team';
-
 
 // Import style
 import './styles.scss';
 
-const App = ({ isConnected, pressedConnected, foundMachines }) => {
-  const [openMenu, setOpenMenu] = useState(false);
-
-  const handleOpenMenu = () => {
-    setOpenMenu(!openMenu);
-  };
+const App = ({ isConnected, pressedConnected, foundMachines, openMenu }) => {
 
   useEffect(() => { }, [foundMachines]);
 
   return (
     <div className="app">
       <Nav
-        isConnected={isConnected}
-        handleOpenMenu={handleOpenMenu}
       />
       <Switch>
         <Route exact path="/">
           <Header />
-          <Register />
           <Cards />
         </Route>
-        <Route exact path="/cgv" component={Cgv} />
+        <Route exact path="/cgu" component={Cgu} />
         <Route path="/register" component={Register} />
         <Route path="/addwasher" component={AddWasherForm} />
         <Route path="/profile" component={Profile} />
@@ -52,7 +43,7 @@ const App = ({ isConnected, pressedConnected, foundMachines }) => {
       </Switch>
       {pressedConnected && <Connect />}
 
-      {openMenu && <Menu handleOpenMenu={handleOpenMenu} />}
+      {openMenu && <Menu />}
       <Footer />
     </div>
   );

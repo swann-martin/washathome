@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Field from 'src/components/Field';
 import './style.scss';
 
-const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, phone }) => (
+const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, passwordConfirm, phone, changeField, deleteUser, token, updateUser }) => (
   <div className="profile">
 
     <Link
@@ -20,20 +21,24 @@ const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, phone })
       }}
       className="profile-credentials"
     >
-      <label className="profile-credentials-label">Login&nbsp;<input className="profile-credentials-label-input" value={pseudo} /></label>
-      <label className="profile-credentials-label">Nom&nbsp;<input className="profile-credentials-label-input" value={firstname} /></label>
-      <label className="profile-credentials-label">Prénom&nbsp;<input className="profile-credentials-label-input" value={lastname} /></label>
-      <label className="profile-credentials-label">email&nbsp;<input className="profile-credentials-label-input" value={mail} /></label>
-      <label className="profile-credentials-label">password&nbsp;<input className="profile-credentials-label-input" value={password} /></label>
-      <label className="profile-credentials-label">tél&nbsp;<span>+33</span><input className="profile-credentials-label-input" value={phone} /></label>
+      <label className="profile-credentials-label">Login&nbsp;<Field className="profile-credentials-label-input" name="pseudo" value={pseudo} onChange={changeField} /></label>
+      <label className="profile-credentials-label">Nom&nbsp;<Field className="profile-credentials-label-input" name="firstname" value={firstname} onChange={changeField} /></label>
+      <label className="profile-credentials-label">Prénom&nbsp;<Field className="profile-credentials-label-input" name="lastname" value={lastname} onChange={changeField} /></label>
+      <label className="profile-credentials-label">email&nbsp;<Field className="profile-credentials-label-input" name="mail" value={mail} onChange={changeField} /></label>
+      <label className="profile-credentials-label">password&nbsp;<Field className="profile-credentials-label-input" name="password" value={password} onChange={changeField} /></label>
+      <label className="profile-credentials-label">passwordConfirm&nbsp;<Field className="profile-credentials-label-input" name="passwordConfirm" value={passwordConfirm} onChange={changeField} /></label>
+      <label className="profile-credentials-label">tél&nbsp;<span>+33</span><Field className="profile-credentials-label-input" name="phone" value={phone} onChange={changeField} /></label>
       <label className="profile-credentials-label">Avatar&nbsp;
         <div className="profile-credentials-label">
-          <img className="profile-credentials-label-avatar" src={avatar} alt="votre-avatar" /><input className="profile-credentials-label-input" value={avatar} />
+          <img className="profile-credentials-label-avatar" src={avatar} alt="votre-avatar" /><Field className="profile-credentials-label-input" name="avatar" value={avatar} onChange={changeField} />
         </div>
       </label>
       <div className="profile-credentials-btn-container">
-        <button type="button" className="profile-credentials-btn profile-credentials-btn--delete">Supprimer mon compte</button>
-        <button type="submit" className="profile-credentials-btn profile-credentials-btn--validate">Valider</button>
+        <form>
+          <input hidden value={token} />
+          <button type="button" className="profile-credentials-btn profile-credentials-btn--delete" onClick={deleteUser}>Supprimer mon compte</button>
+        </form>
+        <button type="submit" className="profile-credentials-btn profile-credentials-btn--validate" onClick={updateUser}>Valider</button>
       </div>
     </form>
 
@@ -47,7 +52,8 @@ Profile.propTypes = {
   avatar: PropTypes.string,
   mail: PropTypes.string,
   password: PropTypes.string,
-  phone: PropTypes.number,
+  passwordConfirm: PropTypes.string,
+  phone: PropTypes.string,
 };
 
 Profile.defaultProps = {
@@ -57,6 +63,7 @@ Profile.defaultProps = {
   avatar: '',
   mail: '',
   password: '',
+  passwordConfirm: '',
   phone: '',
 
 };

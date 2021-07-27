@@ -27,6 +27,10 @@
     font-weight: bold;
   }
   &-credentials {
+    max-width: 95vw;
+    @media screen and (min-width: 700px) {
+      width: 60rem;  
+    }
     &-label {
       display: flex;
       flex-direction: column;
@@ -51,6 +55,12 @@
     &-btn {
       &-container {
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        @media screen and (min-width: 700px) {
+          flex-direction: row;
+          justify-content: space-between;
+        }
       }
       @include btn-green;
       &:hover,

@@ -14,7 +14,6 @@ export const initialState = {
       price: 5,
       picture: 'https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
       user_id: 2,
-      capacity: 9,
     },
     {
       id: 51,
@@ -27,7 +26,6 @@ export const initialState = {
       price: 5,
       picture: 'https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1023&q=80',
       user_id: 2,
-      capacity: 6,
     },
   ],
   loading: true,
