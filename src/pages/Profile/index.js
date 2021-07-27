@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 import './style.scss';
 
-const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, passwordConfirm, phone, changeField, deleteUser, token}) => (
+const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, passwordConfirm, phone, changeField, deleteUser, token, updateUser }) => (
   <div className="profile">
 
     <Link
@@ -21,7 +21,7 @@ const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, password
       }}
       className="profile-credentials"
     >
-      <label className="profile-credentials-label">Login&nbsp;<Field className="profile-credentials-label-input" name="pseudo" value={pseudo} onChange={changeField}/></label>
+      <label className="profile-credentials-label">Login&nbsp;<Field className="profile-credentials-label-input" name="pseudo" value={pseudo} onChange={changeField} /></label>
       <label className="profile-credentials-label">Nom&nbsp;<Field className="profile-credentials-label-input" name="firstname" value={firstname} onChange={changeField} /></label>
       <label className="profile-credentials-label">Prénom&nbsp;<Field className="profile-credentials-label-input" name="lastname" value={lastname} onChange={changeField} /></label>
       <label className="profile-credentials-label">email&nbsp;<Field className="profile-credentials-label-input" name="mail" value={mail} onChange={changeField} /></label>
@@ -34,11 +34,11 @@ const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, password
         </div>
       </label>
       <div className="profile-credentials-btn-container">
-       <form>
-          <input hidden value={token}/>
+        <form>
+          <input hidden value={token} />
           <button type="button" className="profile-credentials-btn profile-credentials-btn--delete" onClick={deleteUser}>Supprimer mon compte</button>
         </form>
-        <button type="submit" className="profile-credentials-btn profile-credentials-btn--validate">Valider</button>
+        <button type="submit" className="profile-credentials-btn profile-credentials-btn--validate" onClick={updateUser}>Valider</button>
       </div>
     </form>
 

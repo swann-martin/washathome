@@ -7,7 +7,7 @@ import {
   TOGGLE_CONNECTED,
   REGISTER_USER_INPUT_CHANGE,
   PROFILE_USER_INPUT_CHANGE,
-  DELETE_USER_FORM_SUBMIT,
+  DELETE_USER_FORM_SUBMIT_SUCCESS,
 } from '../actions/user';
 
 export const initialState = {
@@ -75,6 +75,10 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isConnected: false,
+        inputs: '',
+        user: '',
+        token: '',
+        openMenu: false,
       };
     case TOGGLE_CONNECTED:
       return {
@@ -96,6 +100,13 @@ const reducer = (state = initialState, action = {}) => {
           ...state.user,
           ...action.payload,
         },
+      };
+    case DELETE_USER_FORM_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        user: '',
+        token: '',
+        isConnected: false,
       };
     default:
       return state;

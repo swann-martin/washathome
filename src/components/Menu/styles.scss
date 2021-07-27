@@ -16,6 +16,7 @@
   padding-left: 0.5rem;
   @media screen and (min-width: 700px) {
     min-width: 25vw;
+    border-radius: 0 0 0 20px;
   }
   &-btn {
     @include btn-green;
@@ -39,14 +40,14 @@
       &:active {
         background-color: lighten(vars.$white, 10%);
       }
-    &--logout {
-      background-color: vars.$black ;
-      color: vars.$white;
-      &:hover,
-      &:active {
-        background-color: lighten(vars.$red, 10%);
+      &--logout {
+        background-color: vars.$black;
+        color: vars.$white;
+        &:hover,
+        &:active {
+          background-color: lighten(vars.$red, 10%);
+        }
       }
     }
   }
-}
 }

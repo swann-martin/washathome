@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { profileUserInputChange, deleteUserFormSubmit} from 'src/actions/user';
+import { profileUserInputChange, deleteUserFormSubmit, updateUserFormSubmit } from 'src/actions/user';
 import Profile from '../../pages/Profile';
 
 const mapStateToProps = (state) => ({
@@ -22,10 +22,17 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(action);
   },
 
-  deleteUser: () => {
+  deleteUser: (evt) => {
+    evt.preventDefault();
     const action = deleteUserFormSubmit();
     dispatch(action);
   },
+
+  updateUser: (evt) => {
+    evt.preventDefault();
+    const action = updateUserFormSubmit();
+    dispatch(action);
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

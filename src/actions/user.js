@@ -7,7 +7,15 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const TOGGLE_CONNECTED = 'TOGGLE_CONNECTED';
 export const REGISTER_USER_INPUT_CHANGE = 'REGISTER_USER_INPUT_CHANGE';
 export const REGISTER_USER_FORM_SUBMIT = 'REGISTER_USER_FORM_SUBMIT';
+
+export const UPDATE_USER_FORM_SUBMIT = 'UPDATE_USER_FORM_SUBMIT';
+export const UPDATE_USER_FORM_SUBMIT_SUCCESS = 'UPDATE_USER_FORM_SUBMIT_SUCCESS';
+export const UPDATE_USER_FORM_SUBMIT_ERROR = 'UPDATE_USER_FORM_SUBMIT_ERROR';
+
 export const DELETE_USER_FORM_SUBMIT = 'DELETE_USER_FORM_SUBMIT';
+export const DELETE_USER_FORM_SUBMIT_SUCCESS = 'DELETE_USER_FORM_SUBMIT_SUCCESS';
+export const DELETE_USER_FORM_SUBMIT_ERROR = 'DELETE_USER_FORM_SUBMIT_ERROR';
+
 export const PROFILE_USER_INPUT_CHANGE = 'PROFILE_USER_INPUT_CHANGE';
 
 export const inputChange = (payload) => ({
@@ -54,3 +62,24 @@ export const deleteUserFormSubmit = (payload) => ({
   type: DELETE_USER_FORM_SUBMIT,
   payload,
 });
+
+export const deleteUserFormSubmitSuccess = () => ({
+  type: DELETE_USER_FORM_SUBMIT_SUCCESS,
+});
+export const deleteUserFormSubmitError = () => ({
+  type: DELETE_USER_FORM_SUBMIT_ERROR,
+});
+
+export const updateUserFormSubmit = (payload) => ({
+  type: UPDATE_USER_FORM_SUBMIT,
+  payload,
+});
+export const updateUserFormSubmitSuccess = (payload) => ({
+  type: UPDATE_USER_FORM_SUBMIT_SUCCESS,
+  payload,
+});
+export const updateUserFormSubmitError = (payload) => ({
+  type: UPDATE_USER_FORM_SUBMIT_ERROR,
+  payload,
+});
+

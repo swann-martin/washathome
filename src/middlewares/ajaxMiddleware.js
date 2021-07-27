@@ -5,8 +5,11 @@ import {
   LOGIN_ERROR,
   loginSuccess,
   REGISTER_USER_FORM_SUBMIT,
+  UPDATE_USER_FORM_SUBMIT,
+  DELETE_USER_FORM_SUBMIT_SUCCESS,
 } from 'src/actions/user';
 import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT } from '../actions/machines';
+import { deleteUserFormSubmit, deleteUserFormSubmitSuccess, deleteUserFormSubmitError } from '../actions/user';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -65,15 +68,15 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case REGISTER_USER_FORM_SUBMIT: {
-      const { 
+      const {
         lastname,
         firstname,
         pseudo,
         mail,
         password,
         passwordConfirm,
-        phone,    } = store.getState().user.register;
-      api.post('/signup', {lastname, firstname, pseudo, mail, password, passwordConfirm, phone} )
+        phone } = store.getState().user.register;
+      api.post('/signup', { lastname, firstname, pseudo, mail, password, passwordConfirm, phone })
         .then((result) => {
           console.log('result.data du post Register User Form', result.data);
         })
@@ -81,7 +84,39 @@ export default (store) => (next) => (action) => {
           console.error(err);
         });
       return next(action);
-      }
+    }
+    case UPDATE_USER_FORM_SUBMIT: {
+      const {
+        lastname,
+        firstname,
+        pseudo,
+        mail,
+        password,
+        passwordConfirm,
+        phone } = store.getState().user.register;
+      const { token } = store.getState().user.token;
+      api.patch(`/account/${token}`, { lastname, firstname, pseudo, mail, password, passwordConfirm, phone })
+        .then((result) => {
+          console.log('result.data du post Modify User Form', result.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+      return next(action);
+    }
+    case DELETE_USER_FORM_SUBMIT_SUCCESS: {
+      const { token } = store.getState().user.token;
+      api.delete(`/account/${token}`)
+        .then((result) => {
+          console.log('result.data du delete user', result.data);
+          store.dispatch(deleteUserFormSubmitSuccess());
+        })
+        .catch((err) => {
+          store.dispatch(deleteUserFormSubmitError());
+          console.error(err);
+        });
+      return next(action);
+    }
     default:
       return next(action);
   }
