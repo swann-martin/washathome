@@ -1,5 +1,5 @@
 // == Import npm
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -12,6 +12,7 @@ import Profile from '../../containers/Profile';
 import Menu from '../../containers/Menu';
 import Header from '../Header';
 import Footer from '../Footer';
+import MachineDetail from '../../containers/MachineDetail';
 
 // == Import
 import Register from '../../containers/Register';
@@ -21,17 +22,18 @@ import Team from '../../pages/Team';
 // Import style
 import './styles.scss';
 
-const App = ({ isConnected, pressedConnected, foundMachines, openMenu }) => {
-
+const App = ({
+  isConnected, pressedConnected, foundMachines, openMenu,
+}) => {
   useEffect(() => { }, [foundMachines]);
 
   return (
     <div className="app">
-      <Nav
-      />
+      <Nav />
       <Switch>
         <Route exact path="/">
           <Header />
+          <MachineDetail />
           <Cards />
         </Route>
         <Route exact path="/cgu" component={Cgu} />
@@ -40,6 +42,7 @@ const App = ({ isConnected, pressedConnected, foundMachines, openMenu }) => {
         <Route path="/profile" component={Profile} />
         <Route path="/searchresult" component={Cards} />
         <Route path="/team" component={Team} />
+        <Route path="/machineDetail" component={MachineDetail} />
       </Switch>
       {pressedConnected && <Connect />}
 

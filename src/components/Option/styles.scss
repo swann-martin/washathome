@@ -1,0 +1,13 @@
+@use 'src/styles/vars.scss';
+@import 'src/styles/mixins.scss';
+
+.option{
+    &-select{
+        width: 100%;
+        @include btn-white;
+        font-weight: bold;
+        &-option{
+            width: 90%;
+        }
+    }
+}
