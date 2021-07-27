@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Nav from 'src/components/Nav';
-import { toggleConnected } from '../../actions/user';
+import { toggleConnected, toggleMenu } from '../../actions/user';
 
 const mapStateToProps = (state) => ({
   isConnected: state.user.isConnected,
@@ -10,6 +10,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   handlePressedConnected: () => {
     const action = toggleConnected();
+    dispatch(action);
+  },
+  handleOpenMenu: () => {
+    const action = toggleMenu();
     dispatch(action);
   },
 });

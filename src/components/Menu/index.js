@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
-const Menu = ({ handleOpenMenu, handleIsConnected, handleLogout }) => {
+const Menu = ({ handleOpenMenu, handleLogout }) => {
 
   return (
     <div className="menu">
@@ -27,6 +27,7 @@ const Menu = ({ handleOpenMenu, handleIsConnected, handleLogout }) => {
 Menu.propTypes = {
   handleOpenMenu: PropTypes.func.isRequired,
   handleIsConnected: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired,
 };
 
 export default Menu;

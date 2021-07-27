@@ -8,6 +8,7 @@ import {
   REGISTER_USER_INPUT_CHANGE,
   PROFILE_USER_INPUT_CHANGE,
   DELETE_USER_FORM_SUBMIT_SUCCESS,
+  TOGGLE_MENU,
 } from '../actions/user';
 
 export const initialState = {
@@ -70,6 +71,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isConnected: false,
 
+      };
+    case TOGGLE_MENU:
+      return {
+        ...state,
+        openMenu: !state.openMenu,
       };
     case USER_LOGOUT:
       return {

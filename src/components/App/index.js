@@ -21,20 +21,13 @@ import Team from '../../pages/Team';
 // Import style
 import './styles.scss';
 
-const App = ({ isConnected, pressedConnected, foundMachines }) => {
-  const [openMenu, setOpenMenu] = useState(false);
-
-  const handleOpenMenu = () => {
-    setOpenMenu(!openMenu);
-  };
+const App = ({ isConnected, pressedConnected, foundMachines, openMenu }) => {
 
   useEffect(() => { }, [foundMachines]);
 
   return (
     <div className="app">
       <Nav
-        isConnected={isConnected}
-        handleOpenMenu={handleOpenMenu}
       />
       <Switch>
         <Route exact path="/">
@@ -50,7 +43,7 @@ const App = ({ isConnected, pressedConnected, foundMachines }) => {
       </Switch>
       {pressedConnected && <Connect />}
 
-      {openMenu && <Menu handleOpenMenu={handleOpenMenu} />}
+      {openMenu && <Menu />}
       <Footer />
     </div>
   );

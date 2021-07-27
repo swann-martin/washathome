@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { profileUserInputChange, deleteUserFormSubmit, updateUserFormSubmit } from 'src/actions/user';
+import { profileUserInputChange, deleteUserFormSubmit, updateUserFormSubmit, toggleMenu } from 'src/actions/user';
 import Profile from '../../pages/Profile';
 
 const mapStateToProps = (state) => ({
@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch) => ({
     evt.preventDefault();
     const action = updateUserFormSubmit();
     dispatch(action);
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
