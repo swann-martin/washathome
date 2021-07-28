@@ -33,7 +33,6 @@ const App = ({
       <Switch>
         <Route exact path="/">
           <Header />
-          <MachineDetail />
           <Cards />
         </Route>
         <Route exact path="/cgu" component={Cgu} />

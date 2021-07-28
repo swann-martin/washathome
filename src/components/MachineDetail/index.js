@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 import Options from '../../containers/Options';
 import './styles.scss';
 
-const MachineDetail = ({
-  city, zip_code, title, days, hours, picture
+const MachineDetail = ({ days, hours, machine,
 }) => (
   <div className="machinedetail">
     <div className="machinedetail-infos">
       <div className="machinedetail-infos-address">
-        <span className="machinedetail-infos-address-city">{ city }</span>
-        <span className="machinedetail-infos-address-zipcode">{zip_code}</span>
+        <span className="machinedetail-infos-address-city">{machine.city}</span>
+        <span className="machinedetail-infos-address-zipcode">{machine.address}</span>
+        <span className="machinedetail-infos-address-zipcode">{machine.zip_code}</span>
+        <span className="machinedetail-infos-address-zipcode">Capacité : {machine.capacity}kg</span>
       </div>
-      <span className="machinedetail-infos-name">{title}</span>
-      <img className="machinedetail-infos-picture" src={picture} alt={title} />
+      <span className="machinedetail-infos-name">{machine.name}</span>
+      <img className="machinedetail-infos-picture" src={machine.picture} alt={machine.name} />
     </div>
     <div>
       <h4 className="machinedetail-form-title">Infos de reservation</h4>
@@ -21,14 +22,14 @@ const MachineDetail = ({
 
         <select className="machinedetail-form-select" name="day" id="day-select">
           <option className="machinedetail-form-select-day" value="">Jours disponibles</option>
-          { days.map((day, id) => (
+          {days.map((day, id) => (
             <option key={day + id} className="machinedetail-form-select-day" value={day}>{day}</option>
           ))}
         </select>
 
         <select className="machinedetail-form-select" name="hour" id="hour-select">
           <option className="machinedetail-form-select-hour" value="">Horaires disponibles</option>
-          { hours.map((hour, id) => (
+          {hours.map((hour, id) => (
             <option key={hour + id} className="machinedetail-form-select-hour" value={hour}>{hour}</option>
           ))}
         </select>
@@ -51,12 +52,15 @@ const MachineDetail = ({
 );
 
 MachineDetail.propTypes = {
-  city: PropTypes.string,
-  zip_code: PropTypes.string,
-  title: PropTypes.string,
+  machine: PropTypes.shape({
+    city: PropTypes.string,
+    zip_code: PropTypes.string,
+    title: PropTypes.string,
+    picture: PropTypes.string,
+  }).isRequired,
   days: PropTypes.arrayOf(PropTypes.string),
   hours: PropTypes.arrayOf(PropTypes.string),
-  picture: PropTypes.string,
+
 };
 
 MachineDetail.defaultProps = {
