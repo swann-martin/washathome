@@ -26,7 +26,7 @@ const App = ({
   isConnected, pressedConnected, foundMachines, openMenu,
 }) => {
   useEffect(() => { }, [foundMachines]);
-
+  console.log('foundMachines', foundMachines)
   return (
     <div className="app">
       <Nav />
@@ -41,7 +41,7 @@ const App = ({
         <Route path="/profile" component={Profile} />
         <Route path="/searchresult" component={Cards} />
         <Route path="/team" component={Team} />
-        <Route path="/machineDetail" component={MachineDetail} />
+        <Route exact path="/machineDetail/:id" component={MachineDetail} />
       </Switch>
       {pressedConnected && <Connect />}
 

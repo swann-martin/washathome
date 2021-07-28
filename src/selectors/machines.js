@@ -3,12 +3,14 @@
 
 /**
 * @param {Array} machines - toutes les machines
-* @param {string} searchedSlug - le slug de la machine recherchée
+* @param {string} searchedId - le slug de la machine recherchée
 * @return {Object} - La machine trouvée
 */
-export function findMachine(machines, searchedSlug) {
+export function findMachine(machines, searchedId) {
   const machine = machines.find((testedMachine) => {
-    return testedMachine.slug === searchedSlug;
+    console.log('testedMachineID', testedMachine.id);
+    console.log('searchedId', searchedId);
+    return testedMachine.id == searchedId;
   });
   return machine;
 }
