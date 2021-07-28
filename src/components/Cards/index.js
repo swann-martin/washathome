@@ -6,7 +6,7 @@ import './styles.scss';
 
 const Cards = ({ machines }) => (
   <div className="cards">
-    <h2 className="cards-title">Resultats de votre recherche&nbsp;:&nbsp;{machines.length > 1 ? `${machines.length} machines trouvées` : `${machines.length} machine trouvée`}</h2>
+    <h2 className="cards-title">Resultats de votre recherche&nbsp;: <span className="cards-title-number">{machines.length}&nbsp;</span>{machines.length > 1 ? `machines trouvées` : `machine trouvée`}</h2>
     <section className="cards-list">
       {
         machines.map((machine) => (

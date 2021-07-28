@@ -15,11 +15,12 @@ const MachineDetail = ({ days, hours, machine,
           <span className="machinedetail-infos-address-city">{machine.city}</span>
           <span className="machinedetail-infos-address-zipcode">{machine.address}</span>
           <span className="machinedetail-infos-address-zipcode">{machine.zip_code}</span>
-          <span className="machinedetail-infos-address-zipcode">Capacité : {machine.capacity}kg</span>
+
         </div>
         <span className="machinedetail-infos-name">{machine.name}</span>
         <span className="machinedetail-infos-name">id de la machine:{machine.id}</span>
         <img className="machinedetail-infos-picture" src={machine.picture} alt={machine.name} />
+        <span className="machinedetail-infos-address-zipcode">Capacité : {machine.capacity}kg</span>
       </div>
       <div>
         <h4 className="machinedetail-form-title">Infos de reservation</h4>
