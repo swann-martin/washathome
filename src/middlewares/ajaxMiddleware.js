@@ -1,15 +1,17 @@
 import api from 'src/api';
 import {
   LOGIN_FORM_SUBMIT,
+  AUTO_LOGIN_FORM_SUBMIT,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   loginSuccess,
+  USER_LOGOUT,
   REGISTER_USER_FORM_SUBMIT,
   UPDATE_USER_FORM_SUBMIT,
   DELETE_USER_FORM_SUBMIT_SUCCESS,
+  deleteUserFormSubmitSuccess, deleteUserFormSubmitError
 } from 'src/actions/user';
 import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT } from '../actions/machines';
-import { deleteUserFormSubmit, deleteUserFormSubmitSuccess, deleteUserFormSubmitError } from '../actions/user';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -31,7 +33,29 @@ export default (store) => (next) => (action) => {
       const { mail, password } = store.getState().user.inputs;
       api.post('/login', { mail, password })
         .then((result) => {
-          console.log('res data', result.data);
+          const { token } = result.data;
+          console.log(result.data);
+          localStorage.setItem('mail', mail);
+          localStorage.setItem('token', token);
+          localStorage.setItem('password', password);
+          store.dispatch(loginSuccess(result.data));
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+      return next(action);
+    }
+    case AUTO_LOGIN_FORM_SUBMIT: {
+      // On récupère les valeurs du state de redux
+      // Ici on veut email et password se trouvant dans
+      // le state du reducer user
+      const mail = localStorage.getItem('mail', mail);
+      const password = localStorage.getItem('password', password);
+      api.post('/login', { mail, password })
+        .then((result) => {
+          const { token } = result.data;
+          console.log(result.data);
+          localStorage.setItem('token', token);
           store.dispatch(loginSuccess(result.data));
         })
         .catch((err) => {
@@ -115,6 +139,15 @@ export default (store) => (next) => (action) => {
           store.dispatch(deleteUserFormSubmitError());
           console.error(err);
         });
+      return next(action);
+    }
+    case USER_LOGOUT: {
+      // En cas de déconnexion, on supprime ce header par défaut
+      delete api.defaults.headers.common.Authorization;
+      // Si on se logout, il faut aussi supprimer les localStorages pour nettoyer
+      localStorage.removeItem('mail');
+      localStorage.removeItem('password');
+      localStorage.removeItem('token');
       return next(action);
     }
     default:

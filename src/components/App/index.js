@@ -21,12 +21,15 @@ import Team from '../../pages/Team';
 
 // Import style
 import './styles.scss';
+import { initApp } from '../../actions/app';
 
 const App = ({
-  isConnected, pressedConnected, foundMachines, openMenu,
+  isConnected, pressedConnected, foundMachines, openMenu, initApp
 }) => {
-  useEffect(() => { }, [foundMachines]);
-  console.log('foundMachines', foundMachines)
+  useEffect(() => {
+    initApp();
+  }, [foundMachines]);
+  console.log('foundMachines', foundMachines);
   return (
     <div className="app">
       <Nav />
@@ -54,6 +57,7 @@ const App = ({
 App.propTypes = {
   isConnected: PropTypes.bool.isRequired,
   pressedConnected: PropTypes.bool.isRequired,
+  initApp: PropTypes.func.isRequired,
 };
 // == Export
 export default App;

@@ -1,5 +1,6 @@
 export const INPUT_CHANGE = 'INPUT_CHANGE';
 export const LOGIN_FORM_SUBMIT = 'LOGIN_FORM_SUBMIT';
+export const AUTO_LOGIN_FORM_SUBMIT = 'AUTO_LOGIN_FORM_SUBMIT';
 export const USER_LOGOUT = 'USER_LOGOUT';
 
 
@@ -27,6 +28,10 @@ export const inputChange = (payload) => ({
 
 export const loginFormSubmit = () => ({
   type: LOGIN_FORM_SUBMIT,
+});
+
+export const autoLoginFormSubmit = () => ({
+  type: AUTO_LOGIN_FORM_SUBMIT,
 });
 
 export const userLogout = () => ({
