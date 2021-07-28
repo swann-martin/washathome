@@ -13,6 +13,7 @@ import Menu from '../../containers/Menu';
 import Header from '../Header';
 import Footer from '../Footer';
 import MachineDetail from '../../containers/MachineDetail';
+import Bookings from '../../containers/Bookings';
 
 // == Import
 import Register from '../../containers/Register';
@@ -42,6 +43,7 @@ const App = ({
         <Route path="/register" component={Register} />
         <Route path="/addwasher" component={AddWasherForm} />
         <Route path="/profile" component={Profile} />
+        <Route path="/bookings" component={Bookings} />
         <Route path="/searchresult" component={Cards} />
         <Route path="/team" component={Team} />
         <Route exact path="/machineDetail/:id" component={MachineDetail} />
