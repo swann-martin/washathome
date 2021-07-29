@@ -28,7 +28,7 @@ const Header = ({ foundMachines }) => {
   };
 
   useEffect(
-    () => {}, [foundMachines],
+    () => { }, [foundMachines],
   );
 
   return (
@@ -52,10 +52,10 @@ const Header = ({ foundMachines }) => {
               <Marker key={machine.id} position={[machine.latitude, machine.longitude]}>
                 <LocationMarker />
                 <Popup className="header-container-bottom-popup">
-                  <Link exact to={`machineDetail/${machine.id}`} className="header-container-bottom-popup-title">{machine.name}</Link>
-                  <p><img className="header-container-bottom-popup-picture" src={machine.picture} alt="machine" /></p>
-                  <p className="header-container-bottom-popup-description">{machine.description}</p>
-
+                  <Link exact to={`machineDetail/${machine.id}`} className="header-container-bottom-map-popup-title">{machine.name}</Link>
+                  <img className="header-container-bottom-map-popup-picture" src={machine.picture} alt="machine" />
+                  <p className="header-container-bottom-map-popup-city">{machine.city} <span className="machinedetail-container-bottom-left-address-map-popup-price">{machine.price}€</span></p>
+                  <p className="header-container-bottom-map-popup-description">{machine.description}</p>
                 </Popup>
               </Marker>
             ))}

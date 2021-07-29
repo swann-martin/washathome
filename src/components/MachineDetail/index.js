@@ -9,41 +9,50 @@ const MachineDetail = ({ days, hours, machine,
 }) => {
   useEffect(() => { }, [machine]);
   console.log('machine', machine);
-  const position = {lat: machine.latitude, lng: machine.longitude};
+  const position = { lat: machine.latitude, lng: machine.longitude };
 
   return (
     <div className="machinedetail">
-   <h4 className="machinedetail-title">Infos de reservation</h4>
-      <div className="machinedetail-infos">
-        <div className="machinedetail-infos-details">
-          <h2 className="machinedetail-infos-details-title">{machine.name}</h2>
-          <img className="machinedetail-infos-details-picture" src={machine.picture} alt={machine.name} />
-          <p className="machinedetail-infos-details-capacity">Capacité : {machine.capacity}kg</p>
+      <h4 className="machinedetail-title">Infos de reservation</h4>
+
+      <div className="machinedetail-container-top">
+        <div className="machinedetail-container-top-infos">
+          <div className="machinedetail-container-top-infos-details">
+            <h2 className="machinedetail-container-top-infos-details-title">{machine.name}</h2>
+            <img className="machinedetail-container-top-infos-details-picture" src={machine.picture} alt={machine.name} />
+            <p className="machinedetail-container-top-infos-details-capacity">Capacité : <span className="machinedetail-container-top-infos-details-capacity-number">{machine.capacity}</span>kg</p>
+          </div>
         </div>
+
+        <div className="machinedetail-container-top-user">
+          <p className="machinedetail-container-top-user-description">"{machine.description}"</p>
+        </div>
+
       </div>
 
       <div className="machinedetail-container-bottom">
-    
-
         <div className="machinedetail-container-bottom-left">
-          <h3 className="machinedetail-infos-address-city">{machine.city}</h3>
-          <p className="machinedetail-infos-address-zipcode">{machine.address}</p>
-          <p className="machinedetail-infos-address-zipcode">{machine.zip_code}</p>
-          <MapContainer className="machinedetail-infos-map" center={position} zoom={13} scrollWheelZoom={false}>
+          <h3 className="machinedetail-container-bottom-left-address-city">{machine.city}</h3>
+          <p className="machinedetail-container-bottom-left-address-address">{machine.address}</p>
+          <p className="machinedetail-container-bottom-left-address-zipcode">{machine.zip_code}</p>
+          <MapContainer className="machinedetail-container-bottom-left-address-map" center={position} zoom={13} scrollWheelZoom={false}>
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker position={position}>
               <Popup>
-                <h3 className="machinedetail-infos-name">{machine.name}</h3>
-                <p className="machinedetail-infos-address-city">{machine.city}</p>
-                <img className="machinedetail-infos-picture" src={machine.picture} alt={machine.name} />
+                <h3 className="machinedetail-container-bottom-left-address-map-popup-title">{machine.name}</h3>
+                <img className="machinedetail-container-bottom-left-address-map-popup-picture" src={machine.picture} alt={machine.name} />
+                <p className="machinedetail-container-bottom-left-address-map-popup-city">{machine.city} <span className="machinedetail-container-bottom-left-address-map-popup-price">{machine.price}€</span></p>
+
+
+                <p className="machinedetail-container-bottom-left-address-map-popup-description">{machine.description}</p>
               </Popup>
             </Marker>
           </MapContainer>,
         </div>
-        
+
         <form className="machinedetail-form" onSubmit={(e) => {
           e.preventDefault();
           console.log(`submit du form ${machine.id}`)

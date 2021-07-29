@@ -34,18 +34,28 @@
       margin: 0.5rem auto;
     }
   }
-  &-container-bottom{
-    &-popup{
-      display: flex;
-      flex-direction: column;
-
-      &-picture{
-        max-height:8rem; 
-        max-width:10rem; 
+  &-container-bottom {
+    &-map {
+      &-popup {
+        &-title {
+          font-weight: bold;
+          color: vars.$color-action;
+          text-transform: capitalize;
+        }
+        &-city {
+          font-weight: bold;
+          color: vars.$color-cards;
+          text-transform: capitalize;
+        }
+        &-price {
+          margin-left: 2rem;
+          color: vars.$red;
+        }
+        &-picture {
+          max-width: 100%;
+          max-height: 10rem;
+        }
       }
-      &-title{
-        font-weight: bold;
-      }  
     }
   }
 }
