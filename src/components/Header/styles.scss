@@ -37,6 +37,8 @@
   &-container-bottom {
     &-map {
       &-popup {
+        max-width: 6rem;
+        overflow-wrap: break-word;
         &-title {
           font-weight: bold;
           color: vars.$color-action;
@@ -54,6 +56,9 @@
         &-picture {
           max-width: 100%;
           max-height: 10rem;
+        }
+        &-description {
+          max-width: 6rem;
         }
       }
     }

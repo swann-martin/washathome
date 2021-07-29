@@ -22,7 +22,6 @@
   &-title {
     margin: 2rem 0;
     font-weight: bold;
-    text-transform: capitalize;
   }
   &-container-top {
     display: flex;
@@ -89,10 +88,14 @@
           font-size: 1.2rem;
           font-weight: bold;
           color: vars.$color-action;
+          text-transform: capitalize;
         }
         &-map {
           margin: 0.5rem 0;
           &-popup {
+            max-width: 6rem;
+            word-wrap: break-all;
+            overflow-wrap: break-word;
             &-title {
               font-weight: bold;
               color: vars.$color-action;
@@ -109,6 +112,9 @@
             &-picture {
               max-width: 100%;
               max-height: 10rem;
+            }
+            &-description {
+              max-width: 6rem;
             }
           }
         }

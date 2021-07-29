@@ -52,7 +52,7 @@ const Header = ({ foundMachines }) => {
               <Marker key={machine.id} position={[machine.latitude, machine.longitude]}>
                 <LocationMarker />
                 <Popup className="header-container-bottom-popup">
-                  <Link exact to={`machineDetail/${machine.id}`} className="header-container-bottom-map-popup-title">{machine.name}</Link>
+                  <Link exact to={`machineDetail/${machine.id}`} className="header-container-bottom-map-popup-title"><h3>{machine.name}</h3></Link>
                   <img className="header-container-bottom-map-popup-picture" src={machine.picture} alt="machine" />
                   <p className="header-container-bottom-map-popup-city">{machine.city} <span className="machinedetail-container-bottom-left-address-map-popup-price">{machine.price}€</span></p>
                   <p className="header-container-bottom-map-popup-description">{machine.description}</p>
