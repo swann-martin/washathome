@@ -55,8 +55,8 @@ const AddWasherForm = ({
         </div>
         <div className="addwasherform-form-image">
           <h2 className="addwasherform-form-image-subtitle">Photo de la machine (facultatif)</h2>
-          <Field className="addwasherform-form-image-input" type="file" name="avatar" accept="image/png, image/jpeg" value={picture} onChange={changeField} />
-        </div>
+          <Field className="register-form-input" type="file" name="picture" value={picture} placeholder="picture" onChange={changeField} />
+         </div>
         <button className="addwasherform-form-submit" type="submit">Valider</button>
       </form>
     </div>

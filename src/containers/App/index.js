@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import App from 'src/components/App';
+import { initApp } from 'src/actions/app';
 
 const mapStateToProps = (state) => ({
   isConnected: state.user.isConnected,
@@ -8,6 +9,10 @@ const mapStateToProps = (state) => ({
   openMenu: state.user.openMenu,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+  initApp: () => {
+    dispatch(initApp());
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

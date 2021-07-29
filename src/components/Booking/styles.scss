@@ -1,0 +1,52 @@
+@use 'src/styles/vars';
+
+.booking{
+  color: vars.$color-action;
+  font-weight: bold;
+  font-size: large;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: .5rem;
+  background-color: vars.$white;
+  border-radius: 10px;
+  padding: 0.25rem;
+  text-align: center;
+  height: 100px;
+  cursor: pointer;
+  box-shadow: 2.5px 2.5px 2.5px darken(rgba(vars.$color-action, .5), 10%);
+  @media screen and (min-width: 700px) {
+    width: 25rem;
+    height: 100px;
+  }
+  transition: all .2s ease-in-out;
+  &:hover{
+
+    transform: scale(1.1);
+  }
+  &-content{
+    width: 100%;
+
+      &-name{
+        margin: .5rem 0;
+      }
+      &-price{
+        color: vars.$red;
+        display: block;
+      }
+      &-status{
+        padding: .5rem;
+        margin: .5rem;
+        border-radius: 20px;
+        &--green{
+          background-color: vars.$color-action;
+          color : vars.$white;
+        }
+        &--red{
+          background-color: vars.$red;
+          color : vars.$white;
+        }
+      }
+
+  }
+}

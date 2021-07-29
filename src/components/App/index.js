@@ -13,6 +13,7 @@ import Menu from '../../containers/Menu';
 import Header from '../Header';
 import Footer from '../Footer';
 import MachineDetail from '../../containers/MachineDetail';
+import Bookings from '../../containers/Bookings';
 
 // == Import
 import Register from '../../containers/Register';
@@ -21,12 +22,15 @@ import Team from '../../pages/Team';
 
 // Import style
 import './styles.scss';
+import { initApp } from '../../actions/app';
 
 const App = ({
-  isConnected, pressedConnected, foundMachines, openMenu,
+  isConnected, pressedConnected, foundMachines, openMenu, initApp
 }) => {
-  useEffect(() => { }, [foundMachines]);
-  console.log('foundMachines', foundMachines)
+  useEffect(() => {
+    initApp();
+  }, [foundMachines]);
+  console.log('foundMachines', foundMachines);
   return (
     <div className="app">
       <Nav />
@@ -39,6 +43,7 @@ const App = ({
         <Route path="/register" component={Register} />
         <Route path="/addwasher" component={AddWasherForm} />
         <Route path="/profile" component={Profile} />
+        <Route path="/bookings" component={Bookings} />
         <Route path="/searchresult" component={Cards} />
         <Route path="/team" component={Team} />
         <Route exact path="/machineDetail/:id" component={MachineDetail} />
@@ -54,6 +59,7 @@ const App = ({
 App.propTypes = {
   isConnected: PropTypes.bool.isRequired,
   pressedConnected: PropTypes.bool.isRequired,
+  initApp: PropTypes.func.isRequired,
 };
 // == Export
 export default App;
