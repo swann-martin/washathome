@@ -19,7 +19,7 @@ import Bookings from '../../containers/Bookings';
 import Register from '../../containers/Register';
 import Cgu from '../../pages/Cgu';
 import Team from '../../pages/Team';
-
+import AddressDetail from '../AddressDetail';
 // Import style
 import './styles.scss';
 import { initApp } from '../../actions/app';
@@ -36,10 +36,11 @@ const App = ({
       <Nav />
       <Switch>
         <Route exact path="/">
-          <Header />
+          <Header foundMachines={foundMachines} />
+          <AddressDetail />
           <Cards />
         </Route>
-        <Route exact path="/cgu" component={Cgu} />
+        <Route path="/cgu" component={Cgu} />
         <Route path="/register" component={Register} />
         <Route path="/addwasher" component={AddWasherForm} />
         <Route path="/profile" component={Profile} />

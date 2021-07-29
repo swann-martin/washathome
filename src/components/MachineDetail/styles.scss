@@ -1,13 +1,12 @@
 @use 'src/styles/vars';
 @import 'src/styles/mixins';
 
-.leaflet-container {
-  width: 30rem;
-  height: 20rem;
-  border-radius: 10px;
-}
-
 .machinedetail {
+  .leaflet-container {
+    width: 30rem;
+    height: 20rem;
+    border-radius: 10px;
+  }
   background-color: vars.$color-cards;
   display: flex;
   flex-direction: column;

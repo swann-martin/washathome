@@ -18,7 +18,7 @@ const MachineDetail = ({ days, hours, machine,
           <span className="machinedetail-infos-address-city">{machine.city}</span>
           <span className="machinedetail-infos-address-zipcode">{machine.address}</span>
           <span className="machinedetail-infos-address-zipcode">{machine.zip_code}</span>
-          <MapContainer center={position} zoom={13} scrollWheelZoom={true}>
+          <MapContainer center={position} zoom={13} scrollWheelZoom>
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

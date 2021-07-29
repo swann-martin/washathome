@@ -1,34 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import Routing from './Routing';
 import './styles.scss';
 
-const AddressDetail = ({ machine, resa, otherGuy, handleNextStepButton, handleCancelButton }) => (
-  <div>
-    <h2>Reservation de la machine {machine.name}</h2>
-    <div>
-    //* En fonction de si l'user qui fait la requete est le bringer ou le washer de la reservation on affichera le pseudo de l'autre partie de la reservation
-      <span>Bringer: {otherGuy.pseudo}</span>
-
-      <span>Etape de la réservation: {resa.status}</span>
-      <span>Date de dépôt du linge: {resa.date}</span>
-      <span>Température: {resa.temperature}</span>
-      <ul>
-        {
-          resa.options.map((option) => (
-            <li>{option.name} {option.price}€</li>
-          ))
-        }
-      </ul>
-      <span>Prix total: {resa.price}</span>
-      <button type="button" onClick={handleNextStepButton}>{nextStep}</button>
-      <button type="button" onClick={handleCancelButton}>Annuler la reservation</button>
+const AddressDetail = () => {
+  const position = [43.2961743, 5.3699525];
+  return (
+    <div className="address-detail">
+      <MapContainer center={position} zoom={10} scrollWheelZoom>
+        <Routing start={[57.74, 11.94]} end={[57.6792, 11.949]} />
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={position}>
+          <Popup>
+            ça sert à rien
+          </Popup>
+        </Marker>
+      </MapContainer>
+      <div>
+        <span>Adresse</span>
+        <span>telephone</span>
+        <span>mail</span>
+      </div>
     </div>
-  </div>
-);
 
-AddressDetails.propTypes = {
-
+  );
 };
 
 export default AddressDetail;
