@@ -6,7 +6,10 @@
   min-height: 90vh;
   margin: 0 auto;
   text-align: center;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   &-logo {
     // display mobile first
@@ -19,7 +22,16 @@
     }
   }
   .searchbar {
-    position: relative;
-    top: 5rem;
+    margin: 3rem auto;
+  }
+  .leaflet-container {
+    width: 90%;
+    height: 10rem;
+    border-radius: 10px;
+    @media screen and (min-width: 700px) {
+      width: 40rem;
+      height: 30rem;
+      margin: 0.5rem auto;
+    }
   }
 }
