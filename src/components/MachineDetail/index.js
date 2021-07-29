@@ -44,13 +44,14 @@ const MachineDetail = ({ days, hours, machine,
               <Popup>
                 <h3 className="machinedetail-container-bottom-left-address-map-popup-title">{machine.name}</h3>
                 <img className="machinedetail-container-bottom-left-address-map-popup-picture" src={machine.picture} alt={machine.name} />
-                <p className="machinedetail-container-bottom-left-address-map-popup-city">{machine.city} <span className="machinedetail-container-bottom-left-address-map-popup-price">{machine.price}€</span></p>
-
+                <p className="machinedetail-container-bottom-left-address-map-popup-city">{machine.city}
+                  <span className="machinedetail-container-bottom-left-address-map-popup-price">{machine.price}€</span>
+                </p>
 
                 <p className="machinedetail-container-bottom-left-address-map-popup-description">{machine.description}</p>
               </Popup>
             </Marker>
-          </MapContainer>,
+          </MapContainer>
         </div>
 
         <form className="machinedetail-form" onSubmit={(e) => {

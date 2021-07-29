@@ -2,6 +2,7 @@
 @import 'src/styles/mixins.scss';
 
 .menu {
+  z-index: 11111;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -71,6 +71,7 @@
   }
 
   &-container-bottom {
+    margin: 1rem 0;
     display: flex;
     flex-direction: column;
     @media screen and (min-width: 700px) {
@@ -79,7 +80,10 @@
     align-items: center;
     max-width: 100vw;
     &-left {
-      width: 50%;
+      width: 100%;
+      @media screen and (min-width: 700px) {
+        width: 50%;
+      }
       &-address {
         &-city {
           font-size: 1.2rem;
@@ -87,6 +91,7 @@
           color: vars.$color-action;
         }
         &-map {
+          margin: 0.5rem 0;
           &-popup {
             &-title {
               font-weight: bold;
@@ -111,7 +116,10 @@
     }
   }
   &-form {
-    width: 45%;
+    width: 100%;
+    @media screen and (min-width: 700px) {
+      width: 50%;
+    }
     display: flex;
     flex-direction: column;
     align-items: center;
