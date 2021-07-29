@@ -9,16 +9,27 @@ const MachineDetail = ({ days, hours, machine,
 }) => {
   useEffect(() => { }, [machine]);
   console.log('machine', machine);
-  const position = [43.2961743, 5.3699525];
+  const position = {lat: machine.latitude, lng: machine.longitude};
 
   return (
     <div className="machinedetail">
+   <h4 className="machinedetail-title">Infos de reservation</h4>
       <div className="machinedetail-infos">
-        <div className="machinedetail-infos-address">
-          <span className="machinedetail-infos-address-city">{machine.city}</span>
-          <span className="machinedetail-infos-address-zipcode">{machine.address}</span>
-          <span className="machinedetail-infos-address-zipcode">{machine.zip_code}</span>
-          <MapContainer center={position} zoom={13} scrollWheelZoom>
+        <div className="machinedetail-infos-details">
+          <h2 className="machinedetail-infos-details-title">{machine.name}</h2>
+          <img className="machinedetail-infos-details-picture" src={machine.picture} alt={machine.name} />
+          <p className="machinedetail-infos-details-capacity">Capacité : {machine.capacity}kg</p>
+        </div>
+      </div>
+
+      <div className="machinedetail-container-bottom">
+    
+
+        <div className="machinedetail-container-bottom-left">
+          <h3 className="machinedetail-infos-address-city">{machine.city}</h3>
+          <p className="machinedetail-infos-address-zipcode">{machine.address}</p>
+          <p className="machinedetail-infos-address-zipcode">{machine.zip_code}</p>
+          <MapContainer className="machinedetail-infos-map" center={position} zoom={13} scrollWheelZoom={false}>
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -31,15 +42,8 @@ const MachineDetail = ({ days, hours, machine,
               </Popup>
             </Marker>
           </MapContainer>,
-
         </div>
-        <span className="machinedetail-infos-name">{machine.name}</span>
-        <span className="machinedetail-infos-name">id de la machine:{machine.id}</span>
-        <img className="machinedetail-infos-picture" src={machine.picture} alt={machine.name} />
-        <span className="machinedetail-infos-address-zipcode">Capacité : {machine.capacity}kg</span>
-      </div>
-      <div>
-        <h4 className="machinedetail-form-title">Infos de reservation</h4>
+        
         <form className="machinedetail-form" onSubmit={(e) => {
           e.preventDefault();
           console.log(`submit du form ${machine.id}`)

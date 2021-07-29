@@ -9,7 +9,7 @@ import {
   REGISTER_USER_FORM_SUBMIT,
   UPDATE_USER_FORM_SUBMIT,
   DELETE_USER_FORM_SUBMIT_SUCCESS,
-  deleteUserFormSubmitSuccess, deleteUserFormSubmitError
+  deleteUserFormSubmitSuccess, deleteUserFormSubmitError,
 } from 'src/actions/user';
 import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT } from '../actions/machines';
 
@@ -82,7 +82,17 @@ export default (store) => (next) => (action) => {
         capacity,
       } = store.getState().machines.inputs;
 
-      api.post('/machine', { title, adress, zip_code, city, price, description, picture, capacity })
+      api.post('/machine',
+        {
+          title,
+          adress,
+          zip_code,
+          city,
+          price,
+          description,
+          picture,
+          capacity,
+        })
         .then((result) => {
           console.log('result.data du post addwasher', result.data);
         })
@@ -99,8 +109,11 @@ export default (store) => (next) => (action) => {
         mail,
         password,
         passwordConfirm,
-        phone } = store.getState().user.register;
-      api.post('/signup', { lastname, firstname, pseudo, mail, password, passwordConfirm, phone })
+        phone,
+      } = store.getState().user.register;
+      api.post('/signup', {
+        lastname, firstname, pseudo, mail, password, passwordConfirm, phone,
+      })
         .then((result) => {
           console.log('result.data du post Register User Form', result.data);
         })
@@ -117,9 +130,12 @@ export default (store) => (next) => (action) => {
         mail,
         password,
         passwordConfirm,
-        phone } = store.getState().user.register;
+        phone,
+      } = store.getState().user.register;
       const { token } = store.getState().user.token;
-      api.patch(`/account/${token}`, { lastname, firstname, pseudo, mail, password, passwordConfirm, phone })
+      api.patch(`/account/${token}`, {
+        lastname, firstname, pseudo, mail, password, passwordConfirm, phone,
+      })
         .then((result) => {
           console.log('result.data du post Modify User Form', result.data);
         })

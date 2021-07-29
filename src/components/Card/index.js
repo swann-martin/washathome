@@ -9,8 +9,8 @@ const Card = ({ picture, city, price, id, address, description, zip_code, name, 
     <img className="card-img" src={picture} alt="la machine" />
     <div className="card-content">
       <div className="card-content-city">
+        <span className="card-content-city-city"><i className="fas fa-map-marker" />{city}</span>
         <span className="card-content-city-name">{name}</span>
-        <span className="card-content-city-distance">500m</span>
       </div>
       <div className="card-content-infos">
         <span className="card-content-infos-price">{price}€</span>

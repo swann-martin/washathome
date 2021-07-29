@@ -1,7 +1,7 @@
 // == Import npm
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 
 // Import components
 import Connect from 'src/containers/Connect';
@@ -19,25 +19,22 @@ import Bookings from '../../containers/Bookings';
 import Register from '../../containers/Register';
 import Cgu from '../../pages/Cgu';
 import Team from '../../pages/Team';
-import AddressDetail from '../AddressDetail';
+import BookingDetail from '../BookingDetail';
 // Import style
 import './styles.scss';
 import { initApp } from '../../actions/app';
 
-const App = ({
-  isConnected, pressedConnected, foundMachines, openMenu, initApp
-}) => {
+const App = ({ pressedConnected, foundMachines, openMenu }) => {
   useEffect(() => {
     initApp();
   }, [foundMachines]);
-  console.log('foundMachines', foundMachines);
   return (
     <div className="app">
       <Nav />
       <Switch>
         <Route exact path="/">
           <Header foundMachines={foundMachines} />
-          <AddressDetail />
+          {/* <BookingDetail /> */}
           <Cards />
         </Route>
         <Route path="/cgu" component={Cgu} />
@@ -50,7 +47,6 @@ const App = ({
         <Route exact path="/machineDetail/:id" component={MachineDetail} />
       </Switch>
       {pressedConnected && <Connect />}
-
       {openMenu && <Menu />}
       <Footer />
     </div>
@@ -60,7 +56,12 @@ const App = ({
 App.propTypes = {
   isConnected: PropTypes.bool.isRequired,
   pressedConnected: PropTypes.bool.isRequired,
-  initApp: PropTypes.func.isRequired,
+  openMenu: PropTypes.bool.isRequired,
+  foundMachines: PropTypes.arrayOf(object),
+};
+
+App.defaultProps = {
+  foundMachines: [],
 };
 // == Export
 export default App;

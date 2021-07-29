@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import AddressDetail from 'src/components/AddressDetail';
+
 import './styles.scss';
 
 const BookingDetail = ({ machine, resa, otherGuy, handleNextStepButton, handleCancelButton }) => (
   <div>
     <h2>Reservation de la machine {machine.name}</h2>
     <div>
-    //* En fonction de si l'user qui fait la requete est le bringer ou le washer de la reservation on affichera le pseudo de l'autre partie de la reservation
       <span>Bringer: {otherGuy.pseudo}</span>
 
       <span>Etape de la réservation: {resa.status}</span>
@@ -24,13 +25,14 @@ const BookingDetail = ({ machine, resa, otherGuy, handleNextStepButton, handleCa
       <button type="button" onClick={handleNextStepButton}>{nextStep}</button>
       <button type="button" onClick={handleCancelButton}>Annuler la reservation</button>
     </div>
+      <AddressDetail />
   </div>
 );
 
-BookingDetails.propTypes = {
-  machine: PropTypes.shape(
+BookingDetail.propTypes = {
+  machine: PropTypes.shape({
     name: PropTypes.string.isRequired,
-  ),
+  }),
   resa: PropTypes.shape({
     status: PropTypes.string,
     date: PropTypes.string,
@@ -38,7 +40,7 @@ BookingDetails.propTypes = {
       name: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
   }),
-}).isRequired,
+}),
   otherGuy: PropTypes.shape({
     pseudo: PropTypes.string.isRequired,
   }),
