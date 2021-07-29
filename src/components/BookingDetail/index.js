@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import StatusButton from 'src/components/StatusButton';
 import AddressDetail from 'src/components/AddressDetail';
 
 import './styles.scss';
@@ -16,16 +16,22 @@ const BookingDetail = ({ machine, resa, otherGuy, handleNextStepButton, handleCa
       <span>Température: {resa.temperature}</span>
       <ul>
         {
-        resa.options.map((option) => (
-          <li>{option.name} {option.price}€</li>
-        ))
-      }
+          resa.options.map((option) => (
+            <li>{option.name} {option.price}€</li>
+          ))
+        }
       </ul>
       <span>Prix total: {resa.price}</span>
+      <StatusButton onClick={handleCancelButton} value={1} label="Confirmer la reservation" />
+      <StatusButton onClick={handleCancelButton} value={2} label="Confirmer le dépôt" />
+      <StatusButton onClick={handleCancelButton} value={3} label="En cours de lavage" />
+      <StatusButton onClick={handleCancelButton} value={4} label="Lavage terminé" />
+      <StatusButton onClick={handleCancelButton} value={5} label="Linge récupéré" />
+      <StatusButton onClick={handleCancelButton} value={6} label="Annuler la reservation" />
       <button type="button" onClick={handleNextStepButton}>{nextStep}</button>
       <button type="button" onClick={handleCancelButton}>Annuler la reservation</button>
     </div>
-      <AddressDetail />
+    <AddressDetail />
   </div>
 );
 
@@ -39,8 +45,8 @@ BookingDetail.propTypes = {
     options: PropTypes.arrayOf({
       name: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
+    }),
   }),
-}),
   otherGuy: PropTypes.shape({
     pseudo: PropTypes.string.isRequired,
   }),

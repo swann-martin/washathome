@@ -5,7 +5,7 @@ import Options from '../../containers/Options';
 import './styles.scss';
 
 
-const MachineDetail = ({ days, hours, machine,
+const MachineDetail = ({ days, hours, machine, handleBookingsFormSubmit,
 }) => {
   useEffect(() => { }, [machine]);
   console.log('machine', machine);
@@ -54,10 +54,7 @@ const MachineDetail = ({ days, hours, machine,
           </MapContainer>
         </div>
 
-        <form className="machinedetail-form" onSubmit={(e) => {
-          e.preventDefault();
-          console.log(`submit du form ${machine.id}`)
-        }}>
+        <form className="machinedetail-form" onSubmit={handleBookingsFormSubmit}>
 
           <select className="machinedetail-form-select" name="day" id="day-select">
             <option className="machinedetail-form-select-day" value="">Jours disponibles</option>

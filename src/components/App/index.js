@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import PropTypes, { object } from 'prop-types';
 
 // Import components
+import Loader from '../Loader';
 import Connect from 'src/containers/Connect';
 import Cards from 'src/containers/Cards';
 import Nav from 'src/containers/Nav';
@@ -15,6 +16,7 @@ import Footer from '../Footer';
 import MachineDetail from '../../containers/MachineDetail';
 import Bookings from '../../containers/Bookings';
 
+
 // == Import
 import Register from '../../containers/Register';
 import Cgu from '../../pages/Cgu';
@@ -24,7 +26,7 @@ import BookingDetail from '../BookingDetail';
 import './styles.scss';
 import { initApp } from '../../actions/app';
 
-const App = ({ pressedConnected, foundMachines, openMenu }) => {
+const App = ({ pressedConnected, foundMachines, openMenu, loading }) => {
   useEffect(() => {
     initApp();
   }, [foundMachines]);
@@ -33,6 +35,7 @@ const App = ({ pressedConnected, foundMachines, openMenu }) => {
       <Nav />
       <Switch>
         <Route exact path="/">
+          {loading && <Loader />}
           <Header foundMachines={foundMachines} />
           {/* <BookingDetail /> */}
           <Cards />
@@ -58,6 +61,7 @@ App.propTypes = {
   pressedConnected: PropTypes.bool.isRequired,
   openMenu: PropTypes.bool.isRequired,
   foundMachines: PropTypes.arrayOf(object),
+  loading: PropTypes.bool.isRequired,
 };
 
 App.defaultProps = {

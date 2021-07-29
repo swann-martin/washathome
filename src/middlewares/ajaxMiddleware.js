@@ -11,7 +11,10 @@ import {
   DELETE_USER_FORM_SUBMIT_SUCCESS,
   deleteUserFormSubmitSuccess, deleteUserFormSubmitError,
 } from 'src/actions/user';
+
 import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT } from '../actions/machines';
+
+import { BOOKINGS_FORM_SUBMIT } from '../actions/bookings';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -116,6 +119,20 @@ export default (store) => (next) => (action) => {
       })
         .then((result) => {
           console.log('result.data du post Register User Form', result.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+      return next(action);
+    }
+    case BOOKINGS_FORM_SUBMIT: {
+      const { timeresa } = store.getState().bookings.inputs;
+      const { id } = store.getState().user.id;
+      api.post(`/reservation/${id}`, {
+        timeresa,
+      })
+        .then((result) => {
+          console.log('result.data du post bookings form submit from machineDetail', result.data);
         })
         .catch((err) => {
           console.error(err);

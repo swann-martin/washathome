@@ -12,6 +12,7 @@ import {
 } from '../actions/user';
 
 export const initialState = {
+  loading: true,
   isConnected: false,
   pressedConnected: false,
   openMenu: false,
