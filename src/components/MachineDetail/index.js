@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Options from '../../containers/Options';
 import './styles.scss';
+
 
 const MachineDetail = ({ days, hours, machine,
 }) => {
   useEffect(() => { }, [machine]);
   console.log('machine', machine);
+  const position = [43.2961743, 5.3699525];
 
   return (
     <div className="machinedetail">
@@ -15,6 +18,19 @@ const MachineDetail = ({ days, hours, machine,
           <span className="machinedetail-infos-address-city">{machine.city}</span>
           <span className="machinedetail-infos-address-zipcode">{machine.address}</span>
           <span className="machinedetail-infos-address-zipcode">{machine.zip_code}</span>
+          <MapContainer center={position} zoom={13} scrollWheelZoom={true}>
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={position}>
+              <Popup>
+                <h3 className="machinedetail-infos-name">{machine.name}</h3>
+                <p className="machinedetail-infos-address-city">{machine.city}</p>
+                <img className="machinedetail-infos-picture" src={machine.picture} alt={machine.name} />
+              </Popup>
+            </Marker>
+          </MapContainer>,
 
         </div>
         <span className="machinedetail-infos-name">{machine.name}</span>
