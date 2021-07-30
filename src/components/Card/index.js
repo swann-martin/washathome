@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
-const Card = ({ picture, city, price, id, address, description, zip_code, name, capacity }) => (
-  <Link className="card" exact to={`machineDetail/${id}`} machine={{ picture, city, price, id, address, description, zip_code, name, capacity }} >
+const Card = ({ picture, city, price, id, address, description, zip_code, name, capacity, link }) => (
+  <Link className="card" exact to={link} machine={{ picture, city, price, id, address, description, zip_code, name, capacity }} >
     <img className="card-img" src={picture} alt="la machine" />
     <div className="card-content">
       <div className="card-content-city">
@@ -13,7 +13,7 @@ const Card = ({ picture, city, price, id, address, description, zip_code, name, 
         <span className="card-content-city-name">{name}</span>
       </div>
       <div className="card-content-infos">
-        <span className="card-content-infos-price">{price}€</span>
+        {price !== '' ? <span className="card-content-infos-price">{price}€</span> : ''}
       </div>
     </div>
   </Link>
@@ -27,12 +27,13 @@ Card.propTypes = {
   zip_code: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.number,
 };
 
 Card.defaultProps = {
   picture: 'https://dummyimage.com/250/000/eee',
   capacity: 6,
+  price: '',
 };
 
 export default Card;

@@ -10,6 +10,7 @@ import {
   UPDATE_USER_FORM_SUBMIT,
   DELETE_USER_FORM_SUBMIT_SUCCESS,
   deleteUserFormSubmitSuccess, deleteUserFormSubmitError,
+  autoLoginFormSubmit,
 } from 'src/actions/user';
 
 import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT } from '../actions/machines';
@@ -52,9 +53,8 @@ export default (store) => (next) => (action) => {
       // On récupère les valeurs du state de redux
       // Ici on veut email et password se trouvant dans
       // le state du reducer user
-      const mail = localStorage.getItem('mail', mail);
-      const password = localStorage.getItem('password', password);
-      api.post('/login', { mail, password })
+      const token = localStorage.getItem('token');
+      api.post('/autologin', { token })
         .then((result) => {
           const { token } = result.data;
           console.log(result.data);
@@ -105,20 +105,12 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case REGISTER_USER_FORM_SUBMIT: {
-      const {
-        lastname,
-        firstname,
-        pseudo,
-        mail,
-        password,
-        passwordConfirm,
-        phone,
-      } = store.getState().user.register;
-      api.post('/signup', {
-        lastname, firstname, pseudo, mail, password, passwordConfirm, phone,
-      })
+      api.post('/signup', store.getState().user.register)
         .then((result) => {
           console.log('result.data du post Register User Form', result.data);
+          store.dispatch(registerInputsToUser());
+          store.dispatch(loginSuccess(result.data));
+          store.dispatch(autoLoginFormSubmit());
         })
         .catch((err) => {
           console.error(err);

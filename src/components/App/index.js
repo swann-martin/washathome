@@ -15,13 +15,13 @@ import Header from '../Header';
 import Footer from '../Footer';
 import MachineDetail from '../../containers/MachineDetail';
 import Bookings from '../../containers/Bookings';
+import BookingDetail from '../BookingDetail';
 
 
 // == Import
 import Register from '../../containers/Register';
 import Cgu from '../../pages/Cgu';
 import Team from '../../pages/Team';
-import BookingDetail from '../BookingDetail';
 // Import style
 import './styles.scss';
 import { initApp } from '../../actions/app';
@@ -45,6 +45,7 @@ const App = ({ pressedConnected, foundMachines, openMenu, loading }) => {
         <Route path="/addwasher" component={AddWasherForm} />
         <Route path="/profile" component={Profile} />
         <Route path="/bookings" component={Bookings} />
+        <Route path="/bookingDetail/:id" component={BookingDetail} />
         <Route path="/searchresult" component={Cards} />
         <Route path="/team" component={Team} />
         <Route exact path="/machineDetail/:id" component={MachineDetail} />

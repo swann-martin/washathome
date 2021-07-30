@@ -43,7 +43,7 @@ const Header = ({ foundMachines }) => {
         (foundMachines.length > 0)
         && (
 
-          <MapContainer className="header-container-bottom" center={{ lat: foundMachines[0].latitude, lng: foundMachines[0].longitude }} zoom={5} scrollWheelZoom>
+          <MapContainer className="header-container-bottom" center={{ lat: foundMachines[0].latitude, lng: foundMachines[0].longitude }} zoom={8} scrollWheelZoom>
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
