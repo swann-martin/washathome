@@ -17,7 +17,7 @@ const BookingDetail = ({
       <span>Informations: {resa.dispo}</span>
       <span>Température: {resa.tempResa}</span>
       <ul>
-        { resa.options
+        { !resa.options.length === 0
           && resa.options.map((option) => (
             <li>{option.name} {option.price}€</li>
           ))}
