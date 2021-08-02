@@ -19,7 +19,16 @@ export default (store) => (next) => (action) => {
 
     // ajouter des machines grâce à un formulaire
     case ADD_MACHINE_FORM_SUBMIT: {
-      const { address, title, picture, description, price, capacity, zip_code, city } = store.getState().machines.inputs;
+      const {
+        address,
+        title,
+        picture,
+        description,
+        price,
+        capacity,
+        zip_code,
+        city,
+      } = store.getState().machines.inputs;
       api.post('/machine', { title, address, zip_code, city, picture, description, price, capacity })
         .then((result) => {
           console.log('result.data du post addwasher', result.data);
@@ -41,7 +50,7 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case DELETE_MACHINE: {
-      const { machineId } = store; getState().machine.machineId;
+      const { machineId } = store; getState().machine[0].id;
       api.delete(`/machine/${machineId}`)
         .then((result) => {
           console.log('result.data du post addwasher', result.data);

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Booking from '../Booking';
 
 import './styles.scss';
 
-const Bookings = ({ bringerBookings, washerBookings, isConnected }) => {
+const Bookings = ({ bringerBookings, washerBookings, isConnected, getBookings }) => {
+  useEffect(() => {
+    getBookings();
+  }, []);
   console.log('washerBookings', washerBookings);
   return (
     <div className="bookings">
@@ -15,9 +18,8 @@ const Bookings = ({ bringerBookings, washerBookings, isConnected }) => {
 
             <div className="bookings-container-left">
               {
-                bringerBookings == []
-                  ? (
-                    <h3>Les machines que vous avez réservées</h3>
+                bringerBookings.length > 0 ? (
+                  <h3>Les machines que vous avez réservées</h3>
                     && bringerBookings.map((bringerBooking) => (
                       <Booking price="4" name="{bringerBooking.}" status="teststatus" />
                     ))) : <h3>Vous n'avez pas réservé de machine pour l'instant</h3>
@@ -27,10 +29,9 @@ const Bookings = ({ bringerBookings, washerBookings, isConnected }) => {
 
             <div className="bookings-container-right">
               {
-                (!washerBookings == []
-                  ? washerBookings.map((booking) => (
-                    <Booking link={`bookingDetail/${booking.resa.idResa}`} name={booking.bringer.bringer_pseudo} status={booking.resa.status_id, booking.resa.status_name} date={booking.resa.DataResa} />
-                  ))
+                (washerBookings.length > 0 ? washerBookings.map((booking) => (
+                  <Booking link={`bookingDetail/${booking.resa.idResa}`} name={booking.bringer.pseudo} status={booking.resa.status_id, booking.resa.status_name} date={booking.resa.DataResa} />
+                ))
                   : <h4>Personne n'a réservé votre machine pour l'instant</h4>
                 )
               }
@@ -40,20 +41,6 @@ const Bookings = ({ bringerBookings, washerBookings, isConnected }) => {
         )}
     </div>
   );
-};
-
-Bookings.propTypes = {
-  isConnected: PropTypes.bool,
-  bringerBookings: PropTypes.arrayOf(
-    PropTypes.shape({
-
-    }),
-  ),
-  washerBookings: PropTypes.arrayOf(
-    PropTypes.shape({
-
-    }),
-  ),
 };
 
 export default Bookings;

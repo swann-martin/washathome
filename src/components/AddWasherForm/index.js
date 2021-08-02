@@ -17,7 +17,7 @@ const AddWasherForm = ({
   picture,
   capacity,
   changeField,
-  myWashers
+  machines
 }) => {
   const handleFieldChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
@@ -61,10 +61,10 @@ const AddWasherForm = ({
         </div>
         <button className="addwasherform-form-submit" type="submit">Valider</button>
       </form>
-      {myWashers &&
+      {machines &&
         <h2 className="addwasherform-title">Mes machines</h2> &&
-        myWashers.map((machine) => (
-          <Card {...machine} key={machine.id} />
+        machines.map((machine) => (
+          <Card {...machine} key={machine.id} link={`/machine/${machine.id}`} />
         ))}
 
     </div>

@@ -1,4 +1,4 @@
-import { BOOKING_INPUT_CHANGE } from 'src/actions/bookings';
+import { BOOKING_INPUT_CHANGE, FETCH_BOOKINGS_SUCCESS } from 'src/actions/bookings';
 
 export const initialState = {
 
@@ -11,8 +11,8 @@ export const initialState = {
     option2: 0,
     option3: 0,
   },
-  bookingId: 0,
-  bookingStatus: 0,
+  washerBookings: [],
+  bringerBookings: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -24,6 +24,11 @@ const reducer = (state = initialState, action = {}) => {
           ...state.inputs,
           ...action.payload,
         },
+      };
+    case FETCH_BOOKINGS_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
       };
     default:
       return state;

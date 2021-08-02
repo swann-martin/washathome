@@ -24,16 +24,16 @@ const Profile = ({ firstname, lastname, pseudo, avatar, mail, phone, changeField
       <label className="profile-credentials-label">Login&nbsp;<Field className="profile-credentials-label-input" name="pseudo" value={pseudo} onChange={changeField} /></label>
       <label className="profile-credentials-label">Nom&nbsp;<Field className="profile-credentials-label-input" name="firstname" value={firstname} onChange={changeField} /></label>
       <label className="profile-credentials-label">Prénom&nbsp;<Field className="profile-credentials-label-input" name="lastname" value={lastname} onChange={changeField} /></label>
-      <label className="profile-credentials-label">email&nbsp;<Field className="profile-credentials-label-input" name="mail" value={mail} onChange={changeField} /></label>
+      <label className="profile-credentials-label">email&nbsp;<Field className="profile-credentials-label-input" name="usermail" value={mail} onChange={changeField} /></label>
       <label className="profile-credentials-label">tél&nbsp;<span>+33</span><Field className="profile-credentials-label-input" name="phone" value={phone} onChange={changeField} /></label>
       <label className="profile-credentials-label">Avatar&nbsp;
         <div className="profile-credentials-label">
-          <img className="profile-credentials-label-avatar" src={avatar} alt="votre-avatar" /><Field className="profile-credentials-label-input" name="user_avatar" value={avatar} onChange={changeField} />
+          <img className="profile-credentials-label-avatar" src={avatar} alt="votre-avatar" /><Field className="profile-credentials-label-input" name="avatar" value={avatar} onChange={changeField} />
         </div>
       </label>
       <div className="profile-credentials-btn-container">
-       <button type="button" className="profile-credentials-btn profile-credentials-btn--delete" onClick={deleteUser}>Supprimer mon compte</button>
-        <button type="submit" className="profile-credentials-btn profile-credentials-btn--validate" onClick={updateUser}>Valider</button>
+        <button type="button" className="profile-credentials-btn profile-credentials-btn--delete" onClick={deleteUser}>Supprimer mon compte</button>
+        <button type="submit" className="profile-credentials-btn profile-credentials-btn--validate" onClick={updateUser}>Valider les modifications</button>
       </div>
     </form>
 
@@ -41,14 +41,12 @@ const Profile = ({ firstname, lastname, pseudo, avatar, mail, phone, changeField
 );
 
 Profile.propTypes = {
-  user_firstname: PropTypes.string,
-  user_lastname: PropTypes.string,
-  user_pseudo: PropTypes.string,
-  user_avatar: PropTypes.string,
-  user_mail: PropTypes.string,
-  user_password: PropTypes.string,
-  passwordConfirm: PropTypes.string,
-  user_phone: PropTypes.string,
+  firstname: PropTypes.string,
+  lastname: PropTypes.string,
+  pseudo: PropTypes.string,
+  avatar: PropTypes.string,
+  mail: PropTypes.string,
+  phone: PropTypes.string,
 };
 
 Profile.defaultProps = {
@@ -57,10 +55,7 @@ Profile.defaultProps = {
   pseudo: '',
   avatar: '',
   mail: '',
-  password: '',
-  passwordConfirm: '',
   phone: '',
-
 };
 
 export default Profile;

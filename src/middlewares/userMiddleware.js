@@ -19,14 +19,14 @@ export default (store) => (next) => (action) => {
   switch (action.type) {
     // créer un utilisateur grâce à un formulaire qui fournit les infos phone et email
     case REGISTER_USER_FORM_SUBMIT: {
-      const {lastname,
+      const { lastname,
         firstname,
         pseudo,
         mail,
         password,
         passwordConfirm,
         phone,
-      avatar} = store.getState().user.register;
+      avatar } = store.getState().user.register;
       api.post('/signup', {
         lastname,
         firstname,
@@ -50,18 +50,19 @@ export default (store) => (next) => (action) => {
     // Update des informations de l'utilisateur
     case UPDATE_USER_FORM_SUBMIT: {
       const {
-        user_lastname,
-        user_firstname,
-        user_pseudo,
-        user_mail,
-        user_password,
-        user_passwordConfirm,
-        user_phone,
+        lastname,
+        firstname,
+        pseudo,
+        mail,
+        phone,
+        avatar,
       } = store.getState().user.user;
       api.patch('/account', {
-        user_lastname, user_firstname, user_pseudo, user_mail, user_phone,
+        lastname, firstname, pseudo, mail, phone, avatar,
       })
         .then((result) => {
+          const { token } = result.data.token;
+          localStorage.setItem('token', token);
           console.log('result.data du post Modify User Form', result.data);
         })
         .catch((err) => {
@@ -70,11 +71,10 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case UPDATE_PASSWORD_FORM_SUBMIT: {
-      const password = store.getState().user.register.password;
-      const passwordConfirm = store.getState().user.register.passwordComnfirm;
+      const { password, passwordConfirm } = store.getState().user.passwordChange;
       api.patch('/password', {
-        password: password,
-        passwordConfirm: passwordConfirm,
+        password,
+        passwordConfirm,
       })
         .then((result) => {
           console.log('result.data du post Modify Password Form', result.data);
@@ -110,12 +110,10 @@ export default (store) => (next) => (action) => {
         .then((result) => {
           const { token } = result.data;
           console.log(result.data.personal[0]);
-          localStorage.setItem('mail', mail);
           localStorage.setItem('token', token);
-          localStorage.setItem('password', password);
           store.dispatch(loginSuccess({
             user: result.data.personal[0].user,
-            machine: result.data.personal[0].machine,
+            machine: [result.data.personal[0].machine],
             token: result.data.token,
             isConnected: result.data.isConnected,
           }));
@@ -134,7 +132,7 @@ export default (store) => (next) => (action) => {
       // que axios fera une requete il aura le header Authorization
       // avec le token déjà renseigné
       const token = localStorage.getItem('token');
-      api.defaults.headers.common.Authorization = token;
+      api.defaults.headers.common.Authorization = `Bearer ${token}`;
       console.log(api.defaults.headers.common.Authorization);
       return next(action);
     }
@@ -165,8 +163,6 @@ export default (store) => (next) => (action) => {
       // En cas de déconnexion, on supprime ce header par défaut
       delete api.defaults.headers.common.Authorization;
       // Si on se logout, il faut aussi supprimer les localStorages pour nettoyer
-      localStorage.removeItem('mail');
-      localStorage.removeItem('password');
       localStorage.removeItem('token');
       return next(action);
     }

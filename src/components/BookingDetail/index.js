@@ -5,53 +5,33 @@ import AddressDetail from 'src/components/AddressDetail';
 
 import './styles.scss';
 
-const BookingDetail = ({ machine, resa, otherGuy, handleNextStepButton, handleCancelButton }) => (
+const BookingDetail = ({
+  machine, resa, otherGuy, handleNextStepButton, handleCancelButton,
+}) => (
   <div>
     <h2>Reservation de la machine {machine.name}</h2>
     <div>
-      <span>Bringer: {otherGuy.pseudo}</span>
+      <span> Bringer: {otherGuy.pseudo}</span>
 
-      <span>Etape de la réservation: {resa.status}</span>
-      <span>Date de dépôt du linge: {resa.date}</span>
-      <span>Température: {resa.temperature}</span>
+      <span>Etape de la réservation: {resa.status_name}</span>
+      <span>Informations: {resa.dispo}</span>
+      <span>Température: {resa.tempResa}</span>
       <ul>
-        {
-          resa.options.map((option) => (
+        { resa.options
+          && resa.options.map((option) => (
             <li>{option.name} {option.price}€</li>
-          ))
-        }
+          ))}
       </ul>
-      <span>Prix total: {resa.price}</span>
-      <StatusButton onClick={handleCancelButton} value={1} label="Confirmer la reservation" />
-      <StatusButton onClick={handleCancelButton} value={2} label="Confirmer le dépôt" />
-      <StatusButton onClick={handleCancelButton} value={3} label="En cours de lavage" />
-      <StatusButton onClick={handleCancelButton} value={4} label="Lavage terminé" />
-      <StatusButton onClick={handleCancelButton} value={5} label="Linge récupéré" />
-      <StatusButton onClick={handleCancelButton} value={6} label="Annuler la reservation" />
-      <button type="button" onClick={handleNextStepButton}>{nextStep}</button>
-      <button type="button" onClick={handleCancelButton}>Annuler la reservation</button>
+      <span>Prix total: {resa.price}€</span>
+      <StatusButton onClick={handleCancelButton} value={1} statusName="Confirmer la reservation" />
+      <StatusButton onClick={handleCancelButton} value={2} statusName="Confirmer le dépôt" />
+      <StatusButton onClick={handleCancelButton} value={3} statusName="En cours de lavage" />
+      <StatusButton onClick={handleCancelButton} value={4} statusName="Lavage terminé" />
+      <StatusButton onClick={handleCancelButton} value={5} statusName="Linge récupéré" />
+      <StatusButton onClick={handleCancelButton} value={6} statusName="Annuler la reservation" />
     </div>
     <AddressDetail />
   </div>
 );
-
-BookingDetail.propTypes = {
-  machine: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-  }),
-  resa: PropTypes.shape({
-    status: PropTypes.string,
-    date: PropTypes.string,
-    options: PropTypes.arrayOf({
-      name: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-    }),
-  }),
-  otherGuy: PropTypes.shape({
-    pseudo: PropTypes.string.isRequired,
-  }),
-  handleNextStepButton: PropTypes.func.isRequired,
-  handleCancelButton: PropTypes.func.isRequired,
-};
 
 export default BookingDetail;

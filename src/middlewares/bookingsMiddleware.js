@@ -1,5 +1,7 @@
 import api from 'src/api';
-import { BOOKING_FORM_SUBMIT, BOOKING_UPDATE, BOOKING_CANCEL, GET_BOOKING_BY_ID } from '../actions/bookings';
+import {
+  BOOKING_FORM_SUBMIT, BOOKING_UPDATE, BOOKING_CANCEL, GET_BOOKING_BY_ID, FETCH_BOOKINGS, fetchBookingsSuccess,
+} from '../actions/bookings';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -43,9 +45,20 @@ export default (store) => (next) => (action) => {
     case BOOKING_CANCEL: {
       const { bookingId } = store.getState().bookings.bookingId;
       const { statusCancellation } = store.getState().bookings.bookingStatus;
-      api.p(`/reservation/${bookingId}/${statusCancellation}`, store.getState().bookings.inputs)
+      api.post(`/reservation/${bookingId}/${statusCancellation}`, store.getState().bookings.inputs)
         .then((result) => {
           console.log('result.data du form submit to modify the form', result.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+      return next(action);
+    }
+    case FETCH_BOOKINGS: {
+      api.get('/reservation/')
+        .then((result) => {
+          console.log('result.data du fetch des machines de l\'utilisateur', result.data);
+          store.dispatch(fetchBookingsSuccess(result.data));
         })
         .catch((err) => {
           console.error(err);
@@ -55,4 +68,4 @@ export default (store) => (next) => (action) => {
     default:
       return next(action);
   }
-}
+};

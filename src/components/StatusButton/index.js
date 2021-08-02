@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import './styles.scss';
 
-const StatusButton = ({ onClick, value, name }) => (
-  <button type="button" value={value} onClick={onClick}>{name}</button>
+const StatusButton = ({ onClick, value, statusName }) => (
+  <button type="button" value={value} onClick={onClick}>{statusName}</button>
 );
 StatusButton.propTypes = {
   onClick: PropTypes.func,

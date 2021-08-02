@@ -16,7 +16,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 import MachineDetail from '../../containers/MachineDetail';
 import Bookings from '../../containers/Bookings';
-import BookingDetail from '../BookingDetail';
+import BookingDetail from '../../containers/BookingDetail';
 
 // == Import
 import Register from '../../containers/Register';

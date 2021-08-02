@@ -12,7 +12,7 @@ const mapStateToProps = (state) => ({
   description: state.machines.inputs.description,
   picture: state.machines.inputs.picture,
   capacity: state.machines.inputs.capacity,
-  myWashers: state.user.machines,
+  machines: state.user.machine,
 
 });
 
