@@ -13,6 +13,7 @@ export const REGISTER_USER_FORM_SUBMIT = 'REGISTER_USER_FORM_SUBMIT';
 export const UPDATE_USER_FORM_SUBMIT = 'UPDATE_USER_FORM_SUBMIT';
 export const UPDATE_USER_FORM_SUBMIT_SUCCESS = 'UPDATE_USER_FORM_SUBMIT_SUCCESS';
 export const UPDATE_USER_FORM_SUBMIT_ERROR = 'UPDATE_USER_FORM_SUBMIT_ERROR';
+export const CHANGE_PASSWORD_INPUT_CHANGE = 'CHANGE_PASSWORD_INPUT_CHANGE';
 export const UPDATE_PASSWORD_FORM_SUBMIT = 'UPDATE_PASSWORD_FORM_SUBMIT';
 
 export const DELETE_USER_FORM_SUBMIT = 'DELETE_USER_FORM_SUBMIT';
@@ -94,7 +95,11 @@ export const updateUserFormSubmitError = (payload) => ({
   payload,
 });
 
-export const updatePasswordFormSubmit = (payload) => ({
-  type: UPDATE_PASSWORD_FORM_SUBMIT,
+export const changePasswordInputChange = (payload) => ({
+  type: CHANGE_PASSWORD_INPUT_CHANGE,
   payload,
+});
+
+export const updatePasswordFormSubmit = () => ({
+  type: UPDATE_PASSWORD_FORM_SUBMIT,
 });

@@ -5,37 +5,48 @@ import PropTypes from 'prop-types';
 
 import './styles.scss';
 
-const PasswordChangeForm = ({ handleFieldChange, handlePasswordChangeFormSubmit }) => (
+const PasswordChangeForm = ({
+  password,
+  passwordConfirm,
+  changeField,
+  handlePasswordChangeFormSubmit,
+}) => (
+  <div>
+    <h2>Modifier mon mot de passe</h2>
     <div>
-        <h2>Modifier mon mot de passe</h2>
-        <div>
-            <form>
-                <Field
-                    type='password'
-                    name='password'
-                    value={password}
-                    onChange={handleFieldChange}
-                    placeholder='Nouveau mot de passe' />
-                <Field
-                    type='password'
-                    name='passwordConfirm'
-                    value={passwordConfirm}
-                    onChange={handleFieldChange}
-                    placeholder='Confirmer le nouveau mot de passe' />
-                <button type="submit">Valider</button>
-            </form>
-        </div>
+      <form onSubmit={handlePasswordChangeFormSubmit}>
+        <Field
+          type="password"
+          name="password"
+          value={password}
+          onChange={changeField}
+          placeholder="Nouveau mot de passe"
+        />
+        <Field
+          type="password"
+          name="passwordConfirm"
+          value={passwordConfirm}
+          onChange={changeField}
+          placeholder="Confirmer le nouveau mot de passe"
+        />
+        <button type="submit">Valider</button>
+      </form>
     </div>
+  </div>
 );
 
 PasswordChangeForm.propTypes = {
-    handleFieldChange: PropTypes.func,
-    handlePasswordChangeFormSubmit: PropTypes.func,
+  changeField: PropTypes.func,
+  handlePasswordChangeFormSubmit: PropTypes.func,
+  password: PropTypes.string,
+  passwordConfirm: PropTypes.string,
 };
 
 PasswordChangeForm.defaultProps = {
-    handleFieldChange: () => { },
-    handlePasswordChangeFormSubmit: () => { },
+  changeField: () => {},
+  handlePasswordChangeFormSubmit: () => {},
+  password: '',
+  passwordConfirm: '',
 };
 
 export default PasswordChangeForm;

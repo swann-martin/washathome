@@ -1,4 +1,5 @@
 import api from 'src/api';
+
 import {
   LOGIN_FORM_SUBMIT,
   AUTO_LOGIN_FORM_SUBMIT,
@@ -18,7 +19,24 @@ export default (store) => (next) => (action) => {
   switch (action.type) {
     // créer un utilisateur grâce à un formulaire qui fournit les infos phone et email
     case REGISTER_USER_FORM_SUBMIT: {
-      api.post('/signup', store.getState().user.register)
+      const {lastname,
+        firstname,
+        pseudo,
+        mail,
+        password,
+        passwordConfirm,
+        phone,
+      avatar} = store.getState().user.register;
+      api.post('/signup', {
+        lastname,
+        firstname,
+        pseudo,
+        mail,
+        password,
+        passwordConfirm,
+        phone,
+        avatar,
+      })
         .then((result) => {
           console.log('result.data du post Register User Form', result.data);
           store.dispatch(autoLoginFormSubmit());
@@ -32,16 +50,16 @@ export default (store) => (next) => (action) => {
     // Update des informations de l'utilisateur
     case UPDATE_USER_FORM_SUBMIT: {
       const {
-        lastname,
-        firstname,
-        pseudo,
-        mail,
-        password,
-        passwordConfirm,
-        phone,
-      } = store.getState().user.register;
+        user_lastname,
+        user_firstname,
+        user_pseudo,
+        user_mail,
+        user_password,
+        user_passwordConfirm,
+        user_phone,
+      } = store.getState().user.user;
       api.patch('/account', {
-        lastname, firstname, pseudo, mail, password, passwordConfirm, phone,
+        user_lastname, user_firstname, user_pseudo, user_mail, user_phone,
       })
         .then((result) => {
           console.log('result.data du post Modify User Form', result.data);
@@ -52,12 +70,11 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case UPDATE_PASSWORD_FORM_SUBMIT: {
-      const {
-        password,
-        passwordConfirm,
-      } = store.getState().user.register;
+      const password = store.getState().user.register.password;
+      const passwordConfirm = store.getState().user.register.passwordComnfirm;
       api.patch('/password', {
-        password, passwordConfirm,
+        password: password,
+        passwordConfirm: passwordConfirm,
       })
         .then((result) => {
           console.log('result.data du post Modify Password Form', result.data);
@@ -109,14 +126,16 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
 
-    // si la requête login de l'utilisateur fonctionné alors le token 
-    // va dans le header pour authentifier les prochaines requêtes 
+    // si la requête login de l'utilisateur fonctionné alors le token
+    // va dans le header pour authentifier les prochaines requêtes
     case LOGIN_SUCCESS: {
       // Permet de créer un header par défaut à chaque requete axios
       // C'est à dire que la prochaine fois et toutes les autres fois
       // que axios fera une requete il aura le header Authorization
       // avec le token déjà renseigné
-      api.defaults.headers.common.Authorization = `Bearer ${action.token}`;
+      const token = localStorage.getItem('token');
+      api.defaults.headers.common.Authorization = token;
+      console.log(api.defaults.headers.common.Authorization);
       return next(action);
     }
 

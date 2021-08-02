@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 import './style.scss';
 
-const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, passwordConfirm, phone, changeField, deleteUser, token, updateUser }) => (
+const Profile = ({ firstname, lastname, pseudo, avatar, mail, phone, changeField, deleteUser, token, updateUser }) => (
   <div className="profile">
 
     <Link
@@ -25,19 +25,14 @@ const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, password
       <label className="profile-credentials-label">Nom&nbsp;<Field className="profile-credentials-label-input" name="firstname" value={firstname} onChange={changeField} /></label>
       <label className="profile-credentials-label">Prénom&nbsp;<Field className="profile-credentials-label-input" name="lastname" value={lastname} onChange={changeField} /></label>
       <label className="profile-credentials-label">email&nbsp;<Field className="profile-credentials-label-input" name="mail" value={mail} onChange={changeField} /></label>
-      <label className="profile-credentials-label">password&nbsp;<Field className="profile-credentials-label-input" name="password" value={password} onChange={changeField} /></label>
-      <label className="profile-credentials-label">passwordConfirm&nbsp;<Field className="profile-credentials-label-input" name="passwordConfirm" value={passwordConfirm} onChange={changeField} /></label>
       <label className="profile-credentials-label">tél&nbsp;<span>+33</span><Field className="profile-credentials-label-input" name="phone" value={phone} onChange={changeField} /></label>
       <label className="profile-credentials-label">Avatar&nbsp;
         <div className="profile-credentials-label">
-          <img className="profile-credentials-label-avatar" src={avatar} alt="votre-avatar" /><Field className="profile-credentials-label-input" name="avatar" value={avatar} onChange={changeField} />
+          <img className="profile-credentials-label-avatar" src={avatar} alt="votre-avatar" /><Field className="profile-credentials-label-input" name="user_avatar" value={avatar} onChange={changeField} />
         </div>
       </label>
       <div className="profile-credentials-btn-container">
-        <form>
-          <input hidden value={token} />
-          <button type="button" className="profile-credentials-btn profile-credentials-btn--delete" onClick={deleteUser}>Supprimer mon compte</button>
-        </form>
+       <button type="button" className="profile-credentials-btn profile-credentials-btn--delete" onClick={deleteUser}>Supprimer mon compte</button>
         <button type="submit" className="profile-credentials-btn profile-credentials-btn--validate" onClick={updateUser}>Valider</button>
       </div>
     </form>
@@ -46,14 +41,14 @@ const Profile = ({ firstname, lastname, pseudo, avatar, mail, password, password
 );
 
 Profile.propTypes = {
-  firstname: PropTypes.string,
-  lastname: PropTypes.string,
-  pseudo: PropTypes.string,
-  avatar: PropTypes.string,
-  mail: PropTypes.string,
-  password: PropTypes.string,
+  user_firstname: PropTypes.string,
+  user_lastname: PropTypes.string,
+  user_pseudo: PropTypes.string,
+  user_avatar: PropTypes.string,
+  user_mail: PropTypes.string,
+  user_password: PropTypes.string,
   passwordConfirm: PropTypes.string,
-  phone: PropTypes.string,
+  user_phone: PropTypes.string,
 };
 
 Profile.defaultProps = {

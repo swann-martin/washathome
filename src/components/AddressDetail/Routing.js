@@ -9,7 +9,7 @@ L.Marker.prototype.options.icon = L.icon({
   iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png'
 });
 
-export default function Routing({ 
+export default function Routing({
   userLatitude,
   userLongitude,
   machineLatitude,

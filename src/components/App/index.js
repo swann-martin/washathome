@@ -4,10 +4,11 @@ import { Route, Switch } from 'react-router-dom';
 import PropTypes, { object } from 'prop-types';
 
 // Import components
-import Loader from '../Loader';
+import PasswordChangeForm from 'src/containers/PasswordChangeForm';
 import Connect from 'src/containers/Connect';
 import Cards from 'src/containers/Cards';
 import Nav from 'src/containers/Nav';
+import Loader from '../Loader';
 import AddWasherForm from '../../containers/AddWasherForm';
 import Profile from '../../containers/Profile';
 import Menu from '../../containers/Menu';
@@ -16,7 +17,6 @@ import Footer from '../Footer';
 import MachineDetail from '../../containers/MachineDetail';
 import Bookings from '../../containers/Bookings';
 import BookingDetail from '../BookingDetail';
-
 
 // == Import
 import Register from '../../containers/Register';
@@ -40,6 +40,7 @@ const App = ({ pressedConnected, foundMachines, openMenu, loading }) => {
           {/* <BookingDetail /> */}
           <Cards />
         </Route>
+        <Route path="/changePassword" component={PasswordChangeForm} />
         <Route path="/cgu" component={Cgu} />
         <Route path="/register" component={Register} />
         <Route path="/addwasher" component={AddWasherForm} />
