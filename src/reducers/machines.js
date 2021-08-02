@@ -42,7 +42,7 @@ export const initialState = {
     description: '',
     picture: '',
     search: '',
-    capacity: '',
+    capacity: '6',
   },
 };
 

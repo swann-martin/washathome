@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import MachineDetail from 'src/components/MachineDetail';
 import { findMachine } from 'src/selectors/machines';
-import { bookingsFormSubmit } from 'src/actions/bookings';
-
+import { bookingFormSubmit } from 'src/actions/bookings';
 
 const mapStateToProps = (state, ownProps) => {
   console.log('ownProps', ownProps);
@@ -16,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => ({
   handleBookingsFormSubmit: (evt) => {
     evt.preventDefault();
-    const action = bookingsFormSubmit();
+    const action = bookingFormSubmit();
     dispatch(action);
   },
 });

@@ -1,6 +1,26 @@
-export const BOOKINGS_INPUT_CHANGE = 'BOOKINGS_INPUT_CHANGE';
-export const BOOKINGS_FORM_SUBMIT = 'BOOKINGS_FORM_SUBMIT';
+export const BOOKING_INPUT_CHANGE = 'BOOKING_INPUT_CHANGE';
+export const BOOKING_FORM_SUBMIT = 'BOOKING_FORM_SUBMIT';
+export const GET_BOOKING_BY_ID = 'GET_BOOKING_BY_ID';
+export const BOOKING_UPDATE = 'BOOKING_UPDATE';
+export const BOOKING_CANCEL = 'BOOKING_CANCEL';
 
-export const bookingsFormSubmit = () => ({
-  type: BOOKINGS_FORM_SUBMIT,
+export const bookingInputChange = (payload) => ({
+  type: BOOKING_INPUT_CHANGE,
+  payload,
+});
+
+export const bookingFormSubmit = () => ({
+  type: BOOKING_FORM_SUBMIT,
+});
+
+export const getBookingById = () => ({
+  type: GET_BOOKING_BY_ID,
+});
+
+export const bookingUpdate = () => ({
+  type: BOOKING_UPDATE,
+});
+
+export const bookingCancel = () => ({
+  type: BOOKING_CANCEL,
 });

@@ -19,7 +19,6 @@ export const initialState = {
   inputs: {
     mail: '',
     password: '',
-
   },
   user: {
     lastname: '',
@@ -65,7 +64,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         ...action.payload,
         pressedConnected: false,
-        isConnected: true,
       };
     case LOGIN_ERROR:
       return {

@@ -27,3 +27,12 @@ export const ADD_MACHINE_FORM_SUBMIT = 'ADD_MACHINE_FORM_SUBMIT';
 export const addMachineFormSubmit = () => ({
   type: ADD_MACHINE_FORM_SUBMIT,
 });
+
+export const UPDATE_MACHINE = 'UPDATE_MACHINE';
+export const updateMachine = () => ({
+  type: UPDATE_MACHINE,
+});
+export const DELETE_MACHINE = 'DELETE_MACHINE';
+export const deleteMachine = () => ({
+  type: UPDATE_MACHINE,
+});

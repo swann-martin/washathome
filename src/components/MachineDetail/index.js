@@ -4,7 +4,6 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Options from '../../containers/Options';
 import './styles.scss';
 
-
 const MachineDetail = ({ days, hours, machine, handleBookingsFormSubmit,
 }) => {
   useEffect(() => { }, [machine]);
@@ -100,11 +99,13 @@ MachineDetail.propTypes = {
   }).isRequired,
   days: PropTypes.arrayOf(PropTypes.string),
   hours: PropTypes.arrayOf(PropTypes.string),
+  handleBookingsFormSubmit: PropTypes.func,
 };
 
 MachineDetail.defaultProps = {
   days: [],
   hours: [],
+  handleBookingsFormSubmit: () => { },
 };
 
 export default MachineDetail;

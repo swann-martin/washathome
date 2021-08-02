@@ -4,14 +4,12 @@ import Profile from '../../pages/Profile';
 
 const mapStateToProps = (state) => ({
 
-  lastname: state.user.user.lastname,
-  firstname: state.user.user.firstname,
-  pseudo: state.user.user.pseudo,
-  mail: state.user.user.mail,
-  password: state.user.user.password,
-  passwordConfirm: state.user.user.passwordConfirm,
-  avatar: state.user.user.avatar,
-  phone: state.user.user.phone,
+  lastname: state.user.user.user_lastname,
+  firstname: state.user.user.user_firstname,
+  pseudo: state.user.user.user_pseudo,
+  mail: state.user.user.user_mail,
+  avatar: state.user.user.user_avatar,
+  phone: state.user.user.user_phone,
   token: state.user.token,
 });
 
