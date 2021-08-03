@@ -15,6 +15,10 @@ const mapStateToProps = (state, ownProps) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   changeField: (event) => {
+    const action = bookingInputChange({ [event.target.name]: event.target.value });
+    dispatch(action);
+  },
+  changeSelect: (event) => {
     const action = bookingInputChange({ [event.target.name]: event.currentTarget.value });
     dispatch(action);
   },

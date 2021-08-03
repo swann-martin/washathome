@@ -1,39 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StatusButton from 'src/components/StatusButton';
 import AddressDetail from 'src/components/AddressDetail';
 
 import './styles.scss';
 
 const BookingDetail = ({
-  booking, handleNextStepButton, handleCancelButton,
-}) => (
-  <div>
-    {console.log('booking', booking)}
-    <h2>Reservation de la machine {booking.machine.name}</h2>
-    <div>
-      <span> Bringer: {booking.bringer.pseudo}</span>
+  booking, handleStatusButton,
+}) => {
+  const status = booking ? booking.resa.status_id : 1;
 
-      <span>Etape de la réservation: {booking.resa.status_name}</span>
-      <span>Informations: {booking.resa.dispo}</span>
-      <span>Température: {booking.resa.tempResa}</span>
-      <ul>
-        {
-          !booking.resa.options.length === 0
-          && booking.resa.options.map((option) => (
-            <li>{option.name} {option.price}€</li>
-          ))}
-      </ul>
-      <span>Prix total: {booking.resa.price}€</span>
-      <StatusButton onClick={handleCancelButton} value={1} statusName="Confirmer la reservation" />
-      <StatusButton onClick={handleCancelButton} value={2} statusName="Confirmer le dépôt" />
-      <StatusButton onClick={handleCancelButton} value={3} statusName="En cours de lavage" />
-      <StatusButton onClick={handleCancelButton} value={4} statusName="Lavage terminé" />
-      <StatusButton onClick={handleCancelButton} value={5} statusName="Linge récupéré" />
-      <StatusButton onClick={handleCancelButton} value={6} statusName="Annuler la reservation" />
+  return (
+    <div className="booking-details">
+      <h2 className="booking-details-title">Reservation de la machine {booking ? booking.machine.name : 'titre de la machine'}</h2>
+      <div className="booking-details-container">
+        <AddressDetail className="booking-details-container-map" />
+        <div className="booking-details-container-right">
+          <p className="booking-details-container-right-item"> Bringer: {booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.bringer.pseudo}</span> : <span className="booking-details-container-right-item-element">pseudo du bringer</span>}</p>
+          <p className="booking-details-container-right-item">Etape de la réservation: {booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.resa.status_name}</span> : <span className="booking-details-container-right-item-element">Status réservé</span>}</p>
+          <p className="booking-details-container-right-item">Informations: {booking ?  <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.resa.dispo}</span> : <span className="booking-details-container-right-item-element">disponibilités</span>}</p>
+          <p className="booking-details-container-right-item">Température: {booking ?  <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.resa.tempResa}</span> : <span className="booking-details-container-right-item-element">39°c</span>}</p>
+          <ul className="booking-details-container-right-list">
+            {booking
+            && (!booking.resa.options.length === 0
+            && booking.resa.options.map((option) => (
+              <li>{option.name} {option.price}€</li>
+            )))}
+          </ul>
+
+          <p className="booking-details-container-right-item"> Prix total: {booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.resa.price}€</span> : <span className="booking-details-container-right-item-element">2€</span>}</p>
+          <div className="booking-details-container-right-btnGroup">
+
+            {status === 1 ? <button className="booking-details-container-right-btnGroup-btn" type="button" onClick={handleStatusButton} value={[2, booking.resa.idResa]}>Confirmer la réservation</button> : null}
+            {status === 2 ? <button className="booking-details-container-right-btnGroup-btn" type="button" onClick={handleStatusButton} value={[3, booking.resa.idResa]}>Confirmer le dépôt</button> : null}
+            {status === 3 ? <button className="booking-details-container-right-btnGroup-btn" type="button" onClick={handleStatusButton} value={[4, booking.resa.idResa]}>Lavage terminé</button> : null}
+            {status === 4 ? <button className="booking-details-container-right-btnGroup-btn" type="button" onClick={handleStatusButton} value={[5, booking.resa.idResa]}>Linge récupéré</button> : null}
+            {status === 5 ? <span className="booking-details-container-right-btnGroup-btn booking-details-container-right-btnGroup-btn--cancel" >Reservation Terminée</span> : null}
+            {status === 6 ? <span className="booking-details-container-right-btnGroup-btn booking-details-container-right-btnGroup-btn--cancel ">Reservation annulée</span> : null}
+            {status !== 6 ? <button className="booking-details-container-right-btnGroup-btn--cancel booking-details-container-right-btnGroup-btn" type="button" onClick={handleStatusButton} value={[6, booking.resa.idResa]}>Annuler la reservation</button> : null}
+          </div>
+        </div>
+      </div>
     </div>
-    <AddressDetail />
-  </div>
-);
+  );
+};
 
 export default BookingDetail;

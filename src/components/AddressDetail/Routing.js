@@ -21,7 +21,10 @@ export default function Routing({
     if (!map) return;
 
     const routingControl = L.Routing.control({
-      waypoints: [L.latLng(userLatitude, userLongitude), L.latLng(machineLatitude, machineLongitude)],
+      waypoints: [
+        L.latLng(userLatitude, userLongitude),
+        L.latLng(machineLatitude, machineLongitude)
+      ],
       routeWhileDragging: true,
       language: 'fr',
     }).addTo(map).hide();

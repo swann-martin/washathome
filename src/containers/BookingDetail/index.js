@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import BookingDetail from 'src/components/BookingDetail';
-import { fetchBookings } from 'src/actions/bookings';
+import { fetchBookings, updateBookingStatus } from 'src/actions/bookings';
 import { findBooking } from '../../selectors/bookings';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -19,10 +19,13 @@ const mapDispatchToProps = (dispatch) => ({
     const action = fetchBookings();
     dispatch(action);
   },
-
-  handleNextStepButton: () => { },
-  handleCancelButton: () => { },
-
+  handleStatusButton: (event) => {
+    const action = updateBookingStatus({
+      status_id: event.target.value[0],
+      bookingId: event.target.value[2],
+    });
+    dispatch(action);
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookingDetail);

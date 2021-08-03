@@ -1,0 +1,56 @@
+@use 'src/styles/vars.scss';
+@import 'src/styles/mixins';
+
+.booking-details{
+ background-color: vars.$color-cards;
+ color : vars.$white;
+ min-height: 85vh;
+ width : 100vw;
+ display : flex;
+ flex-direction : column;
+ justify-content: space-around;
+ align-items: center;
+ &-title{
+     text-align: center;
+     font-size: 1.5rem;
+ }
+&-container{
+    display : flex;
+    justify-content: center;
+    align-items : center;   
+    &-map{
+        max-width: 50%;
+    }
+    &-right{
+        max-width: 45%;
+        margin-left: 2rem;
+        &-item{
+            margin: 1rem 0 ;
+            &-element{
+                font-weight: bold;
+            }
+        }
+        &-btnGroup{
+            display: flex;
+            &-btn{
+                margin: .5rem 0;
+                padding: .5rem 0; 
+                @include btn-green;
+                background-color: vars.$color-action;
+                color : vars.$white;
+                font-weight: bold;
+                &:hover{
+                    background-color: lighten(vars.$color-action, 10%);
+                }
+                &--cancel{
+                    background-color : vars.$red;
+                    &:hover{
+                        background-color: lighten(vars.$red, 10%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+}

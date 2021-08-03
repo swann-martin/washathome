@@ -1,38 +1,16 @@
 import { connect } from 'react-redux';
 import Options from 'src/components/Options';
+import { bookingInputOptionsChange } from '../../actions/bookings';
 
 const mapStateToProps = (state) => ({
-  option1: '',
-  option2: '',
-  option3: '',
-  options: [
-    {
-      title: 'pas d\'option',
-      price: 0,
-    },
-    {
-      title: 'pliage',
-      price: 2,
-    },
-    {
-      title: 'repassage',
-      price: 8,
-    },
-    {
-      title: 'sèche linge',
-      price: 3,
-    },
-    {
-      title: 'séparation blanc/couleurs',
-      price: 5,
-    },
-    {
-      title: 'lingettes anti-décoloration',
-      price: 2,
-    },
-  ],
+  choices: state.bookings.choices,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+  changeSelect: (event) => {
+    const action = bookingInputOptionsChange({ [event.target.name]: event.currentTarget.value });
+    dispatch(action);
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Options);
