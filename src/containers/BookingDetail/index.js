@@ -12,6 +12,8 @@ const mapStateToProps = (state, ownProps) => ({
   // otherGuy: state.bookings.washerBookings[0].bringer,
   booking: findBooking([state.bookings.washerBookings, state.bookings.bringerBookings],
     ownProps.match.params.id),
+  status: state.bookings.status,
+  userPseudo: state.user.user.pseudo,
 });
 
 const mapDispatchToProps = (dispatch) => ({

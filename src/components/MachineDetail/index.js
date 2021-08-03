@@ -7,7 +7,7 @@ import './styles.scss';
 const MachineDetail = ({
   machine,
   handleBookingsFormSubmit, changeField, changeSelect,
-  options, temperature, option1, option2, option3, }) => {
+  options, temperature, option1, option2, option3, dispo, }) => {
   useEffect(() => { }, [machine]);
   console.log('machine', machine);
   const position = { lat: machine.latitude, lng: machine.longitude };
@@ -68,6 +68,7 @@ const MachineDetail = ({
             <Options />
 
           </div>
+          <textarea className="addwasherform-form-input addwasherform-form-input--description" placeholder="Ecrivez ici vos disponibilités" name="dispo" onChange={changeField} value={dispo} />
           <button className="machinedetail-form-submit" type="submit">Reserver</button>
         </form>
       </div>

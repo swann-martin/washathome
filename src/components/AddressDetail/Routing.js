@@ -6,7 +6,7 @@ import { useMap } from 'react-leaflet';
 import PropTypes from 'prop-types';
 
 L.Marker.prototype.options.icon = L.icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png'
+  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
 });
 
 export default function Routing({

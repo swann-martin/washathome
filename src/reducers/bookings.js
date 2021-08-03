@@ -16,6 +16,7 @@ export const initialState = {
       option3: null,
     },
   },
+  status: 1,
   washerBookings: [],
   bringerBookings: [],
   choices: [

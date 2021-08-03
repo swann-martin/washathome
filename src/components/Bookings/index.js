@@ -21,7 +21,7 @@ const Bookings = ({ bringerBookings, washerBookings, isConnected, getBookings })
                 bringerBookings.length > 0 ? (
                   <h3>Les machines que vous avez réservées</h3>
                   && bringerBookings.map((bringerBooking) => (
-                    <Booking link={`bookingDetail/${bringerBooking.resa.idResa}`} price="4" name="{bringerBooking.}" status="teststatus" />
+                    <Booking link={`bookingDetail/${bringerBooking.resa.idResa}`} price="4" name={bringerBooking.bringer.pseudo} status={bringerBooking.resa.status_id, bringerBooking.resa.status_name} />
                   ))) : <h3>Vous n'avez pas réservé de machine pour l'instant</h3>
               }
 
