@@ -6,25 +6,25 @@ import AddressDetail from 'src/components/AddressDetail';
 import './styles.scss';
 
 const BookingDetail = ({
-  machine, resa, otherGuy, handleNextStepButton, handleCancelButton, booking,
+  booking, handleNextStepButton, handleCancelButton,
 }) => (
   <div>
     {console.log('booking', booking)}
-    <h2>Reservation de la machine {machine.name}</h2>
+    <h2>Reservation de la machine {booking.machine.name}</h2>
     <div>
-      <span> Bringer: {otherGuy.pseudo}</span>
+      <span> Bringer: {booking.bringer.pseudo}</span>
 
-      <span>Etape de la réservation: {resa.status_name}</span>
-      <span>Informations: {resa.dispo}</span>
-      <span>Température: {resa.tempResa}</span>
+      <span>Etape de la réservation: {booking.resa.status_name}</span>
+      <span>Informations: {booking.resa.dispo}</span>
+      <span>Température: {booking.resa.tempResa}</span>
       <ul>
         {
-          !resa.options.length === 0
-          && resa.options.map((option) => (
+          !booking.resa.options.length === 0
+          && booking.resa.options.map((option) => (
             <li>{option.name} {option.price}€</li>
           ))}
       </ul>
-      <span>Prix total: {resa.price}€</span>
+      <span>Prix total: {booking.resa.price}€</span>
       <StatusButton onClick={handleCancelButton} value={1} statusName="Confirmer la reservation" />
       <StatusButton onClick={handleCancelButton} value={2} statusName="Confirmer le dépôt" />
       <StatusButton onClick={handleCancelButton} value={3} statusName="En cours de lavage" />

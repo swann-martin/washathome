@@ -13,7 +13,6 @@ export const initialState = {
   },
   washerBookings: [],
   bringerBookings: [],
-  userBookings: {},
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -29,7 +28,7 @@ const reducer = (state = initialState, action = {}) => {
     case FETCH_BOOKINGS_SUCCESS:
       return {
         ...state,
-        userBookings: action.payload,
+        ...action.payload,
       };
     default:
       return state;

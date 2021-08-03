@@ -53,7 +53,7 @@ const Register = ({
           <Field className="register-form-input" type="text" name="firstname" value={firstname} placeholder="Prénom ex: Alex" onChange={changeField} />
           <Field className="register-form-input" type="text" name="lastname" value={lastname} placeholder="Nom ex: Dupont" onChange={changeField} />
           <Field className="register-form-input" type="text" name="pseudo" value={pseudo} placeholder="login ex: alexdupt331" onChange={changeField} />
-          <Field className="register-form-input" type="number" name="phone" value={phone} placeholder="tél ex: 0606060606" onChange={changeField} />
+          <Field className="register-form-input" type="tel" name="phone" value={phone} placeholder="tél ex: 0606060606" onChange={changeField} />
         </div>
         <div className="register-form-right">
           <Field className="register-form-input" type="email" name="mail" value={mail} placeholder="email ex: fauxemail@fakemail.com" onChange={changeField} />

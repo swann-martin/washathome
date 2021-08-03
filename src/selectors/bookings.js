@@ -6,11 +6,15 @@
 * @param {string} searchedId - le slug de la resa recherchée
 * @return {Object} - La resa trouvée
 */
-export function findBooking(bookings, searchedId) {
-  const booking = bookings.find((testedBooking) => {
-    console.log('testedBookingID', testedBooking.resa.idResa);
-    console.log('searchedId', searchedId);
-    return testedBooking.resa.idResa == searchedId;
-  });
-  return booking;
+export function findBooking(userBookings, searchedId) {
+  for (const bookings of userBookings) {
+      const booking = bookings.find((testedBooking) => {
+      console.log('testedBookingID', testedBooking.resa.idResa);
+      console.log('searchedId', searchedId);
+      return testedBooking.resa.idResa == searchedId;
+    });
+    if (booking) {
+      return booking;
+    }
+  }
 }
