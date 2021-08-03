@@ -6,6 +6,7 @@ const Booking = ({
   id, name, price, bookingInfos, status, link
 }) => (
   <Link
+    key={id}
     className="booking"
     exact
     to={link}

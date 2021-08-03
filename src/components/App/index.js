@@ -46,7 +46,7 @@ const App = ({ pressedConnected, foundMachines, openMenu, loading }) => {
         <Route path="/addwasher" component={AddWasherForm} />
         <Route path="/profile" component={Profile} />
         <Route path="/bookings" component={Bookings} />
-        <Route path="/bookingDetail/:id" component={BookingDetail} />
+        <Route exact path="/bookingDetail/:id" component={BookingDetail} />
         <Route path="/searchresult" component={Cards} />
         <Route path="/team" component={Team} />
         <Route exact path="/machineDetail/:id" component={MachineDetail} />

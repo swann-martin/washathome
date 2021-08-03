@@ -26,7 +26,7 @@ export default (store) => (next) => (action) => {
         password,
         passwordConfirm,
         phone,
-      avatar } = store.getState().user.register;
+        avatar } = store.getState().user.register;
       api.post('/signup', {
         lastname,
         firstname,
@@ -55,8 +55,9 @@ export default (store) => (next) => (action) => {
         pseudo,
         mail,
         phone,
-        avatar,
       } = store.getState().user.user;
+      const avatar = new FormData();
+      avatar.append('avatar', store.getState().user.user.avatar);
       api.patch('/account', {
         lastname, firstname, pseudo, mail, phone, avatar,
       })

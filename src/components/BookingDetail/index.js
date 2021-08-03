@@ -6,9 +6,10 @@ import AddressDetail from 'src/components/AddressDetail';
 import './styles.scss';
 
 const BookingDetail = ({
-  machine, resa, otherGuy, handleNextStepButton, handleCancelButton,
+  machine, resa, otherGuy, handleNextStepButton, handleCancelButton, booking,
 }) => (
   <div>
+    {console.log('booking', booking)}
     <h2>Reservation de la machine {machine.name}</h2>
     <div>
       <span> Bringer: {otherGuy.pseudo}</span>
@@ -17,7 +18,8 @@ const BookingDetail = ({
       <span>Informations: {resa.dispo}</span>
       <span>Température: {resa.tempResa}</span>
       <ul>
-        { !resa.options.length === 0
+        {
+          !resa.options.length === 0
           && resa.options.map((option) => (
             <li>{option.name} {option.price}€</li>
           ))}
