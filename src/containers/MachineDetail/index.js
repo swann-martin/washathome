@@ -1,18 +1,23 @@
 import { connect } from 'react-redux';
 import MachineDetail from 'src/components/MachineDetail';
 import { findMachine } from 'src/selectors/machines';
-import { bookingFormSubmit } from 'src/actions/bookings';
+import { bookingFormSubmit, bookingInputChange } from 'src/actions/bookings';
 
-const mapStateToProps = (state, ownProps) => {
-  console.log('ownProps', ownProps);
-  return ({
-    days: ['29 juillet', '30 juillet', '31 juillet', '1 août', '2 août', '3 août', '4 août'],
-    hours: ['7h-7h30', '8h-8h30', '8h30-9h', '9h-9h30', '12h-12h30', '12h30-13h', '13h00-13h30', '13h30-14h00', '17h-17h30', '17h30-18h', '18h-18h30', '18h30-19h', '19h-19h30', '19h30-20h'],
-    machine: findMachine(state.machines.foundMachines, ownProps.match.params.id),
-  }
-  );
-};
+const mapStateToProps = (state, ownProps) => ({
+  dispo: state.bookings.inputs.dispo,
+  temprature: state.bookings.inputs.temperature,
+  machine: findMachine(state.machines.foundMachines, ownProps.match.params.id),
+  options: {
+    option1: state.bookings.inputs.options.options1,
+    option2: state.bookings.inputs.options.options2,
+    option3: state.bookings.inputs.options.options3,
+  },
+});
 const mapDispatchToProps = (dispatch) => ({
+  changeField: (event) => {
+    const action = bookingInputChange({ [event.target.name]: event.currentTarget.value });
+    dispatch(action);
+  },
   handleBookingsFormSubmit: (evt) => {
     evt.preventDefault();
     const action = bookingFormSubmit();

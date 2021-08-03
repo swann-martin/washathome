@@ -3,7 +3,7 @@ import {
 } from 'src/actions/app';
 
 import {
-  loginSuccess, autoLoginFormSubmit,
+  loginSuccess, autoLoginFormSubmit
 } from 'src/actions/user';
 
 export default (store) => (next) => (action) => {
@@ -18,11 +18,8 @@ export default (store) => (next) => (action) => {
       // Elles seront stockée uniquement si on était connecté avant le refresh
       // Sinon y'aura rien dedans donc autant pas lancer la connexion si on était déjà pas connecté
       const token = localStorage.getItem('token');
-      const mail = localStorage.getItem('mail');
-      const password = localStorage.getItem('password');
-      if (token && mail) {
-        store.dispatch(autoLoginFormSubmit(mail, password));
-        store.dispatch(loginSuccess(mail, token));
+      if (token) {
+        store.dispatch(autoLoginFormSubmit());
       }
       return next(action);
     }

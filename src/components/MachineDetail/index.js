@@ -4,8 +4,10 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Options from '../../containers/Options';
 import './styles.scss';
 
-const MachineDetail = ({ days, hours, machine, handleBookingsFormSubmit,
-}) => {
+const MachineDetail = ({
+  machine,
+  handleBookingsFormSubmit, changeField,
+  options, temperature }) => {
   useEffect(() => { }, [machine]);
   console.log('machine', machine);
   const position = { lat: machine.latitude, lng: machine.longitude };
@@ -55,21 +57,7 @@ const MachineDetail = ({ days, hours, machine, handleBookingsFormSubmit,
 
         <form className="machinedetail-form" onSubmit={handleBookingsFormSubmit}>
 
-          <select className="machinedetail-form-select" name="day" id="day-select">
-            <option className="machinedetail-form-select-day" value="">Jours disponibles</option>
-            {days.map((day, id) => (
-              <option key={day + id} className="machinedetail-form-select-day" value={day}>{day}</option>
-            ))}
-          </select>
-
-          <select className="machinedetail-form-select" name="hour" id="hour-select">
-            <option className="machinedetail-form-select-hour" value="">Horaires disponibles</option>
-            {hours.map((hour, id) => (
-              <option key={hour + id} className="machinedetail-form-select-hour" value={hour}>{hour}</option>
-            ))}
-          </select>
-
-          <select className="machinedetail-form-select" id="temperature-select" name="temperature">
+          <select className="machinedetail-form-select" id="temperature-select" name="temperature" value={temperature} onChange={changeField}>
             <option className="machinedetail-form-select-temperature" value="30">Température de lavage : 30°c</option>
             <option className="machinedetail-form-select-temperature" value="20">20°</option>
             <option className="machinedetail-form-select-temperature" value="40">40°</option>

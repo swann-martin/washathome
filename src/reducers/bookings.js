@@ -1,15 +1,20 @@
 import { BOOKING_INPUT_CHANGE, FETCH_BOOKINGS_SUCCESS } from 'src/actions/bookings';
 
 export const initialState = {
-
+  selectedMachine: {
+    machine_id: null,
+    user_id: null,
+  },
   inputs: {
     washerId: 0,
     machineId: 1,
     temperature: 30,
     dispo: '',
-    option1: 0,
-    option2: 0,
-    option3: 0,
+    options: {
+      option1: null,
+      option2: null,
+      option3: null,
+    },
   },
   washerBookings: [],
   bringerBookings: [],

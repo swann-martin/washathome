@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 
 const Card = ({ picture, city, price, id, address, description, zip_code, name, capacity, link }) => (
-  <Link className="card" exact to={link} machine={{ picture, city, price, id, address, description, zip_code, name, capacity }} >
+  <Link className="card" to={link} machine={{ picture, city, price, id, address, description, zip_code, name, capacity }} >
     <img className="card-img" src={picture} alt="la machine" />
     <div className="card-content">
       <div className="card-content-city">

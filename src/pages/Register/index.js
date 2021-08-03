@@ -19,15 +19,6 @@ const Register = ({
   const handleCguCheckboxChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
   };
-
-  const handleFile = (event) => {
-    console.log(event.target.file);
-  };
-
-  const handleUpload = (e) => {
-    console.log(e.target);
-  };
-
   const onFileChange = (evt) => {
     changeField(evt.target.files[0], evt.target.name);
   };
@@ -59,6 +50,7 @@ const Register = ({
           <Field className="register-form-input" type="email" name="mail" value={mail} placeholder="email ex: fauxemail@fakemail.com" onChange={changeField} />
           <Field className="register-form-input" type="password" name="password" value={password} placeholder="mot de passe" onChange={changeField} />
           <Field className="register-form-input" type="password" name="passwordConfirm" value={passwordConfirm} placeholder="confirmation du mot de passe" onChange={changeField} />
+
           <input className="register-form-input" type="file" name="avatar" placeholder="avatar" onChange={onFileChange} />
           <div className="register-form-input register-form-input--check">
             <label htmlFor="cgu" className="">

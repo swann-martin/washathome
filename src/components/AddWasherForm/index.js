@@ -64,7 +64,7 @@ const AddWasherForm = ({
       {machines &&
         <h2 className="addwasherform-title">Mes machines</h2> &&
         machines.map((machine) => (
-          <Card {...machine} key={machine.id} link={`/machine/${machine.id}`} />
+          <Card {...machine} key={machine.id} link={`/machineDetail/${machine.id}`} />
         ))}
 
     </div>

@@ -146,7 +146,7 @@ export default (store) => (next) => (action) => {
       // le state du reducer user
       api.get('/autologin')
         .then((result) => {
-          console.log(result.data.personnal[0]);
+       
           store.dispatch(loginSuccess({
             user: result.data.personal[0].user,
             machine: result.data.personal[0].machine,

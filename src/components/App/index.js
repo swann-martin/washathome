@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import PropTypes, { object } from 'prop-types';
 
 // Import components
+import { initApp } from 'src/actions/app';
 import PasswordChangeForm from 'src/containers/PasswordChangeForm';
 import Connect from 'src/containers/Connect';
 import Cards from 'src/containers/Cards';
@@ -24,12 +25,9 @@ import Cgu from '../../pages/Cgu';
 import Team from '../../pages/Team';
 // Import style
 import './styles.scss';
-import { initApp } from '../../actions/app';
 
 const App = ({ pressedConnected, foundMachines, openMenu, loading }) => {
-  useEffect(() => {
-    initApp();
-  }, [foundMachines]);
+  // useEffect(initApp(), []);
   return (
     <div className="app">
       <Nav />

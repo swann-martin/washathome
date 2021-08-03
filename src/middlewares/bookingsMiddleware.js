@@ -2,6 +2,7 @@ import api from 'src/api';
 import {
   BOOKING_FORM_SUBMIT, BOOKING_UPDATE, BOOKING_CANCEL, GET_BOOKING_BY_ID, FETCH_BOOKINGS, fetchBookingsSuccess,
 } from '../actions/bookings';
+import { FETCH_MACHINES_BY_ZIP_CODE } from '../actions/machines';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -9,7 +10,13 @@ export default (store) => (next) => (action) => {
 
     // Réserver une machine en identifiant le bringerWasher grâce à son JWT
     case BOOKING_FORM_SUBMIT: {
-      api.post('/reservation/', store.getState().bookings.inputs)
+      api.post('/reservation/', {
+        tempreature: store.getState().bookings.inputs.temperature,
+        dispo: store.getState().bookings.inputs.dispo,
+        washer_id: store.getState().bookings.inputs.machine_id,
+        machine_id: store.getState().bookings.inputs.machine_id,
+        status_id: 1,
+      })
         .then((result) => {
           console.log('result.data du post bookings form submit from machineDetail', result.data);
         })
