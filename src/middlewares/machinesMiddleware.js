@@ -39,7 +39,17 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case UPDATE_MACHINE: {
-      const { machineId } = store; getState().machine.machineId;
+      const { machineId } = store.getState().machine.machineId;
+      const {
+        address,
+        title,
+        picture,
+        description,
+        price,
+        capacity,
+        zip_code,
+        city,
+      } = store.getState().user.machine;
       api.patch(`/machine/${machineId}`)
         .then((result) => {
           console.log('result.data du post addwasher', result.data);

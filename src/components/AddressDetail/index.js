@@ -7,21 +7,13 @@ import Routing from './Routing';
 import './styles.scss';
 
 const AddressDetail = ({
-  userLatitude,
-  userLongitude,
   machineLatitude,
   machineLongitude,
 }) => {
-  const position = [userLongitude, userLatitude];
+  const position = [machineLatitude, machineLongitude];
   return (
     <div className="address-detail">
       <MapContainer center={position} zoom={10} scrollWheelZoom>
-        <Routing
-          userLatitude
-          userLongitude
-          machineLatitude
-          machineLongitude
-        />
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

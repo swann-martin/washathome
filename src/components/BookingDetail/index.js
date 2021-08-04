@@ -7,18 +7,7 @@ import './styles.scss';
 const BookingDetail = ({
   booking, handleStatusButton, status, userPseudo,
 }) => {
-  useEffect(() => {
-
-    const onSuccess = (position) => {
-      userCoords = position.coords;
-    };
-    const onError = () => {
-      console.log('cannot get position');
-    };
-    if (status) {
-      const watch = navigator.geolocation.watchPosition(onSuccess, onError);
-    }
-  }, [status]);
+  useEffect(() => { }, [status]);
 
   return (
     <div className="booking-details">
@@ -26,8 +15,6 @@ const BookingDetail = ({
       <div className="booking-details-container">
         <AddressDetail
           className="booking-details-container-map"
-          userLatitude=""
-          userLongitude=""
           machineLatitude={booking.machine.latitude}
           machineLongitude={booking.machine.longitude}
         />

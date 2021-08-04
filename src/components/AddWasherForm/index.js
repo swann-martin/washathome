@@ -7,7 +7,7 @@ import Field from 'src/components/Field';
 import './styles.scss';
 
 const AddWasherForm = ({
-  handleWasherFormSubmit,
+  handleUpdateWasher,
   title,
   address,
   zip_code,
@@ -35,7 +35,7 @@ const AddWasherForm = ({
       </Link>
       <h1 className="addwasherform-title"> Ajouter une Machine </h1>
 
-      <form className="addwasherform-form" onSubmit={handleWasherFormSubmit} encType="multipart/form-data">
+      <form className="addwasherform-form" onSubmit={handleUpdateWasher} encType="multipart/form-data">
         <Field placeholder="Nom ex: Nom de la machine" value={title} name="title" onChange={changeField} type="text" />
         <Field placeholder="Adresse de la machine ex: 15, rue du test" value={address} name="address" onChange={changeField} type="text" />
         <Field placeholder="Code Postal ex: 13000" value={zip_code} type="number" name="zip_code" onChange={changeField} />
@@ -59,13 +59,8 @@ const AddWasherForm = ({
           <h2 className="addwasherform-form-image-subtitle">Photo de la machine (facultatif)</h2>
           <Field className="register-form-input" type="file" name="picture" value={picture} placeholder="picture" onChange={changeField} />
         </div>
-        <button className="addwasherform-form-submit" type="submit">Valider</button>
+        <button className="addwasherform-form-submit" type="submit">Valider l'ajout de la machine</button>
       </form>
-      {machines &&
-        <h2 className="addwasherform-title">Mes machines</h2> &&
-        machines.map((machine) => (
-          <Card {...machine} key={machine.id} link={`/machineDetail/${machine.id}`} />
-        ))}
 
     </div>
   );

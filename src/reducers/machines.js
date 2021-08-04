@@ -1,4 +1,4 @@
-import { SET_MACHINES, SEARCH_INPUT_CHANGE, ADD_MACHINE_INPUT_CHANGE, ADD_MACHINE_FORM_SUBMIT } from 'src/actions/machines';
+import { SET_MACHINES, SEARCH_INPUT_CHANGE, ADD_MACHINE_INPUT_CHANGE } from 'src/actions/machines';
 import { SET_LOADING } from 'src/actions/setLoading';
 
 export const initialState = {
@@ -44,6 +44,8 @@ export const initialState = {
     search: '',
     capacity: '6',
   },
+
+
 };
 
 const reducer = (state = initialState, action = {}) => {

@@ -10,6 +10,7 @@ import {
   DELETE_USER_FORM_SUBMIT_SUCCESS,
   TOGGLE_MENU,
   CHANGE_PASSWORD_INPUT_CHANGE,
+  MACHINE_INPUT_CHANGE,
 } from '../actions/user';
 
 export const initialState = {
@@ -43,7 +44,17 @@ export const initialState = {
     avatar: '',
     cgu: false,
   },
-  machine: [],
+  machine: [
+    {
+      id: 2,
+      name: "la machine de Gigi",
+      address: "11 avenue Crampel",
+      zip_code: "31400",
+      city: "toulouse",
+      latitude: 43.58437,
+      longitude: 1.452135,
+    },
+  ],
   passwordChange: {
     password: '',
     passwordConfirm: '',
@@ -126,6 +137,14 @@ const reducer = (state = initialState, action = {}) => {
           ...state.passwordChange,
           ...action.payload,
         },
+      };
+    case MACHINE_INPUT_CHANGE:
+      return {
+        ...state,
+        machine: [0: {
+          ...state,
+          ...action.payload,
+        },],
       };
     default:
       return state;

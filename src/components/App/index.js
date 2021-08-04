@@ -11,6 +11,7 @@ import Cards from 'src/containers/Cards';
 import Nav from 'src/containers/Nav';
 import Loader from '../Loader';
 import AddWasherForm from '../../containers/AddWasherForm';
+import MyMachines from '../../containers/MyMachines';
 import Profile from '../../containers/Profile';
 import Menu from '../../containers/Menu';
 import Header from '../Header';
@@ -26,35 +27,33 @@ import Team from '../../pages/Team';
 // Import style
 import './styles.scss';
 
-const App = ({ pressedConnected, foundMachines, openMenu, loading }) => {
-  // useEffect(initApp(), []);
-  return (
-    <div className="app">
-      <Nav />
-      <Switch>
-        <Route exact path="/">
-          {loading && <Loader />}
-          <Header foundMachines={foundMachines} />
-          {/* <BookingDetail /> */}
-          <Cards />
-        </Route>
-        <Route path="/changePassword" component={PasswordChangeForm} />
-        <Route path="/cgu" component={Cgu} />
-        <Route path="/register" component={Register} />
-        <Route path="/addwasher" component={AddWasherForm} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/bookings" component={Bookings} />
-        <Route exact path="/bookingDetail/:id" component={BookingDetail} />
-        <Route path="/searchresult" component={Cards} />
-        <Route path="/team" component={Team} />
-        <Route exact path="/machineDetail/:id" component={MachineDetail} />
-      </Switch>
-      {pressedConnected && <Connect />}
-      {openMenu && <Menu />}
-      <Footer />
-    </div>
-  );
-};
+const App = ({ pressedConnected, foundMachines, openMenu, loading }) => (
+
+  <div className="app">
+    <Nav />
+    <Switch>
+      <Route exact path="/">
+        {loading && <Loader />}
+        <Header foundMachines={foundMachines} />
+        <Cards />
+      </Route>
+      <Route path="/changePassword" component={PasswordChangeForm} />
+      <Route path="/cgu" component={Cgu} />
+      <Route path="/register" component={Register} />
+      <Route path="/addwasher" component={AddWasherForm} />
+      <Route path="/profile" component={Profile} />
+      <Route path="/bookings" component={Bookings} />
+      <Route exact path="/bookingDetail/:id" component={BookingDetail} />
+      <Route path="/searchresult" component={Cards} />
+      <Route path="/team" component={Team} />
+      <Route exact path="/machineDetail/:id" component={MachineDetail} />
+      <Route exact path="/MyMachines" component={MyMachines} />
+    </Switch>
+    {pressedConnected && <Connect />}
+    {openMenu && <Menu />}
+    <Footer />
+  </div>
+);
 
 App.propTypes = {
   isConnected: PropTypes.bool.isRequired,

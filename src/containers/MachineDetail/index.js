@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps, store) => ({
   },
   machineId: state.bookings.inputs.machineId,
   washerId: state.bookings.inputs.washerId,
+  isConnected: state.user.isConnected,
 });
 const mapDispatchToProps = (dispatch) => ({
   changeField: (event) => {
