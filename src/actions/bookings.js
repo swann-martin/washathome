@@ -6,6 +6,7 @@ export const FETCH_BOOKINGS_SUCCESS = 'FETCH_BOOKINGS_SUCCESS';
 export const BOOKING_INPUT_OPTIONS_CHANGE = 'BOOKING_INPUT_OPTIONS_CHANGE';
 export const UPDATE_BOOKING_STATUS = 'UPDATE_BOOKING_STATUS';
 export const CURRENT_MACHINE_UPDATE = 'CURRENT_MACHINE_UPDATE';
+export const CURRENT_BOOKING_UPDATE = 'CURRENT_BOOKING_UPDATE';
 
 export const currentMachineUpdate = (payload) => ({
   type: CURRENT_MACHINE_UPDATE,
@@ -40,5 +41,10 @@ export const fetchBookings = () => ({
 });
 export const fetchBookingsSuccess = (payload) => ({
   type: FETCH_BOOKINGS_SUCCESS,
+  payload,
+});
+
+export const currentBookingUpdate = (payload) => ({
+  type: CURRENT_BOOKING_UPDATE,
   payload,
 });

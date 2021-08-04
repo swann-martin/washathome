@@ -4,7 +4,17 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 import './style.scss';
 
-const Profile = ({ firstname, lastname, pseudo, avatar, mail, phone, changeField, deleteUser, token, updateUser }) => (
+const Profile = ({
+  firstname,
+  lastname,
+  pseudo,
+  avatar,
+  mail,
+  phone,
+  changeField,
+  deleteUser,
+  updateUser,
+}) => (
   <div className="profile">
 
     <Link
@@ -31,7 +41,8 @@ const Profile = ({ firstname, lastname, pseudo, avatar, mail, phone, changeField
         <label type="tel" className="profile-credentials-label">tél&nbsp;<Field className="profile-credentials-label-input" name="phone" value={phone} onChange={changeField} /></label>
         <label className="profile-credentials-label">Avatar&nbsp;
           <div className="profile-credentials-label-avatar-container">
-            <img className="profile-credentials-label-avatar" src={avatar} alt="votre-avatar" /><Field className="profile-credentials-label-input" name="avatar" value={avatar} onChange={changeField} />
+            <img className="profile-credentials-label-avatar" src={avatar} alt="votre-avatar" />
+            <Field type="file" className="profile-credentials-label-input" name="avatar" value="" onChange={changeField} />
           </div>
         </label>
         <div className="profile-credentials-btn-container">
@@ -51,6 +62,9 @@ Profile.propTypes = {
   avatar: PropTypes.string,
   mail: PropTypes.string,
   phone: PropTypes.string,
+  changeField: PropTypes.func,
+  deleteUser: PropTypes.func,
+  updateUser: PropTypes.func,
 };
 
 Profile.defaultProps = {
@@ -60,6 +74,9 @@ Profile.defaultProps = {
   avatar: '',
   mail: '',
   phone: '',
+  changeField: () => { },
+  deleteUser: () => { },
+  updateUser: () => { },
 };
 
 export default Profile;

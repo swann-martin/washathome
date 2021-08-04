@@ -5,15 +5,10 @@ import { bookingFormSubmit, bookingInputChange } from 'src/actions/bookings';
 
 const mapStateToProps = (state, ownProps, store) => ({
   dispo: state.bookings.inputs.dispo,
-  temprature: state.bookings.inputs.temperature,
   machine: findMachine(state.machines.foundMachines, ownProps.match.params.id, store),
-  options: {
-    option1: state.bookings.inputs.options.options1,
-    option2: state.bookings.inputs.options.options2,
-    option3: state.bookings.inputs.options.options3,
-  },
   machineId: state.bookings.inputs.machineId,
   washerId: state.bookings.inputs.washerId,
+  isConnected: state.user.isConnected,
 });
 const mapDispatchToProps = (dispatch) => ({
   changeField: (event) => {

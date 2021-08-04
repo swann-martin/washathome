@@ -17,28 +17,38 @@
       color: vars.$red;
     }
   }
+  &-btn {
+    &--close {
+      @include btn-close;
+      align-self: flex-end;
+      margin-right: 1.8rem;
+    }
+  }
   &-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     @media screen and (min-width: 700px) {
       flex-direction: row;
-      align-items: center;
+      align-items: flex-start;
+      min-height: 80vh;
     }
 
     &-left {
       padding: 1rem;
       max-width: 100%;
+      margin: 0 auto;
     }
     &-right {
       padding: 1rem;
-      margin: 1rem;
       max-width: 100%;
       color: vars.$red;
       border-top: vars.$white solid 10px;
       @media screen and (min-width: 700px) {
+        margin: 0 1rem;
         border-left: vars.$white solid 10px;
         border-top: transparent;
+        min-height: 80vh;
       }
     }
   }

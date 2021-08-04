@@ -1,10 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import logo from 'src/assets/logoWash1.png';
 // import style
 import './styles.scss';
 
-const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu, avatar }) => (
+const Nav = ({
+  handlePressedConnected,
+  isConnected,
+  handleOpenMenu,
+  avatar,
+  pseudo,
+}) => (
   <nav className="nav">
     <NavLink exact className="link nav-item nav-item--mobile" activeClassName="link--active" to="/">
 
@@ -23,16 +30,7 @@ const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu, avatar }) =>
     <NavLink className="link link-desktop nav-item nav-item--desktop" activeClassName="nav-item--active" to="/addwasher">
       ajouter une machine
     </NavLink>
-    <button
-      type="button"
-      className="nav-item nav-btn nav-btn--search nav-item--mobile"
-      onClick={() => {
-        console.log('clicked on btn-nav-user');
-      }}
-    >
-      <i className="fas fa-search-location" />
-      <span className="nav-item-text">search location</span>
-    </button>
+
     {!isConnected && (
       <button
         type="button"
@@ -48,18 +46,35 @@ const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu, avatar }) =>
     )}
 
     {isConnected && (
-      <button
+      <div
         type="button"
-        className="nav-item nav-btn nav-btn--user"
+        className={isConnected ? 'nav-item nav-btn nav-btn--user--connected' : 'nav-item nav-btn nav-btn--user'}
         onClick={() => {
           handleOpenMenu();
           console.log('cliked on profile picture');
         }}
       >
+        <span>{pseudo}</span>
         <img className="nav-item nav-btn nav-btn--user-profile" src={avatar} alt="user-avatar" />
-      </button>
+      </div>
     )}
 
   </nav>
 );
+
+Nav.propTypes = {
+  handlePressedConnected: PropTypes.func,
+  isConnected: PropTypes.bool,
+  handleOpenMenu: PropTypes.func,
+  avatar: PropTypes.string,
+  pseudo: PropTypes.string,
+};
+
+Nav.defaultProps = {
+  isConnected: false,
+  avatar: 'https://randomuser.me/api/portraits/lego/1.jpg',
+  pseudo: 'Camille',
+  handlePressedConnected: () => { },
+  handleOpenMenu: () => { },
+};
 export default Nav;

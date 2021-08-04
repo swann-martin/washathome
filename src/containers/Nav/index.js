@@ -5,6 +5,7 @@ import { toggleConnected, toggleMenu } from '../../actions/user';
 const mapStateToProps = (state) => ({
   isConnected: state.user.isConnected,
   avatar: state.user.user.avatar,
+  pseudo: state.user.user.pseudo,
 });
 
 const mapDispatchToProps = (dispatch) => ({

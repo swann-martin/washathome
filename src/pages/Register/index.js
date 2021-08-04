@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import PropTypes, { object } from 'prop-types';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Field from '../../components/Field';
 import './style.scss';
 
@@ -8,10 +8,10 @@ const Register = ({
   lastname,
   pseudo,
   firstname,
-  mail, phone,
+  mail,
+  phone,
   password,
   passwordConfirm,
-  avatar,
   changeField,
   cgu,
   handleRegisterFormSubmit,
@@ -81,7 +81,6 @@ Register.propTypes = {
   mail: PropTypes.string,
   phone: PropTypes.string,
   password: PropTypes.string,
-  avatar: PropTypes.object,
   passwordConfirm: PropTypes.string,
   cgu: PropTypes.bool,
   changeField: PropTypes.func,

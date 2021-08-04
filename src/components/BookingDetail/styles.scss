@@ -1,56 +1,100 @@
 @use 'src/styles/vars.scss';
 @import 'src/styles/mixins';
 
-.booking-details{
- background-color: vars.$color-cards;
- color : vars.$white;
- min-height: 85vh;
- width : 100vw;
- display : flex;
- flex-direction : column;
- justify-content: space-around;
- align-items: center;
- &-title{
-     text-align: center;
-     font-size: 1.5rem;
- }
-&-container{
-    display : flex;
-    justify-content: center;
-    align-items : center;   
-    &-map{
-        max-width: 50%;
+.booking-details {
+  background-color: vars.$color-cards;
+  color: vars.$white;
+  min-height: 85vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  &-btn {
+    &--close {
+      @include btn-close;
+      align-self: flex-end;
+      margin-right: 1.8rem;
     }
-    &-right{
-        max-width: 45%;
-        margin-left: 2rem;
-        &-item{
-            margin: 1rem 0 ;
-            &-element{
-                font-weight: bold;
-            }
-        }
-        &-btnGroup{
-            display: flex;
-            &-btn{
-                margin: .5rem 0;
-                padding: .5rem 0; 
-                @include btn-green;
-                background-color: vars.$color-action;
-                color : vars.$white;
-                font-weight: bold;
-                &:hover{
-                    background-color: lighten(vars.$color-action, 10%);
-                }
-                &--cancel{
-                    background-color : vars.$red;
-                    &:hover{
-                        background-color: lighten(vars.$red, 10%);
-                    }
-                }
-            }
-        }
-    }
-}
+  }
+  &-title {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+  }
 
+  &-container {
+    padding: 0.5rem;
+    @media screen and (min-width: 700px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 100%;
+    }
+
+    &-map {
+      @media screen and (min-width: 700px) {
+        max-width: 50%;
+      }
+    }
+    &-right {
+      @media screen and (min-width: 700px) {
+        width: 45%;
+        margin-left: 2rem;
+        &--big {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 70vw;
+          height: 70vh;
+          background-color: vars.$color-bg-hero;
+          border-radius: 20px;
+          padding: 1rem;
+        }
+      }
+
+      &-item {
+        margin: 1rem 0;
+        &-element {
+          font-weight: bold;
+          &--status {
+            color: vars.$red;
+          }
+        }
+      }
+      &-btnGroup {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @media screen and (min-width: 700px) {
+          justify-content: space-between;
+          flex-direction: row;
+        }
+        &-btn {
+          margin: 0.5rem 0;
+          padding: 0.5rem 0;
+          @include btn-green;
+          background-color: vars.$color-action;
+          color: vars.$white;
+          font-weight: bold;
+          @media screen and (min-width: 700px) {
+            order: 2;
+          }
+          &:hover {
+            background-color: lighten(vars.$color-action, 10%);
+          }
+          &--cancel {
+            @media screen and (min-width: 700px) {
+              order: 1;
+            }
+            background-color: vars.$black;
+            &:hover {
+              background-color: lighten(vars.$red, 10%);
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -7,7 +7,6 @@ import Field from 'src/components/Field';
 import './styles.scss';
 
 const AddWasherForm = ({
-  handleWasherFormSubmit,
   title,
   address,
   zip_code,
@@ -15,9 +14,8 @@ const AddWasherForm = ({
   price,
   description,
   picture,
-  capacity,
   changeField,
-  machines
+  handleWasherFormSubmit,
 }) => {
   const handleFieldChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
@@ -59,13 +57,8 @@ const AddWasherForm = ({
           <h2 className="addwasherform-form-image-subtitle">Photo de la machine (facultatif)</h2>
           <Field className="register-form-input" type="file" name="picture" value={picture} placeholder="picture" onChange={changeField} />
         </div>
-        <button className="addwasherform-form-submit" type="submit">Valider</button>
+        <button className="addwasherform-form-submit" type="submit">Valider l'ajout de la machine</button>
       </form>
-      {machines &&
-        <h2 className="addwasherform-title">Mes machines</h2> &&
-        machines.map((machine) => (
-          <Card {...machine} key={machine.id} link={`/machineDetail/${machine.id}`} />
-        ))}
 
     </div>
   );

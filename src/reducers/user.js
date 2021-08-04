@@ -12,6 +12,8 @@ import {
   CHANGE_PASSWORD_INPUT_CHANGE,
 } from '../actions/user';
 
+import { MACHINE_INPUT_CHANGE } from '../actions/machines';
+
 export const initialState = {
   loading: true,
   isConnected: false,
@@ -43,7 +45,21 @@ export const initialState = {
     avatar: '',
     cgu: false,
   },
-  machine: [],
+  machine: [
+    {
+      id: 0,
+      capacity: 6,
+      name: 'le machine de Gigi',
+      description: 'Travail rapide et soigné du linge, machine neuve et derniere génération Samsung',
+      zip_code: '31400',
+      city: 'Toulouse',
+      address: '11 avenue Crampel',
+      latitude: 43.58437,
+      longitude: 1.452135,
+      picture: 'https://tse2.mm.bing.net/th?id=OIP.nKGE3vTrx5wKcqgOKxU9UwHaFj&pid=Api&P=0&w=231&h=174',
+      price: 24,
+    },
+  ],
   passwordChange: {
     password: '',
     passwordConfirm: '',
@@ -126,6 +142,14 @@ const reducer = (state = initialState, action = {}) => {
           ...state.passwordChange,
           ...action.payload,
         },
+      };
+    case MACHINE_INPUT_CHANGE:
+      return {
+        ...state,
+        machine: [{
+          ...state.machine[0],
+          ...action.payload,
+        },],
       };
     default:
       return state;

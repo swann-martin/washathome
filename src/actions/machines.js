@@ -23,6 +23,12 @@ export const addMachineInputChange = (payload) => ({
   payload,
 });
 
+export const MACHINE_INPUT_CHANGE = 'MACHINE_INPUT_CHANGE';
+export const machineInputChange = (payload) => ({
+  type: MACHINE_INPUT_CHANGE,
+  payload,
+});
+
 export const ADD_MACHINE_FORM_SUBMIT = 'ADD_MACHINE_FORM_SUBMIT';
 export const addMachineFormSubmit = () => ({
   type: ADD_MACHINE_FORM_SUBMIT,

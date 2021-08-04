@@ -1,3 +1,5 @@
+import { currentBookingUpdate } from 'src/actions/bookings';
+import store from 'src/store';
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable arrow-body-style */
 
@@ -8,12 +10,14 @@
 */
 export function findBooking(userBookings, searchedId) {
   for (const bookings of userBookings) {
-      const booking = bookings.find((testedBooking) => {
-      console.log('testedBookingID', testedBooking.resa.idResa);
-      console.log('searchedId', searchedId);
+    const booking = bookings.find((testedBooking) => {
       return testedBooking.resa.idResa == searchedId;
     });
     if (booking) {
+      const action = currentBookingUpdate({
+        status_id: booking.resa.status_id,
+      });
+      store.dispatch(action);
       return booking;
     }
   }

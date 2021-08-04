@@ -7,7 +7,7 @@ const Footer = () => (
   <div className="footer">
     <ul className="footer-list">
       <li className="footer-list-element"><Link to="/register" className="footer-list-element-link">S'inscrire</Link></li>
-      <li className="footer-list-element"><Link to="/addwasher" className="footer-list-element-link">Devenir washer</Link></li>
+      <li className="footer-list-element"><Link to="/addwasher" className="footer-list-element-link">Ajoute ton washer</Link></li>
     </ul>
     <Link to="/"><img src={logo} alt="logo" className="footer-logo" /></Link>
     <ul className="footer-list">

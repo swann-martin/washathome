@@ -10,18 +10,26 @@ const Option = ({ options, onChange, name }) => (
         options.map((option) => (
           <option key={option.id} value={option.id} className="option-select-option">{`${option.name} + ${option.price} €`}</option>
         ))
-                }
+      }
 
     </select>
   </div>
 );
 
 Option.propTypes = {
+  name: PropTypes.string,
+  onChange: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-  })).isRequired,
+  })),
+};
+
+Option.defaultProps = {
+  name: '',
+  onChange: () => { },
+  options: [],
 };
 
 export default Option;
