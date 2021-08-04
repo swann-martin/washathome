@@ -13,6 +13,7 @@ const AddressDetail = ({
   city,
   phone,
   mail,
+  statusId
 }) => {
   useEffect(() => { }, [address]);
   const position = [machineLatitude, machineLongitude];
@@ -50,11 +51,19 @@ const AddressDetail = ({
           </Popup>
         </Marker>
       </MapContainer>
-      <div className="address-detail-info">
-        <p>{address} {zip_code} {city}</p>
-        <p>{phone}</p>
-        <p>{mail}</p>
-      </div>
+
+      {
+        /*  affiche l'adresse uniquement si la résa est confirmée, la machine ni annulé 
+        et disparaît si le linge est récupéré */
+        (statusId > 1) && (statusId < 5) &&
+        (
+          <div className="address-detail-info">
+            <p>{address} {zip_code} {city}</p>
+            <p>{phone}</p>
+            <p>{mail}</p>
+          </div>
+        )
+      }
     </div>
 
   );

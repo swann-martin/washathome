@@ -18,7 +18,7 @@ const Booking = ({
   >
     <div className="booking-content">
       <h4 className="booking-content-name">{name}</h4>
-      <p className={statusId < 4 ? "booking-content-status booking-content-status booking-content-status booking-content-status--green" : "booking-content-status booking-content-status--red"}>Status : {status} </p>
+      <p className={statusId < 4 ? "booking-content-status booking-content-status booking-content-status" : "booking-content-status booking-content-status--red"}>Status : {status} </p>
       {price ? <span className="booking-content-price">prix {price}€</span> : ''}
     </div>
   </Link>
@@ -30,6 +30,7 @@ Booking.propTypes = {
   price: PropTypes.string,
   status: PropTypes.string,
   link: PropTypes.string,
+  statusId: PropTypes.number,
 };
 
 Booking.defaultProps = {
@@ -38,6 +39,7 @@ Booking.defaultProps = {
   price: '',
   status: '',
   link: '',
+  statusId: 1,
 };
 
 export default Booking;

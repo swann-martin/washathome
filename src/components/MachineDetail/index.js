@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Options from '../../containers/Options';
@@ -22,7 +23,16 @@ const MachineDetail = ({
     !isConnected ?
       (
         <div className="machinedetail">
-          <h4 className="machinedetail-title"> Infos de reservation</h4>
+          <h2 className="machinedetail-title"> Infos de reservation</h2>
+          <Link
+            to="/"
+            className="machinedetail-btn--close"
+            title="retour à la page précédente"
+            onClick={() => {
+              console.log('fermer le composant');
+            }}
+          ><i className="fas fa-arrow-circle-left" />
+          </Link>
 
           <div className="machinedetail-container-top">
             <div className="machinedetail-container-top-infos">

@@ -15,6 +15,7 @@ const BookingDetail = ({
   useEffect(() => { console.log('status', status) }, [status]);
 
   return (
+
     !isConnected ? <Redirect to="/" /> : (
       <div className="booking-details">
         <h2 className="booking-details-title">Reservation de la machine {booking ? booking.machine.name : 'titre de la machine'}</h2>
@@ -35,9 +36,9 @@ const BookingDetail = ({
 
         <div className="booking-details-container">
 
-          {/* affichage de la map uniquement si on est le binger*/}
-
-          {(booking.washer.pseudo !== userPseudo) &&
+          {
+            /* affichage de la map uniquement si on est le binger*/
+            (booking.washer.pseudo !== userPseudo) &&
             (
               <AddressDetail
                 className="booking-details-container-map"
@@ -48,6 +49,7 @@ const BookingDetail = ({
                 city={booking.machine.city}
                 phone={booking.washer.phone}
                 mail={booking.washer.mail}
+                statusId={booking.resa.status_id}
               />
             )
           }
@@ -70,9 +72,9 @@ const BookingDetail = ({
                   )))}
             </ul>
 
-            {/*  affichage de l'adresse seulement si le status est confirmé ou non annulé */}
-
-            {(booking.bringer.pseudo === userPseudo && booking.resa.status_id > 1 && booking.resa.status_id < 5) &&
+            {
+              /*  affichage de l'adresse seulement si le status est confirmé ou non annulé */
+              (booking.bringer.pseudo === userPseudo && booking.resa.status_id > 1 && booking.resa.status_id < 5) &&
               (
                 <div>
                   <h2>Nous vous laissons contacter le washer</h2>
