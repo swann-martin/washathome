@@ -1,5 +1,5 @@
 // == Import npm
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -17,6 +17,7 @@ import Footer from '../Footer';
 import MachineDetail from '../../containers/MachineDetail';
 import Bookings from '../../containers/Bookings';
 import BookingDetail from '../../containers/BookingDetail';
+import ErrorPage from '../../pages/ErrorPage';
 
 // == Import
 import Register from '../../containers/Register';
@@ -49,6 +50,7 @@ const App = ({
       <Route path="/team" component={Team} />
       <Route exact path="/machineDetail/:id" component={MachineDetail} />
       <Route exact path="/MyMachines" component={MyMachines} />
+      <Route exact path="" component={ErrorPage} />
     </Switch>
     {pressedConnected && <Connect />}
     {openMenu && <Menu />}

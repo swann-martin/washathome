@@ -23,6 +23,13 @@
     margin: 2rem 0;
     font-weight: bold;
   }
+  &-btn {
+    &--close {
+      @include btn-close;
+      align-self: flex-end;
+      margin-right: 1.8rem;
+    }
+  }
   &-container-top {
     display: flex;
     flex-direction: column;
@@ -133,6 +140,11 @@
     &-title {
       font-weight: bold;
       text-align: center;
+    }
+    &-input {
+      &--description {
+        color: vars.$color-action;
+      }
     }
     &-select {
       height: 3rem;

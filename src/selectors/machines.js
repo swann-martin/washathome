@@ -10,8 +10,7 @@ import store from 'src/store';
 */
 export function findMachine(machines, searchedId) {
   const machine = machines.find((testedMachine) => {
-    console.log('testedMachineID', testedMachine.id);
-    console.log('searchedId', searchedId);
+
     return testedMachine.id == searchedId;
   });
   const action = currentMachineUpdate({

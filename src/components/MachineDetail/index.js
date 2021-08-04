@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Options from '../../containers/Options';
@@ -20,7 +20,7 @@ const MachineDetail = ({
 
   return (
 
-    !isConnected ?
+    !isConnected ? <Connect /> :
       (
         <div className="machinedetail">
           <h2 className="machinedetail-title"> Infos de reservation</h2>
@@ -90,7 +90,7 @@ const MachineDetail = ({
           </div>
         </div>
       )
-      : <Connect />
+
   );
 };
 
