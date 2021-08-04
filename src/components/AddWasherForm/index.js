@@ -7,7 +7,6 @@ import Field from 'src/components/Field';
 import './styles.scss';
 
 const AddWasherForm = ({
-  handleUpdateWasher,
   title,
   address,
   zip_code,
@@ -15,9 +14,8 @@ const AddWasherForm = ({
   price,
   description,
   picture,
-  capacity,
   changeField,
-  machines,
+  handleWasherFormSubmit,
 }) => {
   const handleFieldChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
@@ -35,7 +33,7 @@ const AddWasherForm = ({
       </Link>
       <h1 className="addwasherform-title"> Ajouter une Machine </h1>
 
-      <form className="addwasherform-form" onSubmit={handleUpdateWasher} encType="multipart/form-data">
+      <form className="addwasherform-form" onSubmit={handleWasherFormSubmit} encType="multipart/form-data">
         <Field placeholder="Nom ex: Nom de la machine" value={title} name="title" onChange={changeField} type="text" />
         <Field placeholder="Adresse de la machine ex: 15, rue du test" value={address} name="address" onChange={changeField} type="text" />
         <Field placeholder="Code Postal ex: 13000" value={zip_code} type="number" name="zip_code" onChange={changeField} />

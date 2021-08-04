@@ -10,7 +10,6 @@ const mapStateToProps = (state) => ({
   mail: state.user.user.mail,
   avatar: state.user.user.avatar,
   phone: state.user.user.phone,
-  token: state.user.token,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -21,8 +21,13 @@ const Menu = ({ handleOpenMenu, handleLogout }) => (
 );
 
 Menu.propTypes = {
-  handleOpenMenu: PropTypes.func.isRequired,
-  handleLogout: PropTypes.func.isRequired,
+  handleOpenMenu: PropTypes.func,
+  handleLogout: PropTypes.func,
+};
+
+Menu.defaultProps = {
+  handleOpenMenu: () => { },
+  handleLogout: () => { },
 };
 
 export default Menu;

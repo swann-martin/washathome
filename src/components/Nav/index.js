@@ -1,10 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import logo from 'src/assets/logoWash1.png';
 // import style
 import './styles.scss';
 
-const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu, avatar, pseudo }) => (
+const Nav = ({
+  handlePressedConnected,
+  isConnected,
+  handleOpenMenu,
+  avatar,
+  pseudo,
+}) => (
   <nav className="nav">
     <NavLink exact className="link nav-item nav-item--mobile" activeClassName="link--active" to="/">
 
@@ -41,7 +48,7 @@ const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu, avatar, pseu
     {isConnected && (
       <div
         type="button"
-        className={isConnected ? "nav-item nav-btn nav-btn--user--connected" : "nav-item nav-btn nav-btn--user"}
+        className={isConnected ? 'nav-item nav-btn nav-btn--user--connected' : 'nav-item nav-btn nav-btn--user'}
         onClick={() => {
           handleOpenMenu();
           console.log('cliked on profile picture');
@@ -54,4 +61,20 @@ const Nav = ({ handlePressedConnected, isConnected, handleOpenMenu, avatar, pseu
 
   </nav>
 );
+
+Nav.propTypes = {
+  handlePressedConnected: PropTypes.func,
+  isConnected: PropTypes.bool,
+  handleOpenMenu: PropTypes.func,
+  avatar: PropTypes.string,
+  pseudo: PropTypes.string,
+};
+
+Nav.defaultProps = {
+  isConnected: false,
+  avatar: 'https://randomuser.me/api/portraits/lego/1.jpg',
+  pseudo: 'Camille',
+  handlePressedConnected: () => { },
+  handleOpenMenu: () => { },
+};
 export default Nav;

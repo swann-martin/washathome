@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './styles.scss';
 import logo from 'src/assets/logoWash1.png';
@@ -64,5 +65,13 @@ const Header = ({ foundMachines }) => {
       }
     </header>
   );
+};
+
+Header.propTypes = {
+  foundMachines: PropTypes.array,
+};
+
+Header.defaultProps = {
+  foundMachines: [],
 };
 export default Header;

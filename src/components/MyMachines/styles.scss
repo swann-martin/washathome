@@ -51,21 +51,23 @@
         min-height: 5rem;
       }
     }
-    &-submit {
-      @include btn-green;
-      &:hover,
-      &:active {
-        background-color: lighten(vars.$color-action, 10%);
-        transform: scale(1.1);
-      }
-      &--delete {
-        background-color: vars.$red;
+    &-btnGroup {
+      &-submit {
+        @include btn-green;
         &:hover,
         &:active {
-          background-color: lighten(vars.$red, 10%);
+          background-color: lighten(vars.$color-action, 10%);
+        }
+        &--delete {
+          background-color: vars.$black;
+          &:hover,
+          &:active {
+            background-color: lighten(vars.$red, 10%);
+          }
         }
       }
     }
+
     &-capacity {
       text-align: left;
       &-select {
@@ -95,10 +97,10 @@
       &-subtitle {
         font-weight: bold;
       }
-      &-input {
-        margin-left: 0.5rem;
-        background-color: vars.$white;
+      &-picture {
         border-radius: 20px;
+        overflow: hidden;
+        margin-left: 0.5rem;
       }
     }
   }

@@ -1,15 +1,13 @@
 // == Import npm
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 
 // Import components
-import { initApp } from 'src/actions/app';
 import PasswordChangeForm from 'src/containers/PasswordChangeForm';
 import Connect from 'src/containers/Connect';
 import Cards from 'src/containers/Cards';
 import Nav from 'src/containers/Nav';
-import Loader from '../Loader';
 import AddWasherForm from '../../containers/AddWasherForm';
 import MyMachines from '../../containers/MyMachines';
 import Profile from '../../containers/Profile';
@@ -59,13 +57,14 @@ const App = ({
 );
 
 App.propTypes = {
+  foundMachines: PropTypes.array,
   pressedConnected: PropTypes.bool.isRequired,
   openMenu: PropTypes.bool.isRequired,
-  foundMachines: PropTypes.arrayOf(object),
+
 };
 
 App.defaultProps = {
   foundMachines: [],
 };
-// == Export
+
 export default App;

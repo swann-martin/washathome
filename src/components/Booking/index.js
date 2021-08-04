@@ -4,26 +4,30 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 const Booking = ({
-  id, name, price, status, link,
+  id,
+  name,
+  price,
+  status,
+  statusId,
+  link,
 }) => (
   <Link
     key={id}
     className="booking"
-    exact
     to={link}
   >
     <div className="booking-content">
       <h4 className="booking-content-name">{name}</h4>
-      <p className={status < 5 ? "booking-content-status booking-content-status--green" : "booking-content-status booking-content-status--red"}>Status : {status} {status < 5 ? "En cours" : "Terminée"}</p>
-      {!price == '' ? <span className="booking-content-price">prix {price}€</span> : ''}
+      <p className={statusId < 4 ? "booking-content-status booking-content-status booking-content-status booking-content-status--green" : "booking-content-status booking-content-status--red"}>Status : {status} </p>
+      {price ? <span className="booking-content-price">prix {price}€</span> : ''}
     </div>
   </Link>
 );
 
 Booking.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   name: PropTypes.string,
-  price: PropTypes.number,
+  price: PropTypes.string,
   status: PropTypes.string,
   link: PropTypes.string,
 };
@@ -31,7 +35,7 @@ Booking.propTypes = {
 Booking.defaultProps = {
   id: '',
   name: '',
-  price: null,
+  price: '',
   status: '',
   link: '',
 };

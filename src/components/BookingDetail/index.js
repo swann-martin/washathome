@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AddressDetail from 'src/components/AddressDetail';
 
 import './styles.scss';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 const BookingDetail = ({
   booking,
@@ -12,12 +12,21 @@ const BookingDetail = ({
   userPseudo,
   isConnected,
 }) => {
-  useEffect(() => { }, [status]);
+  useEffect(() => { console.log('status', status) }, [status]);
 
   return (
     !isConnected ? <Redirect to="/" /> : (
       <div className="booking-details">
         <h2 className="booking-details-title">Reservation de la machine {booking ? booking.machine.name : 'titre de la machine'}</h2>
+        <Link
+          to="/bookings"
+          className="booking-details-btn--close"
+          title="retour à la page mes réservations"
+          onClick={() => {
+            console.log('fermer le composant');
+          }}
+        ><i className="fas fa-arrow-circle-left" />
+        </Link>
         <div className="booking-details-container">
           {(booking.washer.pseudo !== userPseudo) &&
             (
@@ -75,14 +84,18 @@ const BookingDetail = ({
 };
 
 BookingDetail.propTypes = {
-  booking: PropTypes.arrayOf(Object),
-  status: PropTypes.number.isRequired,
-  userPseudo: PropTypes.string.isRequired,
-  isConnected: PropTypes.bool.isRequired,
-  handleStatusButton: PropTypes.func.isRequired,
+  booking: PropTypes.object,
+  status: PropTypes.number,
+  userPseudo: PropTypes.string,
+  isConnected: PropTypes.bool,
+  handleStatusButton: PropTypes.func,
 };
 BookingDetail.defaultProps = {
-  booking: [],
+  booking: {},
+  status: null,
+  userPseudo: '',
+  isConnected: '',
+  handleStatusButton: '',
 };
 
 export default BookingDetail;

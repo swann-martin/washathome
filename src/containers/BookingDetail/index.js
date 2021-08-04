@@ -5,14 +5,8 @@ import { findBooking } from '../../selectors/bookings';
 
 const mapStateToProps = (state, ownProps) => ({
   isConnected: state.user.isConnected,
-  // bringerBookings: state.bookings.bringerBookings,
-  // washerBookings: state.bookings.washerBookings,
-  // machine: state.bookings.washerBookings[0].machine,
-  // resa: state.bookings.washerBookings[0].resa,
-  // otherGuy: state.bookings.washerBookings[0].bringer,
-  booking: findBooking([state.bookings.washerBookings, state.bookings.bringerBookings],
-    ownProps.match.params.id),
-  status: state.bookings.status,
+  booking: findBooking([state.bookings.washerBookings, state.bookings.bringerBookings], ownProps.match.params.id),
+  status: state.bookings.currentBooking.status_id,
   userPseudo: state.user.user.pseudo,
 
 });

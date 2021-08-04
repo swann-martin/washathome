@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import MyMachines from '../../components/MyMachines';
-import { updateMachine, machineInputChange } from '../../actions/machines';
+import { updateMachine, machineInputChange, deleteMachine } from '../../actions/machines';
 
 const mapStateToProps = (state) => ({
 
@@ -8,8 +8,8 @@ const mapStateToProps = (state) => ({
   address: state.user.machine[0].address,
   zip_code: state.user.machine[0].zip_code,
   city: state.user.machine[0].city,
-  price: "",
-  description: "",
+  price: '',
+  description: '',
   picture: state.user.machine[0].picture,
   capacity: state.user.machine[0].capacity,
   machines: state.user.machine,
@@ -24,6 +24,11 @@ const mapDispatchToProps = (dispatch) => ({
   handleUpdateWasher: (evt) => {
     evt.preventDefault();
     const action = updateMachine();
+    dispatch(action);
+  },
+  handleDeleteWasher: (evt) => {
+    evt.preventDefault();
+    const action = deleteMachine();
     dispatch(action);
   },
 });

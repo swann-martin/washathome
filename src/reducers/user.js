@@ -10,8 +10,9 @@ import {
   DELETE_USER_FORM_SUBMIT_SUCCESS,
   TOGGLE_MENU,
   CHANGE_PASSWORD_INPUT_CHANGE,
-  MACHINE_INPUT_CHANGE,
 } from '../actions/user';
+
+import { MACHINE_INPUT_CHANGE } from '../actions/machines';
 
 export const initialState = {
   loading: true,
@@ -47,12 +48,16 @@ export const initialState = {
   machine: [
     {
       id: 2,
+      capacity: 6,
       name: "la machine de Gigi",
-      address: "11 avenue Crampel",
+      description: "travail rapide et soigné du linge, machine neuve et derniere génération Samsung",
       zip_code: "31400",
       city: "toulouse",
+      address: "11 avenue Crampel",
       latitude: 43.58437,
       longitude: 1.452135,
+      picture: "https://tse2.mm.bing.net/th?id=OIP.nKGE3vTrx5wKcqgOKxU9UwHaFj&pid=Api&P=0&w=231&h=174",
+      price: 6,
     },
   ],
   passwordChange: {

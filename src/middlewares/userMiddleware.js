@@ -19,14 +19,16 @@ export default (store) => (next) => (action) => {
   switch (action.type) {
     // créer un utilisateur grâce à un formulaire qui fournit les infos phone et email
     case REGISTER_USER_FORM_SUBMIT: {
-      const { lastname,
+      const {
+        lastname,
         firstname,
         pseudo,
         mail,
         password,
         passwordConfirm,
         phone,
-        avatar } = store.getState().user.register;
+        avatar,
+      } = store.getState().user.register;
       api.post('/signup', {
         lastname,
         firstname,
@@ -39,7 +41,6 @@ export default (store) => (next) => (action) => {
       })
         .then((result) => {
           console.log('result.data du post Register User Form', result.data);
-          store.dispatch(autoLoginFormSubmit());
         })
         .catch((err) => {
           console.error(err);

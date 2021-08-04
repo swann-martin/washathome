@@ -20,11 +20,6 @@ const mapDispatchToProps = (dispatch) => ({
     const action = loginFormSubmit();
     dispatch(action);
   },
-  handleLogout: () => {
-    const action = userLogout();
-    dispatch(action);
-  },
-
   handlePressedConnected: () => {
     const action = toggleConnected();
     dispatch(action);

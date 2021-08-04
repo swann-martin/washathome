@@ -17,6 +17,13 @@
       color: vars.$red;
     }
   }
+  &-btn {
+    &--close {
+      @include btn-close;
+      align-self: flex-end;
+      margin-right: 1.8rem;
+    }
+  }
   &-container {
     display: flex;
     flex-direction: column;

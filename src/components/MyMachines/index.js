@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-//import of components 
+//import of components
 
 import Field from 'src/components/Field';
 import Card from '../Card';
@@ -12,7 +12,8 @@ import './styles.scss';
 
 const MyMachines = ({
   isConnected,
-  handleWasherFormSubmit,
+  handlUpdateWasher,
+  handleDeleteWasher,
   title,
   address,
   zip_code,
@@ -46,7 +47,7 @@ const MyMachines = ({
             <Card {...machine} key={machine.id} link="/MyMachines" />
           ))}
 
-        <form className="updatewasherform-form" onSubmit={handleWasherFormSubmit} encType="multipart/form-data">
+        <form className="updatewasherform-form" onSubmit={handlUpdateWasher} encType="multipart/form-data">
           <div className="updatewasherform-form-left">
             <Field placeholder="Nom ex: Nom de la machine" value={title} name="title" onChange={changeField} type="text" />
             <Field placeholder="Adresse de la machine ex: 15, rue du test" value={address} name="address" onChange={changeField} type="text" />
@@ -71,12 +72,12 @@ const MyMachines = ({
             </div>
             <div className="updatewasherform-form-image">
               <h2 className="updatewasherform-form-image-subtitle">Photo de la machine (facultatif)</h2>
-              <img className="register-form-input" src={picture} alt="picture-machine" />
-              <Field className="register-form-input" type="file" name="picture" value={picture} placeholder="picture" onChange={changeField} />
+              <img className="updatewasherform-form-image-picture" src={picture} alt="machine" />
+              {/* <Field className="register-form-input" type="file" name="picture-input" value="{picture}" placeholder="picture" onChange={changeField} /> */}
             </div>
-            <div>
-              <button className="updatewasherform-form-submit" type="submit">Modifier cette machine</button>
-              <button className="updatewasherform-form-submit updatewasherform-form-submit--delete" type="button">Supprimer cette machine</button>
+            <div className="updatewasherform-form-btnGroup">
+              <button className="updatewasherform-form-btnGroup-submit updatewasherform-form-btnGroup-submit--delete" type="button" onClick={handleDeleteWasher}>Supprimer cette machine</button>
+              <button className="updatewasherform-form-btnGroup-submit" type="submit">Modifier cette machine</button>
             </div>
           </div>
 
@@ -95,14 +96,16 @@ MyMachines.propTypes = {
   description: PropTypes.string,
   capacity: PropTypes.string,
   picture: PropTypes.string,
-  handleWasherFormSubmit: PropTypes.func,
+  handlUpdateWasher: PropTypes.func,
+  handleDeleteWasher: PropTypes.func,
   changeField: PropTypes.func,
   isConnected: PropTypes.bool.isRequired,
-  machines: PropTypes.arrayOf(Object)
+  machines: PropTypes.arrayOf(Object),
 };
 
 MyMachines.defaultProps = {
-  handleWasherFormSubmit: () => { },
+  handleDeleteWasher: () => { },
+  handlUpdateWasher: () => { },
   changeField: () => { },
   title: '',
   address: '',
@@ -112,6 +115,7 @@ MyMachines.defaultProps = {
   description: '',
   picture: '',
   capacity: 6,
+  machines: [],
 };
 
 export default MyMachines;

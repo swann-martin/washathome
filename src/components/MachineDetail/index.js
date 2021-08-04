@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Options from '../../containers/Options';
@@ -8,18 +7,22 @@ import './styles.scss';
 
 const MachineDetail = ({
   machine,
-  handleBookingsFormSubmit, changeField, changeSelect, dispo, isConnected }) => {
+  handleBookingsFormSubmit,
+  changeField,
+  changeSelect,
+  dispo,
+  isConnected,
+}) => {
   useEffect(() => { }, [machine]);
   console.log('machine', machine);
   const position = { lat: machine.latitude, lng: machine.longitude };
 
   return (
 
-    isConnected ?
-
+    !isConnected ?
       (
-        <div className="machinedetail" >
-          <h4 className="machinedetail-title" > Infos de reservation</h4 >
+        <div className="machinedetail">
+          <h4 className="machinedetail-title"> Infos de reservation</h4>
 
           <div className="machinedetail-container-top">
             <div className="machinedetail-container-top-infos">
@@ -78,7 +81,7 @@ const MachineDetail = ({
         </div>
       )
       : <Connect />
-  )
+  );
 };
 
 MachineDetail.propTypes = {
@@ -86,20 +89,28 @@ MachineDetail.propTypes = {
     city: PropTypes.string,
     zip_code: PropTypes.string,
     address: PropTypes.string,
-    title: PropTypes.string,
+    description: PropTypes.string,
     picture: PropTypes.string,
     name: PropTypes.string,
     capacity: PropTypes.number,
-  }).isRequired,
-  days: PropTypes.arrayOf(PropTypes.string),
-  hours: PropTypes.arrayOf(PropTypes.string),
+    price: PropTypes.number,
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+  }),
   handleBookingsFormSubmit: PropTypes.func,
+  changeField: PropTypes.func,
+  changeSelect: PropTypes.func,
+  dispo: PropTypes.string,
+  isConnected: PropTypes.bool,
 };
 
 MachineDetail.defaultProps = {
-  days: [],
-  hours: [],
   handleBookingsFormSubmit: () => { },
+  machine: [],
+  changeField: () => { },
+  changeSelect: () => { },
+  dispo: '',
+  isConnected: false,
 };
 
 export default MachineDetail;

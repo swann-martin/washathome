@@ -10,10 +10,18 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  &-btn {
+    &--close {
+      @include btn-close;
+      align-self: flex-end;
+      margin-right: 1.8rem;
+    }
+  }
   &-title {
     text-align: center;
     font-size: 1.5rem;
   }
+
   &-container {
     @media screen and (min-width: 700px) {
       display: flex;
