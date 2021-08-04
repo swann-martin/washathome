@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps) => ({
     ownProps.match.params.id),
   status: state.bookings.status,
   userPseudo: state.user.user.pseudo,
+
 });
 
 const mapDispatchToProps = (dispatch) => ({

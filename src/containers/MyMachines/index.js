@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import MyMachines from '../../components/MyMachines';
-import { addMachineInputChange, updateMachine, machineInputChange } from '../../actions/machines';
+import { updateMachine, machineInputChange } from '../../actions/machines';
 
 const mapStateToProps = (state) => ({
 
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
   picture: state.user.machine[0].picture,
   capacity: state.user.machine[0].capacity,
   machines: state.user.machine,
-
+  isConnected: state.user.isConnected,
 });
 
 const mapDispatchToProps = (dispatch) => ({

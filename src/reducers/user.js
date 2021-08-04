@@ -141,7 +141,7 @@ const reducer = (state = initialState, action = {}) => {
     case MACHINE_INPUT_CHANGE:
       return {
         ...state,
-        machine: [0: {
+        machine: [{
           ...state,
           ...action.payload,
         },],

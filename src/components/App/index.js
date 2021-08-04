@@ -1,5 +1,5 @@
 // == Import npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes, { object } from 'prop-types';
 
@@ -27,13 +27,16 @@ import Team from '../../pages/Team';
 // Import style
 import './styles.scss';
 
-const App = ({ pressedConnected, foundMachines, openMenu, loading }) => (
+const App = ({
+  pressedConnected,
+  foundMachines,
+  openMenu,
+}) => (
 
   <div className="app">
     <Nav />
     <Switch>
       <Route exact path="/">
-        {loading && <Loader />}
         <Header foundMachines={foundMachines} />
         <Cards />
       </Route>
@@ -56,11 +59,9 @@ const App = ({ pressedConnected, foundMachines, openMenu, loading }) => (
 );
 
 App.propTypes = {
-  isConnected: PropTypes.bool.isRequired,
   pressedConnected: PropTypes.bool.isRequired,
   openMenu: PropTypes.bool.isRequired,
   foundMachines: PropTypes.arrayOf(object),
-  loading: PropTypes.bool.isRequired,
 };
 
 App.defaultProps = {

@@ -1,18 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './styles.scss';
 
 const Booking = ({
-  id, name, price, bookingInfos, status, link
+  id, name, price, status, link,
 }) => (
   <Link
     key={id}
     className="booking"
     exact
     to={link}
-    bookingInfos={{
-
-    }}
   >
     <div className="booking-content">
       <h4 className="booking-content-name">{name}</h4>
@@ -21,5 +19,21 @@ const Booking = ({
     </div>
   </Link>
 );
+
+Booking.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  price: PropTypes.number,
+  status: PropTypes.string,
+  link: PropTypes.string,
+};
+
+Booking.defaultProps = {
+  id: '',
+  name: '',
+  price: null,
+  status: '',
+  link: '',
+};
 
 export default Booking;

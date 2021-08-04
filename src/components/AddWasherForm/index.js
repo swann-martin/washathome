@@ -17,7 +17,7 @@ const AddWasherForm = ({
   picture,
   capacity,
   changeField,
-  machines
+  machines,
 }) => {
   const handleFieldChange = (evt) => {
     changeField(evt.target.value, evt.target.name);

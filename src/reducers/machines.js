@@ -44,8 +44,6 @@ export const initialState = {
     search: '',
     capacity: '6',
   },
-
-
 };
 
 const reducer = (state = initialState, action = {}) => {
