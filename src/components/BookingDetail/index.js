@@ -8,7 +8,7 @@ const BookingDetail = ({
   booking, handleStatusButton, status, userPseudo,
 }) => {
   useEffect(() => {
-    var userCoords;
+
     const onSuccess = (position) => {
       userCoords = position.coords;
     };
@@ -26,8 +26,8 @@ const BookingDetail = ({
       <div className="booking-details-container">
         <AddressDetail
           className="booking-details-container-map"
-          userLatitude={userCoords.latitude}
-          userLongitude={userCoords.longitude}
+          userLatitude=""
+          userLongitude=""
           machineLatitude={booking.machine.latitude}
           machineLongitude={booking.machine.longitude}
         />
@@ -38,15 +38,15 @@ const BookingDetail = ({
           <p className="booking-details-container-right-item">Température: {booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.resa.tempResa}</span> : <span className="booking-details-container-right-item-element">39°c</span>}</p>
           <ul className="booking-details-container-right-list">
             {booking
-            && (!booking.resa.options.length === 0
-            && booking.resa.options.map((option) => (
-              <li>{option.name} {option.price}€</li>
-            )))}
+              && (!booking.resa.options.length === 0
+                && booking.resa.options.map((option) => (
+                  <li>{option.name} {option.price}€</li>
+                )))}
           </ul>
 
           <p className="booking-details-container-right-item"> Prix total: {booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.resa.price}€</span> : <span className="booking-details-container-right-item-element">2€</span>}</p>
 
-          { (booking.bringer.pseudo === userPseudo) &&
+          {(booking.washer.pseudo === userPseudo) &&
             (
               <div className="booking-details-container-right-btnGroup">
                 {status === 1 ? <button className="booking-details-container-right-btnGroup-btn" type="button" onClick={handleStatusButton} value={[2, booking.resa.idResa]}>Confirmer la réservation</button> : null}
@@ -56,8 +56,8 @@ const BookingDetail = ({
                 {status === 5 ? <span className="booking-details-container-right-btnGroup-btn booking-details-container-right-btnGroup-btn--cancel">Reservation Terminée</span> : null}
                 {status === 6 ? <span className="booking-details-container-right-btnGroup-btn booking-details-container-right-btnGroup-btn--cancel ">Reservation annulée</span> : null}
                 {status !== 6 ? <button className="booking-details-container-right-btnGroup-btn--cancel booking-details-container-right-btnGroup-btn" type="button" onClick={handleStatusButton} value={[6, booking.resa.idResa]}>Annuler la reservation</button> : null}
-              </div> 
-            )     
+              </div>
+            )
           }
 
         </div>

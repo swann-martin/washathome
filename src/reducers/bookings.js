@@ -1,9 +1,7 @@
-import { BOOKING_INPUT_CHANGE, FETCH_BOOKINGS_SUCCESS, BOOKING_INPUT_OPTIONS_CHANGE } from 'src/actions/bookings';
+import { BOOKING_INPUT_CHANGE, FETCH_BOOKINGS_SUCCESS, BOOKING_INPUT_OPTIONS_CHANGE, CURRENT_MACHINE_UPDATE } from 'src/actions/bookings';
 
 export const initialState = {
-  selectedMachine: {
-    machine_id: null,
-    user_id: null,
+  currentMachine: {
   },
   inputs: {
     washerId: 0,
@@ -88,6 +86,14 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         ...action.payload,
+      };
+    case CURRENT_MACHINE_UPDATE:
+      return {
+        ...state,
+        currentMachine: {
+          ...state.currentMachine,
+          ...action.payload,
+        },
       };
     default:
       return state;

@@ -110,7 +110,7 @@ export default (store) => (next) => (action) => {
       api.post('/login', { mail, password })
         .then((result) => {
           const { token } = result.data;
-          console.log(result.data.personal[0]);
+          console.log(result.data.personal);
           localStorage.setItem('token', token);
           store.dispatch(loginSuccess({
             user: result.data.personal[0].user,
