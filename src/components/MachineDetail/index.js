@@ -6,8 +6,7 @@ import './styles.scss';
 
 const MachineDetail = ({
   machine,
-  handleBookingsFormSubmit, changeField, changeSelect,
-  options, temperature, option1, option2, option3, dispo, machineId, washerId }) => {
+  handleBookingsFormSubmit, changeField, changeSelect, dispo }) => {
   useEffect(() => { }, [machine]);
   console.log('machine', machine);
   const position = { lat: machine.latitude, lng: machine.longitude };
@@ -56,8 +55,6 @@ const MachineDetail = ({
         </div>
 
         <form className="machinedetail-form" onSubmit={handleBookingsFormSubmit}>
-          <input hidden name="machineId" value={machine.id} />
-          <input hidden name="washerId" value={machine.user_id} />
           <select className="machinedetail-form-select" id="temperature-select" name="temperature" onChange={changeSelect}>
             <option className="machinedetail-form-select-temperature" value="30">Température de lavage : 30°c</option>
             <option className="machinedetail-form-select-temperature" value="20">20°</option>
