@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  MapContainer, TileLayer, Marker, Popup,
+  MapContainer, TileLayer, Marker, Popup, useMapEvents,
 } from 'react-leaflet';
 import PropTypes from 'prop-types';
 import './styles.scss';
@@ -16,13 +16,34 @@ const AddressDetail = ({
 }) => {
   useEffect(() => { }, [address]);
   const position = [machineLatitude, machineLongitude];
+
+  const LocationMarker = () => {
+    const [positionBringer, setPositionBringer] = useState(null);
+    const map = useMapEvents({
+      click() {
+        map.locate();
+      },
+      locationfound(e) {
+        setPositionBringer(e.latlng);
+        map.flyTo(e.latlng, map.getZoom());
+      },
+    });
+
+    return positionBringer === null ? null : (
+      <Marker position={positionBringer}>
+        <Popup>Vous êtes ici</Popup>
+      </Marker>
+    );
+  };
+
   return (
     <div className="address-detail">
-      <MapContainer center={position} zoom={10} scrollWheelZoom className="address-detail-map">
+      <MapContainer center={position} zoom={16} scrollWheelZoom className="address-detail-map">
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <LocationMarker />
         <Marker position={position}>
           <Popup>
             Votre washer

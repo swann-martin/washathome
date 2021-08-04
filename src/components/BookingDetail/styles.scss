@@ -19,10 +19,12 @@
   }
   &-title {
     text-align: center;
-    font-size: 1.5rem;
+    margin: 1rem 0;
+    font-size: 1.2rem;
   }
 
   &-container {
+    padding: 0.5rem;
     @media screen and (min-width: 700px) {
       display: flex;
       justify-content: center;
@@ -37,18 +39,38 @@
     }
     &-right {
       @media screen and (min-width: 700px) {
-        max-width: 45%;
+        width: 45%;
         margin-left: 2rem;
+        &--big {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 70vw;
+          height: 70vh;
+          background-color: vars.$color-bg-hero;
+          border-radius: 20px;
+          padding: 1rem;
+        }
       }
 
       &-item {
         margin: 1rem 0;
         &-element {
           font-weight: bold;
+          &--status {
+            color: vars.$red;
+          }
         }
       }
       &-btnGroup {
         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @media screen and (min-width: 700px) {
+          justify-content: space-between;
+          flex-direction: row;
+        }
         &-btn {
           margin: 0.5rem 0;
           padding: 0.5rem 0;
@@ -56,11 +78,17 @@
           background-color: vars.$color-action;
           color: vars.$white;
           font-weight: bold;
+          @media screen and (min-width: 700px) {
+            order: 2;
+          }
           &:hover {
             background-color: lighten(vars.$color-action, 10%);
           }
           &--cancel {
-            background-color: vars.$red;
+            @media screen and (min-width: 700px) {
+              order: 1;
+            }
+            background-color: vars.$black;
             &:hover {
               background-color: lighten(vars.$red, 10%);
             }

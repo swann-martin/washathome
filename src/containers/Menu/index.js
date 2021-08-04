@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Menu from '../../components/Menu';
 import { toggleMenu, userLogout } from '../../actions/user';
 
-const mapStateToProps = () => { };
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch) => ({
 

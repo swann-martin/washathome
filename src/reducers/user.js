@@ -47,17 +47,17 @@ export const initialState = {
   },
   machine: [
     {
-      id: 2,
+      id: 0,
       capacity: 6,
-      name: "la machine de Gigi",
-      description: "travail rapide et soigné du linge, machine neuve et derniere génération Samsung",
-      zip_code: "31400",
-      city: "toulouse",
-      address: "11 avenue Crampel",
+      name: 'le machine de Gigi',
+      description: 'Travail rapide et soigné du linge, machine neuve et derniere génération Samsung',
+      zip_code: '31400',
+      city: 'Toulouse',
+      address: '11 avenue Crampel',
       latitude: 43.58437,
       longitude: 1.452135,
-      picture: "https://tse2.mm.bing.net/th?id=OIP.nKGE3vTrx5wKcqgOKxU9UwHaFj&pid=Api&P=0&w=231&h=174",
-      price: 6,
+      picture: 'https://tse2.mm.bing.net/th?id=OIP.nKGE3vTrx5wKcqgOKxU9UwHaFj&pid=Api&P=0&w=231&h=174',
+      price: 24,
     },
   ],
   passwordChange: {
@@ -147,7 +147,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         machine: [{
-          ...state,
+          ...state.machine[0],
           ...action.payload,
         },],
       };

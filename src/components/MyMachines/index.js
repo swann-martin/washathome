@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 //import of components
 
 import Field from 'src/components/Field';
-import Card from '../Card';
 
 // import of style
 import './styles.scss';
@@ -22,7 +21,6 @@ const MyMachines = ({
   description,
   picture,
   changeField,
-  machines,
 }) => {
   const handleFieldChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
@@ -41,11 +39,6 @@ const MyMachines = ({
         </Link>
         <h1 className="updatewasherform-title"> Vos machines</h1>
 
-        {machines &&
-          <h2 className="updatewasherform-title">Mes machines</h2> &&
-          machines.map((machine) => (
-            <Card {...machine} key={machine.id} link="/MyMachines" />
-          ))}
 
         <form className="updatewasherform-form" onSubmit={handlUpdateWasher} encType="multipart/form-data">
           <div className="updatewasherform-form-left">
@@ -56,7 +49,7 @@ const MyMachines = ({
           </div>
           <div className="updatewasherform-form-right">
             <Field placeholder="Prix en € pour un lavage simple ex: 3" value={price} type="number" name="price" onChange={changeField} />
-            <textarea className="updatewasherform-form-input updatewasherform-form-input--description" placeholder="Ecrivez ce que vous souhaitez à propos de votre machine" name="description" onChange={handleFieldChange} value={description} />
+            <textarea className="updatewasherform-form-input updatewasherform-form-input--description" placeholder={description} name="description" onChange={handleFieldChange} value={description} />
 
             <div className="updatewasherform-form-capacity">
               <label htmlFor="capacity" className="updatewasherform-form-capacity-select">
@@ -100,7 +93,7 @@ MyMachines.propTypes = {
   handleDeleteWasher: PropTypes.func,
   changeField: PropTypes.func,
   isConnected: PropTypes.bool.isRequired,
-  machines: PropTypes.arrayOf(Object),
+
 };
 
 MyMachines.defaultProps = {
@@ -115,7 +108,7 @@ MyMachines.defaultProps = {
   description: '',
   picture: '',
   capacity: 6,
-  machines: [],
+
 };
 
 export default MyMachines;
