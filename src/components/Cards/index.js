@@ -10,7 +10,7 @@ const Cards = ({ machines }) => (
     <section className="cards-list">
       {
         machines.map((machine) => (
-          <Card {...machine} key={machine.id} />
+          <Card {...machine} link={`machineDetail/${machine.id}`} key={machine.id} />
         ))
       }
     </section>

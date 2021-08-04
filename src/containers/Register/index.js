@@ -13,7 +13,6 @@ const mapStateToProps = (state) => ({
   avatar: state.user.register.avatar,
   cgu: state.user.register.cgu,
   passwordConfirm: state.user.register.passwordConfirm,
-
 });
 
 const mapDispatchToProps = (dispatch) => ({

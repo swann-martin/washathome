@@ -1,51 +1,69 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-
 import AddressDetail from 'src/components/AddressDetail';
 
 import './styles.scss';
 
-const BookingDetail = ({ machine, resa, otherGuy, handleNextStepButton, handleCancelButton }) => (
-  <div>
-    <h2>Reservation de la machine {machine.name}</h2>
-    <div>
-      <span>Bringer: {otherGuy.pseudo}</span>
+const BookingDetail = ({
+  booking, handleStatusButton, status, userPseudo,
+}) => {
+  useEffect(() => {
 
-      <span>Etape de la réservation: {resa.status}</span>
-      <span>Date de dépôt du linge: {resa.date}</span>
-      <span>Température: {resa.temperature}</span>
-      <ul>
-        {
-        resa.options.map((option) => (
-          <li>{option.name} {option.price}€</li>
-        ))
-      }
-      </ul>
-      <span>Prix total: {resa.price}</span>
-      <button type="button" onClick={handleNextStepButton}>{nextStep}</button>
-      <button type="button" onClick={handleCancelButton}>Annuler la reservation</button>
+    const onSuccess = (position) => {
+      userCoords = position.coords;
+    };
+    const onError = () => {
+      console.log('cannot get position');
+    };
+    if (status) {
+      const watch = navigator.geolocation.watchPosition(onSuccess, onError);
+    }
+  }, [status]);
+
+  return (
+    <div className="booking-details">
+      <h2 className="booking-details-title">Reservation de la machine {booking ? booking.machine.name : 'titre de la machine'}</h2>
+      <div className="booking-details-container">
+        <AddressDetail
+          className="booking-details-container-map"
+          userLatitude=""
+          userLongitude=""
+          machineLatitude={booking.machine.latitude}
+          machineLongitude={booking.machine.longitude}
+        />
+        <div className="booking-details-container-right">
+          <p className="booking-details-container-right-item"> Bringer: {booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.bringer.pseudo}</span> : <span className="booking-details-container-right-item-element">pseudo du bringer</span>}</p>
+          <p className="booking-details-container-right-item">Etape de la réservation: {booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.resa.status_name}</span> : <span className="booking-details-container-right-item-element">Status réservé</span>}</p>
+          <p className="booking-details-container-right-item">Informations: {booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.resa.dispo}</span> : <span className="booking-details-container-right-item-element">disponibilités</span>}</p>
+          <p className="booking-details-container-right-item">Température: {booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.resa.tempResa}</span> : <span className="booking-details-container-right-item-element">39°c</span>}</p>
+          <ul className="booking-details-container-right-list">
+            {booking
+              && (!booking.resa.options.length === 0
+                && booking.resa.options.map((option) => (
+                  <li>{option.name} {option.price}€</li>
+                )))}
+          </ul>
+
+          <p className="booking-details-container-right-item"> Prix total: {booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.resa.price}€</span> : <span className="booking-details-container-right-item-element">2€</span>}</p>
+
+          {(booking.washer.pseudo === userPseudo) &&
+            (
+              <div className="booking-details-container-right-btnGroup">
+                {status === 1 ? <button className="booking-details-container-right-btnGroup-btn" type="button" onClick={handleStatusButton} value={[2, booking.resa.idResa]}>Confirmer la réservation</button> : null}
+                {status === 2 ? <button className="booking-details-container-right-btnGroup-btn" type="button" onClick={handleStatusButton} value={[3, booking.resa.idResa]}>Confirmer le dépôt</button> : null}
+                {status === 3 ? <button className="booking-details-container-right-btnGroup-btn" type="button" onClick={handleStatusButton} value={[4, booking.resa.idResa]}>Lavage terminé</button> : null}
+                {status === 4 ? <button className="booking-details-container-right-btnGroup-btn" type="button" onClick={handleStatusButton} value={[5, booking.resa.idResa]}>Linge récupéré</button> : null}
+                {status === 5 ? <span className="booking-details-container-right-btnGroup-btn booking-details-container-right-btnGroup-btn--cancel">Reservation Terminée</span> : null}
+                {status === 6 ? <span className="booking-details-container-right-btnGroup-btn booking-details-container-right-btnGroup-btn--cancel ">Reservation annulée</span> : null}
+                {status !== 6 ? <button className="booking-details-container-right-btnGroup-btn--cancel booking-details-container-right-btnGroup-btn" type="button" onClick={handleStatusButton} value={[6, booking.resa.idResa]}>Annuler la reservation</button> : null}
+              </div>
+            )
+          }
+
+        </div>
+      </div>
     </div>
-      <AddressDetail />
-  </div>
-);
-
-BookingDetail.propTypes = {
-  machine: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-  }),
-  resa: PropTypes.shape({
-    status: PropTypes.string,
-    date: PropTypes.string,
-    options: PropTypes.arrayOf({
-      name: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-  }),
-}),
-  otherGuy: PropTypes.shape({
-    pseudo: PropTypes.string.isRequired,
-  }),
-  handleNextStepButton: PropTypes.func.isRequired,
-  handleCancelButton: PropTypes.func.isRequired,
+  );
 };
 
 export default BookingDetail;

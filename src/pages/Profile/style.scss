@@ -28,8 +28,20 @@
   }
   &-credentials {
     max-width: 95vw;
-    @media screen and (min-width: 700px) {
-      width: 60rem;  
+   
+      @media screen and (min-width: 700px) {
+        display: flex;
+        justify-content: center;
+        width: 80vw;
+        text-align: center;
+        padding: 1rem;
+      }
+
+    &-left{
+      @media screen and (min-width: 700px) {
+        margin-right: 1rem;
+        max-width: 50%;
+      }
     }
     &-label {
       display: flex;
@@ -47,9 +59,14 @@
         color: vars.$color-action;
       }
       &-avatar {
+        &-container{
+          display: flex;
+          justify-content: space-between;
+        }
         border-radius: 50%;
-        max-height: 50px;
-        max-width: 50px;
+        height: 50px;
+        width: 50px;
+        margin-right: .5rem; 
       }
     }
     &-btn {

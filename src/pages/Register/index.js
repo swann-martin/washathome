@@ -1,15 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import PropTypes, { object } from 'prop-types';
 import { Link } from 'react-router-dom';
 import Field from '../../components/Field';
 import './style.scss';
 
 const Register = ({
-  lastname, pseudo, firstname, mail, phone, password, passwordConfirm, avatar, changeField, cgu, handleRegisterFormSubmit
+  lastname,
+  pseudo,
+  firstname,
+  mail, phone,
+  password,
+  passwordConfirm,
+  avatar,
+  changeField,
+  cgu,
+  handleRegisterFormSubmit,
 }) => {
   const handleCguCheckboxChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
   };
+  const onFileChange = (evt) => {
+    changeField(evt.target.files[0], evt.target.name);
+  };
+
   return (
     <div className="register">
       <Link
@@ -27,29 +40,34 @@ const Register = ({
         className="register-form"
         encType="multipart/form-data"
       >
-        <Field className="register-form-input" type="text" name="firstname" value={firstname} placeholder="Prénom ex: Alex" onChange={changeField} />
-        <Field className="register-form-input" type="text" name="lastname" value={lastname} placeholder="Nom ex: Dupont" onChange={changeField} />
-        <Field className="register-form-input" type="text" name="pseudo" value={pseudo} placeholder="login ex: alexdupt331" onChange={changeField} />
-        <Field className="register-form-input" type="email" name="mail" value={mail} placeholder="email ex: fauxemail@fakemail.com" onChange={changeField} />
-        <Field className="register-form-input" type="number" name="phone" value={phone} placeholder="tél ex: 0606060606" onChange={changeField} />
-        <Field className="register-form-input" type="password" name="password" value={password} placeholder="mot de passe" onChange={changeField} />
-        <Field className="register-form-input" type="password" name="passwordConfirm" value={passwordConfirm} placeholder="confirmation du mot de passe" onChange={changeField} />
-        <Field className="register-form-input" type="file" name="avatar" value={avatar} placeholder="avatar" onChange={changeField} />
-        <div className="register-form-input register-form-input--check">
-          <label htmlFor="cgu" className="">
-            <input type="checkbox" name="cgu" id="cgu" value={cgu} defaultChecked={false} onChange={handleCguCheckboxChange} />
-            <span>J'ai lu les <Link to="/cgu" className="register-form-input--check-link">conditions générales de vente</Link> et j'accèpte tout</span>
-          </label>
+        <div className="register-form-left">
+          <Field className="register-form-input" type="text" name="firstname" value={firstname} placeholder="Prénom ex: Alex" onChange={changeField} />
+          <Field className="register-form-input" type="text" name="lastname" value={lastname} placeholder="Nom ex: Dupont" onChange={changeField} />
+          <Field className="register-form-input" type="text" name="pseudo" value={pseudo} placeholder="login ex: alexdupt331" onChange={changeField} />
+          <Field className="register-form-input" type="tel" name="phone" value={phone} placeholder="tél ex: 0606060606" onChange={changeField} />
+        </div>
+        <div className="register-form-right">
+          <Field className="register-form-input" type="email" name="mail" value={mail} placeholder="email ex: fauxemail@fakemail.com" onChange={changeField} />
+          <Field className="register-form-input" type="password" name="password" value={password} placeholder="mot de passe" onChange={changeField} />
+          <Field className="register-form-input" type="password" name="passwordConfirm" value={passwordConfirm} placeholder="confirmation du mot de passe" onChange={changeField} />
+
+          <input className="register-form-input" type="file" name="avatar" placeholder="avatar" onChange={onFileChange} />
+          <div className="register-form-input register-form-input--check">
+            <label htmlFor="cgu" className="">
+              <input type="checkbox" name="cgu" id="cgu" value={cgu} defaultChecked={false} onChange={handleCguCheckboxChange} />
+              <span>J'ai lu les <Link to="/cgu" className="register-form-input--check-link">conditions générales de vente</Link> et j'accèpte tout</span>
+            </label>
+          </div>
+          <button
+            type="submit"
+            className="register-form-btn"
+            onClick={() => {
+              console.log('clicked on s\'inscrire');
+            }}
+          >Confirmer l'inscription
+          </button>
         </div>
 
-        <button
-          type="submit"
-          className="register-form-btn"
-          onClick={() => {
-            console.log('clicked on s\'inscrire');
-          }}
-        >Confirmer l'inscription
-        </button>
       </form>
     </div>
 
@@ -63,10 +81,11 @@ Register.propTypes = {
   mail: PropTypes.string,
   phone: PropTypes.string,
   password: PropTypes.string,
+  avatar: PropTypes.object,
   passwordConfirm: PropTypes.string,
-  avatar: PropTypes.string,
   cgu: PropTypes.bool,
   changeField: PropTypes.func,
+  handleRegisterFormSubmit: PropTypes.func,
 };
 
 Register.defaultProps = {
@@ -77,9 +96,10 @@ Register.defaultProps = {
   phone: '',
   password: '',
   passwordConfirm: '',
-  avatar: 'https://randomuser.me/api/portraits/women/60.jpg',
+  avatar: {},
   cgu: false,
-  changeField: () => {},
+  changeField: () => { },
+  handleRegisterFormSubmit: () => { },
 };
 
 export default Register;

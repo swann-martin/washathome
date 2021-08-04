@@ -1,15 +1,27 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import {
+  MapContainer, TileLayer, Marker, Popup,
+} from 'react-leaflet';
 import PropTypes from 'prop-types';
 import Routing from './Routing';
 import './styles.scss';
 
-const AddressDetail = ({ userLongitude, userLatitude }) => {
+const AddressDetail = ({
+  userLatitude,
+  userLongitude,
+  machineLatitude,
+  machineLongitude,
+}) => {
   const position = [userLongitude, userLatitude];
   return (
     <div className="address-detail">
       <MapContainer center={position} zoom={10} scrollWheelZoom>
-        <Routing />
+        <Routing
+          userLatitude
+          userLongitude
+          machineLatitude
+          machineLongitude
+        />
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 import './styles.scss';
 
-const Option = ({ options }) => (
+const Option = ({ options, onChange, name }) => (
   <div className="option">
-    <select className="option-select">
+    <select className="option-select" name={name} onChange={onChange}>
       {
-                    options.map((option) => (
-                      <option key={option.title} value={option.title} className="option-select-option">{`${option.title} + ${option.price} €`}</option>
-                    ))
+        options.map((option) => (
+          <option key={option.id} value={option.id} className="option-select-option">{`${option.name} + ${option.price} €`}</option>
+        ))
                 }
 
     </select>
@@ -18,7 +18,8 @@ const Option = ({ options }) => (
 
 Option.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   })).isRequired,
 };

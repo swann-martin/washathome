@@ -3,7 +3,6 @@ export const LOGIN_FORM_SUBMIT = 'LOGIN_FORM_SUBMIT';
 export const AUTO_LOGIN_FORM_SUBMIT = 'AUTO_LOGIN_FORM_SUBMIT';
 export const USER_LOGOUT = 'USER_LOGOUT';
 
-
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const TOGGLE_CONNECTED = 'TOGGLE_CONNECTED';
@@ -14,6 +13,8 @@ export const REGISTER_USER_FORM_SUBMIT = 'REGISTER_USER_FORM_SUBMIT';
 export const UPDATE_USER_FORM_SUBMIT = 'UPDATE_USER_FORM_SUBMIT';
 export const UPDATE_USER_FORM_SUBMIT_SUCCESS = 'UPDATE_USER_FORM_SUBMIT_SUCCESS';
 export const UPDATE_USER_FORM_SUBMIT_ERROR = 'UPDATE_USER_FORM_SUBMIT_ERROR';
+export const CHANGE_PASSWORD_INPUT_CHANGE = 'CHANGE_PASSWORD_INPUT_CHANGE';
+export const UPDATE_PASSWORD_FORM_SUBMIT = 'UPDATE_PASSWORD_FORM_SUBMIT';
 
 export const DELETE_USER_FORM_SUBMIT = 'DELETE_USER_FORM_SUBMIT';
 export const DELETE_USER_FORM_SUBMIT_SUCCESS = 'DELETE_USER_FORM_SUBMIT_SUCCESS';
@@ -94,3 +95,11 @@ export const updateUserFormSubmitError = (payload) => ({
   payload,
 });
 
+export const changePasswordInputChange = (payload) => ({
+  type: CHANGE_PASSWORD_INPUT_CHANGE,
+  payload,
+});
+
+export const updatePasswordFormSubmit = () => ({
+  type: UPDATE_PASSWORD_FORM_SUBMIT,
+});

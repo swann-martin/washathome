@@ -4,9 +4,9 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Options from '../../containers/Options';
 import './styles.scss';
 
-
-const MachineDetail = ({ days, hours, machine,
-}) => {
+const MachineDetail = ({
+  machine,
+  handleBookingsFormSubmit, changeField, changeSelect, dispo }) => {
   useEffect(() => { }, [machine]);
   console.log('machine', machine);
   const position = { lat: machine.latitude, lng: machine.longitude };
@@ -54,36 +54,18 @@ const MachineDetail = ({ days, hours, machine,
           </MapContainer>
         </div>
 
-        <form className="machinedetail-form" onSubmit={(e) => {
-          e.preventDefault();
-          console.log(`submit du form ${machine.id}`)
-        }}>
-
-          <select className="machinedetail-form-select" name="day" id="day-select">
-            <option className="machinedetail-form-select-day" value="">Jours disponibles</option>
-            {days.map((day, id) => (
-              <option key={day + id} className="machinedetail-form-select-day" value={day}>{day}</option>
-            ))}
-          </select>
-
-          <select className="machinedetail-form-select" name="hour" id="hour-select">
-            <option className="machinedetail-form-select-hour" value="">Horaires disponibles</option>
-            {hours.map((hour, id) => (
-              <option key={hour + id} className="machinedetail-form-select-hour" value={hour}>{hour}</option>
-            ))}
-          </select>
-
-          <select className="machinedetail-form-select" id="temperature-select" name="temperature">
+        <form className="machinedetail-form" onSubmit={handleBookingsFormSubmit}>
+          <select className="machinedetail-form-select" id="temperature-select" name="temperature" onChange={changeSelect}>
             <option className="machinedetail-form-select-temperature" value="30">Température de lavage : 30°c</option>
             <option className="machinedetail-form-select-temperature" value="20">20°</option>
             <option className="machinedetail-form-select-temperature" value="40">40°</option>
             <option className="machinedetail-form-select-temperature" value="60">60°</option>
           </select>
+
           <div className="machinedetail-form-options">
-
             <Options />
-
           </div>
+          <textarea className="addwasherform-form-input addwasherform-form-input--description" placeholder="Ecrivez ici vos disponibilités ex : Je souhaite vous déposer mon linge, lundi matin prochain à 8h30" name="dispo" onChange={changeField} value={dispo} />
           <button className="machinedetail-form-submit" type="submit">Reserver</button>
         </form>
       </div>
@@ -103,11 +85,13 @@ MachineDetail.propTypes = {
   }).isRequired,
   days: PropTypes.arrayOf(PropTypes.string),
   hours: PropTypes.arrayOf(PropTypes.string),
+  handleBookingsFormSubmit: PropTypes.func,
 };
 
 MachineDetail.defaultProps = {
   days: [],
   hours: [],
+  handleBookingsFormSubmit: () => { },
 };
 
 export default MachineDetail;

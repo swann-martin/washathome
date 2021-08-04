@@ -1,0 +1,105 @@
+{
+  "washerBookings": [
+    {
+      "washer": {
+        "id": 4,
+        "pseudo": "HermioneG",
+        "phone": "0685236547",
+        "mail": "leblanc-eva@hotmail.fr"
+      },
+      "bringer": {
+        "id": 3,
+        "pseudo": "Arthur04"
+      },
+      "resa": {
+        "idResa": 4,
+        "dispo": "dispo le mercredi de 09h00 à 20h00",
+        "tempResa": 20,
+        "washer_id": 4,
+        "bringer_id": 3,
+        "status_id": 4,
+        "status_name": "lavage effectué",
+        "options": [
+          null
+        ]
+      },
+      "machine": {
+        "id": 4,
+        "name": "Leblanc-Family-machine",
+        "address": "10 rue Emile Duployé",
+        "zip_code": "13007",
+        "city": "marseille",
+        "latitude": 43.27789,
+        "longitude": 5.366573
+      }
+    }
+  ],
+  "bringerBookings": [
+    {
+      "washer": {
+        "id": 1,
+        "pseudo": "Magali95",
+        "phone": "0601020304",
+        "mail": "ilagamreivilo@gmail.com"
+      },
+      "bringer": {
+        "id": 4,
+        "pseudo": "HermioneG"
+      },
+      "resa": {
+        "idResa": 9,
+        "dispo": "dispo de 09h à 16h30 du lundi au vendredi",
+        "tempResa": 30,
+        "washer_id": 1,
+        "bringer_id": 4,
+        "status_id": 2,
+        "status_name": "depot du linge",
+        "options": [
+          null
+        ]
+      },
+      "machine": {
+        "id": 1,
+        "name": "super_clean",
+        "address": "18 rue ernerst rousselle",
+        "zip_code": "75013",
+        "city": "paris",
+        "latitude": 48.825127,
+        "longitude": 2.354642
+      }
+    },
+    {
+      "washer": {
+        "id": 5,
+        "pseudo": "jojo35",
+        "phone": "0641147858",
+        "mail": "geo.vergne@yahoo.fr"
+      },
+      "bringer": {
+        "id": 4,
+        "pseudo": "HermioneG"
+      },
+      "resa": {
+        "idResa": 2,
+        "dispo": "dispo le mardi toute la journée",
+        "tempResa": 40,
+        "washer_id": 5,
+        "bringer_id": 4,
+        "status_id": 3,
+        "status_name": "en cours de lavage",
+        "options": [
+          null
+        ]
+      },
+      "machine": {
+        "id": 5,
+        "name": "Chez Jojo",
+        "address": "148 rue de Tolbiac",
+        "zip_code": "75013",
+        "city": "paris",
+        "latitude": 48.826182,
+        "longitude": 2.355504
+      }
+    }
+  ]
+}

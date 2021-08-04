@@ -9,16 +9,17 @@ import {
   PROFILE_USER_INPUT_CHANGE,
   DELETE_USER_FORM_SUBMIT_SUCCESS,
   TOGGLE_MENU,
+  CHANGE_PASSWORD_INPUT_CHANGE,
 } from '../actions/user';
 
 export const initialState = {
+  loading: true,
   isConnected: false,
   pressedConnected: false,
   openMenu: false,
   inputs: {
     mail: '',
     password: '',
-
   },
   user: {
     lastname: '',
@@ -42,6 +43,11 @@ export const initialState = {
     avatar: '',
     cgu: false,
   },
+  machine: [],
+  passwordChange: {
+    password: '',
+    passwordConfirm: '',
+  },
   token: '',
 };
 
@@ -64,7 +70,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         ...action.payload,
         pressedConnected: false,
-        isConnected: true,
       };
     case LOGIN_ERROR:
       return {
@@ -113,6 +118,14 @@ const reducer = (state = initialState, action = {}) => {
         user: '',
         token: '',
         isConnected: false,
+      };
+    case CHANGE_PASSWORD_INPUT_CHANGE:
+      return {
+        ...state,
+        passwordChange: {
+          ...state.passwordChange,
+          ...action.payload,
+        },
       };
     default:
       return state;

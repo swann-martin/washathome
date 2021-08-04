@@ -6,10 +6,10 @@ import { useMap } from 'react-leaflet';
 import PropTypes from 'prop-types';
 
 L.Marker.prototype.options.icon = L.icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png'
+  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
 });
 
-export default function Routing({ 
+export default function Routing({
   userLatitude,
   userLongitude,
   machineLatitude,
@@ -21,7 +21,10 @@ export default function Routing({
     if (!map) return;
 
     const routingControl = L.Routing.control({
-      waypoints: [L.latLng(userLatitude, userLongitude), L.latLng(machineLatitude, machineLongitude)],
+      waypoints: [
+        L.latLng(userLatitude, userLongitude),
+        L.latLng(machineLatitude, machineLongitude)
+      ],
       routeWhileDragging: true,
       language: 'fr',
     }).addTo(map).hide();

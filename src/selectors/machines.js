@@ -1,3 +1,5 @@
+import { currentMachineUpdate } from 'src/actions/bookings';
+import store from 'src/store';
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable arrow-body-style */
 
@@ -12,5 +14,10 @@ export function findMachine(machines, searchedId) {
     console.log('searchedId', searchedId);
     return testedMachine.id == searchedId;
   });
+  const action = currentMachineUpdate({
+    machineId: machine.id,
+    washerId: machine.user_id,
+  });
+  store.dispatch(action);
   return machine;
 }
