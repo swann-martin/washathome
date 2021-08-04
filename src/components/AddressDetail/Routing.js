@@ -10,8 +10,7 @@ L.Marker.prototype.options.icon = L.icon({
 });
 
 export default function Routing({
-  userLatitude,
-  userLongitude,
+  position,
   machineLatitude,
   machineLongitude,
 }) {
@@ -22,7 +21,7 @@ export default function Routing({
 
     const routingControl = L.Routing.control({
       waypoints: [
-        L.latLng(userLatitude, userLongitude),
+        L.latLng(position),
         L.latLng(machineLatitude, machineLongitude)
       ],
       routeWhileDragging: true,
@@ -36,8 +35,7 @@ export default function Routing({
 }
 
 Routing.propTypes = {
-  userLatitude: PropTypes.number.isRequired,
-  userLongitude: PropTypes.number.isRequired,
-  machineLatitude: PropTypes.number.isRequired,
-  machineLongitude: PropTypes.number.isRequired,
+  position: PropTypes.object,
+  machineLatitude: PropTypes.number,
+  machineLongitude: PropTypes.number,
 };

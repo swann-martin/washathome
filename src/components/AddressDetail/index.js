@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   MapContainer, TileLayer, Marker, Popup, useMapEvents,
 } from 'react-leaflet';
+import Routing from './Routing';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
@@ -31,9 +32,16 @@ const AddressDetail = ({
     });
 
     return positionBringer === null ? null : (
-      <Marker position={positionBringer}>
-        <Popup>Vous êtes ici</Popup>
-      </Marker>
+      <>
+        <Routing
+          position={positionBringer}
+          machineLatitude={machineLatitude}
+          machineLongitude={machineLongitude}
+        />
+        <Marker position={positionBringer}>
+          <Popup>Vous êtes ici</Popup>
+        </Marker>
+      </>
     );
   };
 
