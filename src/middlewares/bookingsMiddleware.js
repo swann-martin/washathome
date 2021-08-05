@@ -22,6 +22,7 @@ export default (store) => (next) => (action) => {
         options: store.getState().bookings.options,
       })
         .then((result) => {
+          notify.success(result.data.message);
           console.log('result.data du post bookings form submit from machineDetail', result.data);
         })
         .catch((err) => {
@@ -34,6 +35,7 @@ export default (store) => (next) => (action) => {
       const { bookingId } = store.getState().booking.bookingId;
       api.get(`/reservation/${bookingId}`)
         .then((result) => {
+          notify.success(result.data.message);
           console.log('result.data du post bookings form submit from machineDetail', result.data);
         })
         .catch((err) => {
@@ -47,6 +49,7 @@ export default (store) => (next) => (action) => {
       console.log(action.payload);
       api.get(`/reservation/${bookingId}/${status_id}`)
         .then((result) => {
+          notify.success(result.data.message);
           console.log(`Booking {bookingId} updated to ${result.data.status_id}`);
         })
         .catch((err) => {
@@ -58,6 +61,7 @@ export default (store) => (next) => (action) => {
     case FETCH_BOOKINGS: {
       api.get('/reservation/')
         .then((result) => {
+          notify.success(result.data.message);
           console.log('result.data du fetch des machines de l\'utilisateur', result.data);
           store.dispatch(fetchBookingsSuccess(result.data));
         })

@@ -10,6 +10,7 @@ export default (store) => (next) => (action) => {
       api.get(`/search/${search}`)
         .then((result) => {
           store.dispatch(setMachines(result.data));
+          notify.success(result.data.message);
           console.log('search result', result.data);
         })
         .catch((err) => {
@@ -28,11 +29,12 @@ export default (store) => (next) => (action) => {
         description,
         price,
         capacity,
-        zip_code,
         city,
+        zip_code,
       } = store.getState().machines.inputs;
       api.post('/machine', { title, address, zip_code, city, picture, description, price, capacity })
         .then((result) => {
+          notify.success(result.data.message);
           console.log('result.data du post addwasher', result.data);
         })
         .catch((err) => {
@@ -54,9 +56,20 @@ export default (store) => (next) => (action) => {
         zip_code,
         city,
       } = store.getState().user.machine;
-      api.patch(`/machine/${machineId}`)
+      api.patch(`/machine/${machineId}`,
+        {
+          address,
+          title,
+          picture,
+          description,
+          price,
+          capacity,
+          zip_code,
+          city,
+        })
         .then((result) => {
           console.log('result.data du post addwasher', result.data);
+          notify.success(result.data.message);
         })
         .catch((err) => {
           console.error(err);
