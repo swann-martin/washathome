@@ -4,7 +4,7 @@ import { updateMachine, machineInputChange, deleteMachine } from '../../actions/
 
 const mapStateToProps = (state) => ({
 
-  title: state.user.machine[0].name,
+  title: state.user.machine[0].title,
   address: state.user.machine[0].address,
   zip_code: state.user.machine[0].zip_code,
   city: state.user.machine[0].city,
@@ -21,13 +21,17 @@ const mapDispatchToProps = (dispatch) => ({
     const action = machineInputChange({ [name]: value });
     dispatch(action);
   },
-  handleUpdateWasher: (evt) => {
-    evt.preventDefault();
+  changeSelect: (event) => {
+    const action = machineInputChange({ [event.target.name]: event.currentTarget.value });
+    dispatch(action);
+  },
+  handleUpdateWasher: (event) => {
+    event.preventDefault();
     const action = updateMachine();
     dispatch(action);
   },
-  handleDeleteWasher: (evt) => {
-    evt.preventDefault();
+  handleDeleteWasher: (event) => {
+    event.preventDefault();
     const action = deleteMachine();
     dispatch(action);
   },

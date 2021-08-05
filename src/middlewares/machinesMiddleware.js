@@ -1,7 +1,14 @@
 import api from 'src/api';
 import notify from 'src/notify';
 
-import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT, UPDATE_MACHINE, DELETE_MACHINE, addMachineFormSubmitSuccess, } from '../actions/machines';
+import {
+  FETCH_MACHINES_BY_ZIP_CODE,
+  setMachines,
+  ADD_MACHINE_FORM_SUBMIT,
+  UPDATE_MACHINE,
+  DELETE_MACHINE,
+  addMachineFormSubmitSuccess,
+} from '../actions/machines';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -32,7 +39,9 @@ export default (store) => (next) => (action) => {
         city,
         zip_code,
       } = store.getState().machines.inputs;
-      api.post('/machine', { title, address, zip_code, city, picture, description, price, capacity })
+      api.post('/machine', {
+        title, address, zip_code, city, picture, description, price, capacity,
+      })
         .then((result) => {
           addMachineFormSubmitSuccess(result.data);
           notify.success(result.data.message);
@@ -45,28 +54,18 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case UPDATE_MACHINE: {
-      console.log(store.getState().machine);
-      const { machineId } = store.getState().machine.machineId;
-      const {
-        address,
-        title,
-        picture,
-        description,
-        price,
-        capacity,
-        zip_code,
-        city,
-      } = store.getState().user.machine;
-      api.patch(`/machine/${machineId}`,
+      console.log('machine mise a jour', store.getState().user.machine[0]);
+      api.patch('/machine',
         {
-          address,
-          title,
-          picture,
-          description,
-          price,
-          capacity,
-          zip_code,
-          city,
+          id: store.getState().user.machine[0].id,
+          address: store.getState().user.machine[0].address,
+          title: store.getState().user.machine[0].title,
+          picture: store.getState().user.machine[0].picture,
+          description: store.getState().user.machine[0].description,
+          price: store.getState().user.machine[0].price,
+          capacity: store.getState().user.machine[0].capacity,
+          zip_code: store.getState().user.machine[0].zip_code,
+          city: store.getState().user.machine[0].city,
         })
         .then((result) => {
           console.log('result.data du post addwasher', result.data);
@@ -83,6 +82,7 @@ export default (store) => (next) => (action) => {
       api.delete(`/machine/${machineId}`)
         .then((result) => {
           console.log('result.data du post addwasher', result.data);
+          notify.success(result.data.message);
         })
         .catch((err) => {
           console.error(err);
