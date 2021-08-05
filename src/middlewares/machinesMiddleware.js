@@ -1,7 +1,7 @@
 import api from 'src/api';
 import notify from 'src/notify';
 
-import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT, UPDATE_MACHINE, DELETE_MACHINE, } from '../actions/machines';
+import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT, UPDATE_MACHINE, DELETE_MACHINE, addMachineFormSubmitSuccess, } from '../actions/machines';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -34,6 +34,7 @@ export default (store) => (next) => (action) => {
       } = store.getState().machines.inputs;
       api.post('/machine', { title, address, zip_code, city, picture, description, price, capacity })
         .then((result) => {
+          addMachineFormSubmitSuccess(store.getState().machines.inputs);
           notify.success(result.data.message);
           console.log('result.data du post addwasher', result.data);
         })
@@ -78,7 +79,7 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case DELETE_MACHINE: {
-      const machineId = store.getState().user.machine[0].id;
+      const machineId = store.getState().user.machine.id;
       api.delete(`/machine/${machineId}`)
         .then((result) => {
           console.log('result.data du post addwasher', result.data);

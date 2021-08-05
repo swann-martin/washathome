@@ -110,7 +110,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         currentBooking: {
           ...state.currentBooking,
-          status_id: action.payload.status_id,
+          ...action.payload,
         },
       };
     default:

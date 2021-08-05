@@ -12,7 +12,7 @@ import {
   CHANGE_PASSWORD_INPUT_CHANGE,
 } from '../actions/user';
 
-import { MACHINE_INPUT_CHANGE } from '../actions/machines';
+import { MACHINE_INPUT_CHANGE, ADD_MACHINE_FORM_SUBMIT_SUCCESS } from '../actions/machines';
 
 export const initialState = {
   loading: true,
@@ -150,6 +150,15 @@ const reducer = (state = initialState, action = {}) => {
           ...state.machine[0],
           ...action.payload,
         },],
+      };
+    case ADD_MACHINE_FORM_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        machine: [{
+          ...state.machine[0],
+          ...action.payload,
+        }],
+        pressedConnected: true,
       };
     default:
       return state;
