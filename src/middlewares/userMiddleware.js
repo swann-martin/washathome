@@ -6,12 +6,13 @@ import {
   LOGIN_SUCCESS,
   loginSuccess,
   USER_LOGOUT,
-  REGISTER_USER_FORM_SUBMIT,registerUserFormSubmitSuccess,
+  REGISTER_USER_FORM_SUBMIT, registerUserFormSubmitSuccess,
   UPDATE_USER_FORM_SUBMIT,
   UPDATE_PASSWORD_FORM_SUBMIT,
   DELETE_USER_FORM_SUBMIT,
   deleteUserFormSubmitSuccess, deleteUserFormSubmitError,
 } from 'src/actions/user';
+import history from '../utils/history';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -68,6 +69,7 @@ export default (store) => (next) => (action) => {
           localStorage.setItem('token', token);
           console.log('result.data du post Modify User Form', result.data);
           notify.success(result.data.message);
+          history.push('/');
         })
         .catch((err) => {
           notify.error(err.response.data.message);
@@ -99,6 +101,7 @@ export default (store) => (next) => (action) => {
           console.log('result.data du delete user', result.data);
           store.dispatch(deleteUserFormSubmitSuccess());
           notify.success(result.data.message);
+          history.push('/');
         })
         .catch((err) => {
           store.dispatch(deleteUserFormSubmitError());

@@ -9,6 +9,7 @@ import {
   DELETE_MACHINE,
   addMachineFormSubmitSuccess,
 } from '../actions/machines';
+import history from '../utils/history';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -46,6 +47,7 @@ export default (store) => (next) => (action) => {
           store.dispatch(addMachineFormSubmitSuccess(result.data.machine[0]));
           notify.success(result.data.message);
           console.log('result.data du post addwasher', result.data);
+          history.push('/');
         })
         .catch((err) => {
           console.error(err);
@@ -70,6 +72,7 @@ export default (store) => (next) => (action) => {
         .then((result) => {
           console.log('result.data du post addwasher', result.data);
           notify.success(result.data.message);
+          history.push('/');
         })
         .catch((err) => {
           console.error(err);
@@ -83,6 +86,7 @@ export default (store) => (next) => (action) => {
         .then((result) => {
           console.log('result.data du post addwasher', result.data);
           notify.success(result.data.message);
+          history.push('/');
         })
         .catch((err) => {
           console.error(err);
