@@ -6,6 +6,7 @@ import {
   FETCH_BOOKINGS,
   fetchBookingsSuccess,
   UPDATE_BOOKING_STATUS,
+  updateBookingStatusSuccess,
 } from '../actions/bookings';
 
 export default (store) => (next) => (action) => {
@@ -47,11 +48,13 @@ export default (store) => (next) => (action) => {
     }
     case UPDATE_BOOKING_STATUS: {
       const { bookingId, status_id } = action.payload;
-      console.log(action.payload);
+    
       api.get(`/reservation/${bookingId}/${status_id}`)
         .then((result) => {
           notify.success(result.data.message);
+          console.log('update booking success res data', result.data);
           console.log(`Booking {bookingId} updated to ${result.data.status_id}`);
+          store.dispatch(updateBookingStatusSuccess(result.data.status));
         })
         .catch((err) => {
           console.error(err);
