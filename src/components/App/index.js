@@ -1,6 +1,7 @@
 // == Import npm
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import PropTypes from 'prop-types';
 
 // Import components
@@ -25,6 +26,7 @@ import Cgu from '../../pages/Cgu';
 import Team from '../../pages/Team';
 // Import style
 import './styles.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = ({
   pressedConnected,
@@ -34,6 +36,7 @@ const App = ({
 
   <div className="app">
     <Nav />
+    <ToastContainer />
     <Switch>
       <Route exact path="/">
         <Header foundMachines={foundMachines} />

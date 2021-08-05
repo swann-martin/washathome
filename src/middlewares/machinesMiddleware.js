@@ -1,6 +1,14 @@
 import api from 'src/api';
+import notify from 'src/notify';
 
-import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT, UPDATE_MACHINE, DELETE_MACHINE, } from '../actions/machines';
+import {
+  FETCH_MACHINES_BY_ZIP_CODE,
+  setMachines,
+  ADD_MACHINE_FORM_SUBMIT,
+  UPDATE_MACHINE,
+  DELETE_MACHINE,
+  addMachineFormSubmitSuccess,
+} from '../actions/machines';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -9,10 +17,12 @@ export default (store) => (next) => (action) => {
       api.get(`/search/${search}`)
         .then((result) => {
           store.dispatch(setMachines(result.data));
+          notify.info(`Il y a  ${result.data.length} résultats à votre recherche ${search}`);
           console.log('search result', result.data);
         })
         .catch((err) => {
           console.log('error pas de machine', err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
@@ -26,47 +36,57 @@ export default (store) => (next) => (action) => {
         description,
         price,
         capacity,
-        zip_code,
         city,
+        zip_code,
       } = store.getState().machines.inputs;
-      api.post('/machine', { title, address, zip_code, city, picture, description, price, capacity })
+      api.post('/machine', {
+        title, address, zip_code, city, picture, description, price, capacity,
+      })
         .then((result) => {
+          store.dispatch(addMachineFormSubmitSuccess(result.data.machine[0]));
+          notify.success(result.data.message);
           console.log('result.data du post addwasher', result.data);
         })
         .catch((err) => {
           console.error(err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
     case UPDATE_MACHINE: {
-      const { machineId } = store.getState().machine.machineId;
-      const {
-        address,
-        title,
-        picture,
-        description,
-        price,
-        capacity,
-        zip_code,
-        city,
-      } = store.getState().user.machine;
-      api.patch(`/machine/${machineId}`)
+      console.log('machine mise a jour', store.getState().user.machine[0]);
+      api.patch('/machine',
+        {
+          id: store.getState().user.machine[0].id,
+          address: store.getState().user.machine[0].address,
+          title: store.getState().user.machine[0].title,
+          picture: store.getState().user.machine[0].picture,
+          description: store.getState().user.machine[0].description,
+          price: store.getState().user.machine[0].price,
+          capacity: store.getState().user.machine[0].capacity,
+          zip_code: store.getState().user.machine[0].zip_code,
+          city: store.getState().user.machine[0].city,
+        })
         .then((result) => {
           console.log('result.data du post addwasher', result.data);
+          notify.success(result.data.message);
         })
         .catch((err) => {
           console.error(err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
     case DELETE_MACHINE: {
-      const { machineId } = store; getState().machine[0].id;
+      const machineId = store.getState().user.machine[0].id;
       api.delete(`/machine/${machineId}`)
         .then((result) => {
           console.log('result.data du post addwasher', result.data);
+          notify.success(result.data.message);
         })
         .catch((err) => {
           console.error(err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }

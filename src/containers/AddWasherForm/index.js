@@ -21,6 +21,10 @@ const mapDispatchToProps = (dispatch) => ({
     const action = addMachineInputChange({ [name]: value });
     dispatch(action);
   },
+  changeSelect: (event) => {
+    const action = addMachineInputChange({ [event.target.name]: event.currentTarget.value });
+    dispatch(action);
+  },
   handleWasherFormSubmit: (evt) => {
     evt.preventDefault();
     const action = addMachineFormSubmit();

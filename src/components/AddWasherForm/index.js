@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
-import Card from '../Card';
 import Field from 'src/components/Field';
+import Card from '../Card';
 
 import './styles.scss';
 
@@ -15,11 +16,16 @@ const AddWasherForm = ({
   description,
   picture,
   changeField,
+  changeSelect,
   handleWasherFormSubmit,
 }) => {
   const handleFieldChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
   };
+  const history = useHistory();
+
+  const navigateToHome = () => history.push('/');
+
   return (
     <div className="addwasherform">
       <Link
@@ -33,7 +39,11 @@ const AddWasherForm = ({
       </Link>
       <h1 className="addwasherform-title"> Ajouter une Machine </h1>
 
-      <form className="addwasherform-form" onSubmit={handleWasherFormSubmit} encType="multipart/form-data">
+      <form
+        className="addwasherform-form"
+        onSubmit={handleWasherFormSubmit}
+        encType="multipart/form-data"
+      >
         <Field placeholder="Nom ex: Nom de la machine" value={title} name="title" onChange={changeField} type="text" />
         <Field placeholder="Adresse de la machine ex: 15, rue du test" value={address} name="address" onChange={changeField} type="text" />
         <Field placeholder="Code Postal ex: 13000" value={zip_code} type="number" name="zip_code" onChange={changeField} />
@@ -44,7 +54,7 @@ const AddWasherForm = ({
         <div className="addwasherform-form-capacity">
           <label htmlFor="capacity" className="addwasherform-form-capacity-select">
             <span className="addwasherform-form-capacity-select-text">Quelle est le poids maximal de votre machine&nbsp;?</span>
-            <select className="addwasherform-form-capacity-select-option" name="capacity" id="capacity" onChange={handleFieldChange}>
+            <select className="addwasherform-form-capacity-select-option" name="capacity" id="capacity" onChange={changeSelect}>
               <option className="addwasherform-form-capacity-select-option-item" value="6">6kg</option>
               <option className="addwasherform-form-capacity-select-option-item" value="7">7kg</option>
               <option className="addwasherform-form-capacity-select-option-item" value="8">8kg</option>
@@ -63,7 +73,6 @@ const AddWasherForm = ({
     </div>
   );
 };
-
 AddWasherForm.propTypes = {
   title: PropTypes.string,
   address: PropTypes.string,
@@ -75,11 +84,13 @@ AddWasherForm.propTypes = {
   picture: PropTypes.string,
   handleWasherFormSubmit: PropTypes.func,
   changeField: PropTypes.func,
+  changeSelect: PropTypes.func,
 };
 
 AddWasherForm.defaultProps = {
   handleWasherFormSubmit: () => { },
   changeField: () => { },
+  changeSelect: () => { },
   title: '',
   address: '',
   zip_code: '',

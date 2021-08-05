@@ -1,4 +1,4 @@
-import { BOOKING_INPUT_CHANGE, FETCH_BOOKINGS_SUCCESS, BOOKING_INPUT_OPTIONS_CHANGE, CURRENT_MACHINE_UPDATE, CURRENT_BOOKING_UPDATE } from 'src/actions/bookings';
+import { BOOKING_INPUT_CHANGE, FETCH_BOOKINGS_SUCCESS, BOOKING_INPUT_OPTIONS_CHANGE, CURRENT_MACHINE_UPDATE, CURRENT_BOOKING_UPDATE, UPDATE_BOOKING_STATUS } from 'src/actions/bookings';
 
 export const initialState = {
   currentMachine: {
@@ -98,6 +98,14 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
     case CURRENT_BOOKING_UPDATE:
+      return {
+        ...state,
+        currentBooking: {
+          ...state.currentBooking,
+          ...action.payload,
+        },
+      };
+    case UPDATE_BOOKING_STATUS:
       return {
         ...state,
         currentBooking: {

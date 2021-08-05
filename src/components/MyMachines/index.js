@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-//import of components
+// import of components
 
 import Field from 'src/components/Field';
 
@@ -11,7 +11,7 @@ import './styles.scss';
 
 const MyMachines = ({
   isConnected,
-  handlUpdateWasher,
+  handleUpdateWasher,
   handleDeleteWasher,
   title,
   address,
@@ -21,6 +21,7 @@ const MyMachines = ({
   description,
   picture,
   changeField,
+  changeSelect,
 }) => {
   const handleFieldChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
@@ -39,8 +40,7 @@ const MyMachines = ({
         </Link>
         <h1 className="updatewasherform-title"> Vos machines</h1>
 
-
-        <form className="updatewasherform-form" onSubmit={handlUpdateWasher} encType="multipart/form-data">
+        <form className="updatewasherform-form" onSubmit={handleUpdateWasher} encType="multipart/form-data">
           <div className="updatewasherform-form-left">
             <Field placeholder="Nom ex: Nom de la machine" value={title} name="title" onChange={changeField} type="text" />
             <Field placeholder="Adresse de la machine ex: 15, rue du test" value={address} name="address" onChange={changeField} type="text" />
@@ -54,7 +54,7 @@ const MyMachines = ({
             <div className="updatewasherform-form-capacity">
               <label htmlFor="capacity" className="updatewasherform-form-capacity-select">
                 <span className="updatewasherform-form-capacity-select-text">Le poids maximal de votre machine est</span>
-                <select className="updatewasherform-form-capacity-select-option" name="capacity" id="capacity" onChange={handleFieldChange}>
+                <select className="updatewasherform-form-capacity-select-option" name="capacity" id="capacity" onChange={changeSelect}>
                   <option className="updatewasherform-form-capacity-select-option-item" value="6">6kg</option>
                   <option className="updatewasherform-form-capacity-select-option-item" value="7">7kg</option>
                   <option className="updatewasherform-form-capacity-select-option-item" value="8">8kg</option>
@@ -70,7 +70,12 @@ const MyMachines = ({
             </div>
             <div className="updatewasherform-form-btnGroup">
               <button className="updatewasherform-form-btnGroup-submit updatewasherform-form-btnGroup-submit--delete" type="button" onClick={handleDeleteWasher}>Supprimer cette machine</button>
-              <button className="updatewasherform-form-btnGroup-submit" type="submit">Modifier cette machine</button>
+              <button
+                className="updatewasherform-form-btnGroup-submit"
+                type="button"
+                onClick={handleUpdateWasher}
+              >Modifier cette machine
+              </button>
             </div>
           </div>
 
@@ -85,14 +90,17 @@ MyMachines.propTypes = {
   address: PropTypes.string,
   zip_code: PropTypes.string,
   city: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   description: PropTypes.string,
-  capacity: PropTypes.string,
   picture: PropTypes.string,
   handlUpdateWasher: PropTypes.func,
   handleDeleteWasher: PropTypes.func,
   changeField: PropTypes.func,
   isConnected: PropTypes.bool.isRequired,
+  changeSelect: PropTypes.func,
 
 };
 
@@ -100,14 +108,14 @@ MyMachines.defaultProps = {
   handleDeleteWasher: () => { },
   handlUpdateWasher: () => { },
   changeField: () => { },
+  changeSelect: () => { },
   title: '',
   address: '',
   zip_code: '',
   city: '',
-  price: '',
+  price: 0,
   description: '',
   picture: '',
-  capacity: 6,
 
 };
 

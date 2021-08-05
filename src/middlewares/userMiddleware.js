@@ -1,18 +1,16 @@
 import api from 'src/api';
-
+import notify from 'src/notify';
 import {
   LOGIN_FORM_SUBMIT,
   AUTO_LOGIN_FORM_SUBMIT,
   LOGIN_SUCCESS,
-  LOGIN_ERROR,
   loginSuccess,
   USER_LOGOUT,
-  REGISTER_USER_FORM_SUBMIT,
+  REGISTER_USER_FORM_SUBMIT,registerUserFormSubmitSuccess,
   UPDATE_USER_FORM_SUBMIT,
   UPDATE_PASSWORD_FORM_SUBMIT,
   DELETE_USER_FORM_SUBMIT,
   deleteUserFormSubmitSuccess, deleteUserFormSubmitError,
-  autoLoginFormSubmit,
 } from 'src/actions/user';
 
 export default (store) => (next) => (action) => {
@@ -41,9 +39,12 @@ export default (store) => (next) => (action) => {
       })
         .then((result) => {
           console.log('result.data du post Register User Form', result.data);
+          notify.success(result.data.message);
+          store.dispatch(registerUserFormSubmitSuccess());
         })
         .catch((err) => {
-          console.error(err);
+          console.log(err.response.data.message);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
@@ -66,9 +67,10 @@ export default (store) => (next) => (action) => {
           const { token } = result.data.token;
           localStorage.setItem('token', token);
           console.log('result.data du post Modify User Form', result.data);
+          notify.success(result.data.message);
         })
         .catch((err) => {
-          console.error(err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
@@ -80,9 +82,12 @@ export default (store) => (next) => (action) => {
       })
         .then((result) => {
           console.log('result.data du post Modify Password Form', result.data);
+          notify.success(result.data.message);
         })
         .catch((err) => {
           console.error(err);
+          console.log(err.response.data.message);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
@@ -93,10 +98,12 @@ export default (store) => (next) => (action) => {
         .then((result) => {
           console.log('result.data du delete user', result.data);
           store.dispatch(deleteUserFormSubmitSuccess());
+          notify.success(result.data.message);
         })
         .catch((err) => {
           store.dispatch(deleteUserFormSubmitError());
-          console.error(err);
+          console.log(err.response.data.message);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
@@ -107,11 +114,12 @@ export default (store) => (next) => (action) => {
       // On récupère les valeurs du state de redux
       // Ici on veut email et password se trouvant dans
       // le state du reducer user
+
       const { mail, password } = store.getState().user.inputs;
       api.post('/login', { mail, password })
         .then((result) => {
           const { token } = result.data;
-          console.log(result.data.personal);
+          console.log(result.data.personnal);
           localStorage.setItem('token', token);
           store.dispatch(loginSuccess({
             user: result.data.personal[0].user,
@@ -121,7 +129,7 @@ export default (store) => (next) => (action) => {
           }));
         })
         .catch((err) => {
-          console.error(err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
@@ -155,7 +163,7 @@ export default (store) => (next) => (action) => {
           }));
         })
         .catch((err) => {
-          console.error(err);
+          console.log(err.response.data.message);
         });
       return next(action);
     }

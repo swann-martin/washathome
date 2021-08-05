@@ -29,7 +29,10 @@ const Field = ({
 Field.propTypes = {
   onChange: PropTypes.func,
   name: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   placeholder: PropTypes.string,
   type: PropTypes.string,
   classn: PropTypes.string,
