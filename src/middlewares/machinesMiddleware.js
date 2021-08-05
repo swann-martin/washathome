@@ -10,7 +10,7 @@ export default (store) => (next) => (action) => {
       api.get(`/search/${search}`)
         .then((result) => {
           store.dispatch(setMachines(result.data));
-          notify.success(result.data.message);
+          notify.info(`Il y a  ${result.data.length} résultats à votre recherche ${search}`);
           console.log('search result', result.data);
         })
         .catch((err) => {
@@ -34,7 +34,7 @@ export default (store) => (next) => (action) => {
       } = store.getState().machines.inputs;
       api.post('/machine', { title, address, zip_code, city, picture, description, price, capacity })
         .then((result) => {
-          addMachineFormSubmitSuccess(store.getState().machines.inputs);
+          addMachineFormSubmitSuccess(result.data);
           notify.success(result.data.message);
           console.log('result.data du post addwasher', result.data);
         })
@@ -79,7 +79,7 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case DELETE_MACHINE: {
-      const machineId = store.getState().user.machine.id;
+      const machineId = store.getState().user.machine[0].id;
       api.delete(`/machine/${machineId}`)
         .then((result) => {
           console.log('result.data du post addwasher', result.data);
