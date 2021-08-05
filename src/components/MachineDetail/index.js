@@ -15,8 +15,7 @@ const MachineDetail = ({
   dispo,
   isConnected,
 }) => {
-  useEffect(() => { }, [machine]);
-  console.log('machine', machine);
+  useEffect(() => { }, []);
   const position = { lat: machine.latitude, lng: machine.longitude };
   const history = useHistory();
 

@@ -7,6 +7,7 @@ import {
   TOGGLE_CONNECTED,
   REGISTER_USER_INPUT_CHANGE,
   PROFILE_USER_INPUT_CHANGE,
+  REGISTER_USER_FORM_SUBMIT_SUCCES,
   DELETE_USER_FORM_SUBMIT_SUCCESS,
   TOGGLE_MENU,
   CHANGE_PASSWORD_INPUT_CHANGE,
@@ -120,6 +121,11 @@ const reducer = (state = initialState, action = {}) => {
           ...action.payload,
         },
       };
+    case REGISTER_USER_FORM_SUBMIT_SUCCES:
+      return {
+        ...state,
+        pressedConnected: true,
+      };
     case PROFILE_USER_INPUT_CHANGE:
       return {
         ...state,
@@ -155,10 +161,9 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         machine: [{
-          ...state.machine[0],
+          ...state.machine,
           ...action.payload,
         }],
-        pressedConnected: true,
       };
     default:
       return state;

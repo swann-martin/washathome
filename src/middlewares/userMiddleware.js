@@ -6,7 +6,7 @@ import {
   LOGIN_SUCCESS,
   loginSuccess,
   USER_LOGOUT,
-  REGISTER_USER_FORM_SUBMIT,
+  REGISTER_USER_FORM_SUBMIT,registerUserFormSubmitSuccess,
   UPDATE_USER_FORM_SUBMIT,
   UPDATE_PASSWORD_FORM_SUBMIT,
   DELETE_USER_FORM_SUBMIT,
@@ -40,6 +40,7 @@ export default (store) => (next) => (action) => {
         .then((result) => {
           console.log('result.data du post Register User Form', result.data);
           notify.success(result.data.message);
+          store.dispatch(registerUserFormSubmitSuccess());
         })
         .catch((err) => {
           console.log(err.response.data.message);

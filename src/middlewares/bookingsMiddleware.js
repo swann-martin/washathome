@@ -14,12 +14,13 @@ export default (store) => (next) => (action) => {
 
     // Réserver une machine en identifiant le bringerWasher grâce à son JWT
     case BOOKING_FORM_SUBMIT: {
+      console.log(store.getState().bookings.options);
       api.post('/reservation/', {
         temperature: store.getState().bookings.inputs.temperature,
         dispo: store.getState().bookings.inputs.dispo,
         washerId: store.getState().bookings.currentMachine.washerId,
         machineId: store.getState().bookings.currentMachine.machineId,
-        options: store.getState().bookings.options,
+        options: store.getState().bookings.inputs.options,
       })
         .then((result) => {
           notify.success(result.data.message);

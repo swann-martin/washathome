@@ -9,6 +9,7 @@ export const TOGGLE_CONNECTED = 'TOGGLE_CONNECTED';
 export const TOGGLE_MENU = 'TOGGLE_MENU';
 export const REGISTER_USER_INPUT_CHANGE = 'REGISTER_USER_INPUT_CHANGE';
 export const REGISTER_USER_FORM_SUBMIT = 'REGISTER_USER_FORM_SUBMIT';
+export const REGISTER_USER_FORM_SUBMIT_SUCCES = 'REGISTER_USER_FORM_SUBMIT_SUCCES';
 
 export const UPDATE_USER_FORM_SUBMIT = 'UPDATE_USER_FORM_SUBMIT';
 export const UPDATE_USER_FORM_SUBMIT_SUCCESS = 'UPDATE_USER_FORM_SUBMIT_SUCCESS';
@@ -64,6 +65,12 @@ export const registerUserInputChange = (payload) => ({
 export const registerUserFormSubmit = () => ({
   type: REGISTER_USER_FORM_SUBMIT,
 });
+
+export const registerUserFormSubmitSuccess = () => ({
+  type: REGISTER_USER_FORM_SUBMIT_SUCCES,
+});
+
+
 
 export const profileUserInputChange = (payload) => ({
   type: PROFILE_USER_INPUT_CHANGE,

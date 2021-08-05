@@ -43,7 +43,7 @@ export default (store) => (next) => (action) => {
         title, address, zip_code, city, picture, description, price, capacity,
       })
         .then((result) => {
-          addMachineFormSubmitSuccess(result.data);
+          store.dispatch(addMachineFormSubmitSuccess(result.data.machine[0]));
           notify.success(result.data.message);
           console.log('result.data du post addwasher', result.data);
         })
