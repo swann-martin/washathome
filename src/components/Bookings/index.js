@@ -32,7 +32,7 @@ const Bookings = ({ bringerBookings, washerBookings, isConnected, getBookings, }
                   {
                     bringerBookings.length > 0 ? (
                       bringerBookings.map((bringerBooking) => (
-                        <Booking key={bringerBooking.resa.idResa} link={`bookingDetail/${bringerBooking.resa.idResa}`} price={bringerBooking.machine.price} name={bringerBooking.washer.pseudo} statusId={bringerBooking.resa.status_id} status={bringerBooking.resa.status_name} />
+                        <Booking key={bringerBooking.resa.idResa} link={`bookingDetail/${bringerBooking.resa.idResa}`} price={bringerBooking.resa.price} name={bringerBooking.washer.pseudo} statusId={bringerBooking.resa.status_id} status={bringerBooking.resa.status_name} />
                       ))) : <h3>Vous n'avez pas réservé de machine pour l'instant</h3>
                   }
 
@@ -42,7 +42,7 @@ const Bookings = ({ bringerBookings, washerBookings, isConnected, getBookings, }
                   <h2>En tant que washer, j'ai fait une machine washerBookings</h2>
                   {
                     (washerBookings.length > 0 ? washerBookings.map((booking) => (
-                      <Booking key={booking.resa.idResa} link={`bookingDetail/${booking.resa.idResa}`} price={booking.machine.price} name={booking.bringer.pseudo} statusId={booking.resa.status_id} status={booking.resa.status_name} date={booking.resa.DataResa} />
+                      <Booking key={booking.resa.idResa} link={`bookingDetail/${booking.resa.idResa}`} price={booking.resa.price} name={booking.bringer.pseudo} statusId={booking.resa.status_id} status={booking.resa.status_name} date={booking.resa.DataResa} />
                     ))
                       : <h4>Personne n'a réservé votre machine pour l'instant</h4>
                     )

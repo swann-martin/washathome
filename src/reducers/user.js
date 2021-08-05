@@ -87,6 +87,10 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         ...action.payload,
         pressedConnected: false,
+        inputs: {
+          mail: '',
+          password: '',
+        }
       };
     case LOGIN_ERROR:
       return {
@@ -125,6 +129,17 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         pressedConnected: true,
+        register: {
+          lastname: '',
+          firstname: '',
+          pseudo: '',
+          mail: '',
+          password: '',
+          passwordConfirm: '',
+          phone: '',
+          avatar: '',
+          cgu: false,
+        },
       };
     case PROFILE_USER_INPUT_CHANGE:
       return {

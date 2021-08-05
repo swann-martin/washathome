@@ -42,6 +42,7 @@ export default (store) => (next) => (action) => {
           console.log('result.data du post Register User Form', result.data);
           notify.success(result.data.message);
           store.dispatch(registerUserFormSubmitSuccess());
+          history.push('/');
         })
         .catch((err) => {
           console.log(err.response.data.message);

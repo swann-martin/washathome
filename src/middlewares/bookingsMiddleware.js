@@ -27,7 +27,7 @@ export default (store) => (next) => (action) => {
         .then((result) => {
           notify.success(result.data.message);
           console.log('result.data du post bookings form submit from machineDetail', result.data);
-          history.push('/');
+          history.push('/bookings');
         })
         .catch((err) => {
           console.error(err);
@@ -57,7 +57,7 @@ export default (store) => (next) => (action) => {
           console.log('update booking success res data', result.data);
           console.log(`Booking {bookingId} updated to ${result.data.status_id}`);
           store.dispatch(updateBookingStatusSuccess(result.data.status));
-          history.push('/');
+          history.push('/bookings');
         })
         .catch((err) => {
           console.error(err);

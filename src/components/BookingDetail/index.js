@@ -66,10 +66,9 @@ const BookingDetail = ({
             <p className="booking-details-container-right-item">Température de nettoyage: {booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.resa.tempResa}°c</span> : <span className="booking-details-container-right-item-element">39°c</span>}</p>
             <ul className="booking-details-container-right-list">
               {booking
-                && (!booking.resa.options.length === 0
-                  && booking.resa.options.map((option) => (
-                    <li key={option.name}>{option.name} {option.price}€</li>
-                  )))}
+                && booking.resa.options.map((option) => (
+                  <li key={option.name}>{option.name} {option.price}</li>
+                ))}
             </ul>
 
             {
