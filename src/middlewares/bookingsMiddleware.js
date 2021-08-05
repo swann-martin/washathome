@@ -1,4 +1,5 @@
 import api from 'src/api';
+import notify from 'src/notify';
 import {
   BOOKING_FORM_SUBMIT,
   GET_BOOKING_BY_ID,
@@ -25,6 +26,7 @@ export default (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.error(err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
@@ -36,6 +38,7 @@ export default (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.error(err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
@@ -48,6 +51,7 @@ export default (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.error(err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
@@ -59,6 +63,7 @@ export default (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.error(err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }

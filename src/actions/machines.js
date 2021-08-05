@@ -40,5 +40,5 @@ export const updateMachine = () => ({
 });
 export const DELETE_MACHINE = 'DELETE_MACHINE';
 export const deleteMachine = () => ({
-  type: UPDATE_MACHINE,
+  type: DELETE_MACHINE,
 });

@@ -1,4 +1,5 @@
 import api from 'src/api';
+import notify from 'src/notify';
 
 import { FETCH_MACHINES_BY_ZIP_CODE, setMachines, ADD_MACHINE_FORM_SUBMIT, UPDATE_MACHINE, DELETE_MACHINE, } from '../actions/machines';
 
@@ -13,6 +14,7 @@ export default (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.log('error pas de machine', err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
@@ -35,10 +37,12 @@ export default (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.error(err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
     case UPDATE_MACHINE: {
+      console.log(store.getState().machine);
       const { machineId } = store.getState().machine.machineId;
       const {
         address,
@@ -56,17 +60,19 @@ export default (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.error(err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
     case DELETE_MACHINE: {
-      const { machineId } = store; getState().machine[0].id;
+      const machineId = store.getState().user.machine[0].id;
       api.delete(`/machine/${machineId}`)
         .then((result) => {
           console.log('result.data du post addwasher', result.data);
         })
         .catch((err) => {
           console.error(err);
+          notify.error(err.response.data.message);
         });
       return next(action);
     }
