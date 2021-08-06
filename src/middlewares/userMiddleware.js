@@ -30,7 +30,7 @@ export default (store) => (next) => (action) => {
       const formData = new FormData();
       formData.append('avatar', store.getState().user.register.avatar);
       formData.append('lastname', lastname);
-      formData.append('firtsname', firstname);
+      formData.append('firstname', firstname);
       formData.append('pseudo', pseudo);
       formData.append('mail', mail);
       formData.append('password', password);
