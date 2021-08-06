@@ -13,7 +13,7 @@ import {
   CHANGE_PASSWORD_INPUT_CHANGE,
 } from '../actions/user';
 
-import { MACHINE_INPUT_CHANGE, ADD_MACHINE_FORM_SUBMIT_SUCCESS } from '../actions/machines';
+import { MACHINE_INPUT_CHANGE, ADD_MACHINE_FORM_SUBMIT_SUCCESS, DELETE_MACHINE_SUCCESS } from '../actions/machines';
 
 export const initialState = {
   loading: true,
@@ -87,6 +87,10 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         ...action.payload,
         pressedConnected: false,
+        inputs: {
+          mail: '',
+          password: '',
+        }
       };
     case LOGIN_ERROR:
       return {
@@ -125,6 +129,17 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         pressedConnected: true,
+        register: {
+          lastname: '',
+          firstname: '',
+          pseudo: '',
+          mail: '',
+          password: '',
+          passwordConfirm: '',
+          phone: '',
+          avatar: '',
+          cgu: false,
+        },
       };
     case PROFILE_USER_INPUT_CHANGE:
       return {
@@ -155,15 +170,20 @@ const reducer = (state = initialState, action = {}) => {
         machine: [{
           ...state.machine[0],
           ...action.payload,
-        },],
+        }],
       };
     case ADD_MACHINE_FORM_SUBMIT_SUCCESS:
       return {
         ...state,
         machine: [{
-          ...state.machine,
+          ...state.machine[0],
           ...action.payload,
         }],
+      };
+    case DELETE_MACHINE_SUCCESS:
+      return {
+        ...state,
+        machine: [{}],
       };
     default:
       return state;

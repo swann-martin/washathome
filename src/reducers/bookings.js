@@ -1,4 +1,4 @@
-import { BOOKING_INPUT_CHANGE, FETCH_BOOKINGS_SUCCESS, BOOKING_INPUT_OPTIONS_CHANGE, CURRENT_MACHINE_UPDATE, CURRENT_BOOKING_UPDATE, UPDATE_BOOKING_STATUS } from 'src/actions/bookings';
+import { BOOKING_INPUT_CHANGE, FETCH_BOOKINGS_SUCCESS, BOOKING_INPUT_OPTIONS_CHANGE, CURRENT_MACHINE_UPDATE, CURRENT_BOOKING_UPDATE, UPDATE_BOOKING_STATUS, UPDATE_BOOKING_STATUS_SUCCESS } from 'src/actions/bookings';
 
 export const initialState = {
   currentMachine: {
@@ -16,9 +16,10 @@ export const initialState = {
       option3: null,
     },
   },
-  status: 1,
+
   washerBookings: [],
   bringerBookings: [],
+  booking: [],
   choices: [
     {
       id: 0,
@@ -105,11 +106,10 @@ const reducer = (state = initialState, action = {}) => {
           ...action.payload,
         },
       };
-    case UPDATE_BOOKING_STATUS:
+    case UPDATE_BOOKING_STATUS_SUCCESS:
       return {
         ...state,
         currentBooking: {
-          ...state.currentBooking,
           ...action.payload,
         },
       };

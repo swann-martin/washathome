@@ -6,7 +6,9 @@ import {
   FETCH_BOOKINGS,
   fetchBookingsSuccess,
   UPDATE_BOOKING_STATUS,
+  updateBookingStatusSuccess,
 } from '../actions/bookings';
+import history from '../utils/history';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -25,6 +27,7 @@ export default (store) => (next) => (action) => {
         .then((result) => {
           notify.success(result.data.message);
           console.log('result.data du post bookings form submit from machineDetail', result.data);
+          history.push('/bookings');
         })
         .catch((err) => {
           console.error(err);
@@ -46,12 +49,19 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case UPDATE_BOOKING_STATUS: {
-      const { bookingId, status_id } = action.payload;
-      console.log(action.payload);
-      api.get(`/reservation/${bookingId}/${status_id}`)
+      const status_id = action.payload.status_id;
+      const booking_id = store.getState().bookings.currentBooking.booking_id;
+
+      api.get(`/reservation/${booking_id}/${status_id}`)
         .then((result) => {
           notify.success(result.data.message);
+          console.log('update booking success res data', result.data);
           console.log(`Booking {bookingId} updated to ${result.data.status_id}`);
+          store.dispatch(updateBookingStatusSuccess({
+            status_id: status_id,
+            booking_id: booking_id,
+          }));
+          history.push('/bookings');
         })
         .catch((err) => {
           console.error(err);

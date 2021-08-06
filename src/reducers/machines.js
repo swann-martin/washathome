@@ -1,6 +1,5 @@
 import { SET_MACHINES, SEARCH_INPUT_CHANGE, ADD_MACHINE_INPUT_CHANGE } from 'src/actions/machines';
 import { SET_LOADING } from 'src/actions/setLoading';
-import { ADD_MACHINE_FORM_SUBMIT_SUCCESS } from '../actions/machines';
 
 export const initialState = {
   foundMachines: [
@@ -66,21 +65,21 @@ const reducer = (state = initialState, action = {}) => {
           ...action.payload,
         },
       };
-    case ADD_MACHINE_FORM_SUBMIT_SUCCESS:
-      return {
-        ...state,
-        inputs: {
-          title: '',
-          address: '',
-          zip_code: '',
-          city: '',
-          price: '',
-          description: '',
-          picture: '',
-          search: '',
-          capacity: '6',
-        },
-      };
+    // case ADD_MACHINE_FORM_SUBMIT_SUCCESS:
+    //   return {
+    //     ...state,
+    //     inputs: {
+    //       title: '',
+    //       address: '',
+    //       zip_code: '',
+    //       city: '',
+    //       price: '',
+    //       description: '',
+    //       picture: '',
+    //       search: '',
+    //       capacity: '6',
+    //     },
+    //   };
     case SET_MACHINES:
       return {
         // Pour l'instant le state C'EST list, donc déverser le state

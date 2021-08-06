@@ -40,7 +40,7 @@ const App = ({
     <Switch>
       <Route exact path="/">
         <Header foundMachines={foundMachines} />
-        <Cards />
+        {foundMachines.length > 0 && <Cards />}
       </Route>
       <Route path="/changePassword" component={PasswordChangeForm} />
       <Route path="/cgu" component={Cgu} />

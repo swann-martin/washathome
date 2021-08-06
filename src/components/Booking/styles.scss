@@ -39,8 +39,14 @@
       padding: 0.5rem;
       margin: 0.5rem;
       border-radius: 20px;
+      background-color: green;
+      color: white;
       &--green {
-        background-color: vars.$color-action;
+        background-color: green;
+        color: vars.$white;
+      }
+      &--purple {
+        background-color: purple;
         color: vars.$white;
       }
       &--red {

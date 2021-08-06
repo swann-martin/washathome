@@ -48,3 +48,7 @@ export const DELETE_MACHINE = 'DELETE_MACHINE';
 export const deleteMachine = () => ({
   type: DELETE_MACHINE,
 });
+export const DELETE_MACHINE_SUCCESS = 'DELETE_MACHINE_SUCCESS';
+export const deleteMachineSuccess = () => ({
+  type: DELETE_MACHINE_SUCCESS,
+});

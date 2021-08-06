@@ -28,26 +28,27 @@ const Connect = ({
         className="connect-form"
         onSubmit={handleSubmit}
       >
-        <Field type="text" name="mail" value={mail} onChange={changeField} placeholder="votre email" />
-        <Field type="password" name="password" value={password} onChange={changeField} placeholder="mot de passe" />
-
-        <button
-          type="submit"
-          className="connect-form-btn"
-          onClick={() => {
-            console.log('clicked on se connecter');
-          }}
-        >Se connecter
-        </button>
-        <p className="connect-form-text">Ou</p>
-        <Link
-          className="connect-form-register"
-          to="/register"
-          onClick={() => {
-            handlePressedConnected();
-          }}
-        >S'inscrire
-        </Link>
+        <Field className="connect-form-input" type="text" name="mail" value={mail} onChange={changeField} placeholder="Votre email" />
+        <Field className="connect-form-input" type="password" name="password" value={password} onChange={changeField} placeholder="Votre mot de passe" />
+        <div className="connect-form-btnGroup">
+          <button
+            type="submit"
+            className="connect-form-btnGroup-btn"
+            onClick={() => {
+              console.log('clicked on se connecter');
+            }}
+          >Se connecter
+          </button>
+          <p className="connect-form-btnGroup-text">ou</p>
+          <Link
+            className="connect-form-btnGroup-btn connect-form-btnGroup-btn--register"
+            to="/register"
+            onClick={() => {
+              handlePressedConnected();
+            }}
+          >S'inscrire
+          </Link>
+        </div>
       </form>
     </div>
   );

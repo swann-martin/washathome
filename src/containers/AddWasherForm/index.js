@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
   picture: state.machines.inputs.picture,
   capacity: state.machines.inputs.capacity,
   machines: state.user.machine,
-
+  isConnected: state.user.isConnected,
 });
 
 const mapDispatchToProps = (dispatch) => ({
