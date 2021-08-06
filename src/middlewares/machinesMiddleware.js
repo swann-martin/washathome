@@ -40,9 +40,16 @@ export default (store) => (next) => (action) => {
         city,
         zip_code,
       } = store.getState().machines.inputs;
-      api.post('/machine', {
-        title, address, zip_code, city, picture, description, price, capacity,
-      })
+      const formData = new FormData();
+      formData.append('address', address);
+      formData.append('title', title);
+      formData.append('picture', picture);
+      formData.append('description', description);
+      formData.append('price', price);
+      formData.append('capacity', capacity);
+      formData.append('city', city);
+      formData.append('zip_code', zip_code);
+      api.post('/machine', formData, { headers: { 'content-type': 'multipart/form-data' } })
         .then((result) => {
           store.dispatch(addMachineFormSubmitSuccess(result.data.machine[0]));
           notify.success(result.data.message);

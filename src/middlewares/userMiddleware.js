@@ -26,18 +26,17 @@ export default (store) => (next) => (action) => {
         password,
         passwordConfirm,
         phone,
-        avatar,
       } = store.getState().user.register;
-      api.post('/signup', {
-        lastname,
-        firstname,
-        pseudo,
-        mail,
-        password,
-        passwordConfirm,
-        phone,
-        avatar,
-      })
+      const formData = new FormData();
+      formData.append('avatar', store.getState().user.register.avatar);
+      formData.append('lastname', lastname);
+      formData.append('firtsname', firstname);
+      formData.append('pseudo', pseudo);
+      formData.append('mail', mail);
+      formData.append('password', password);
+      formData.append('passwordConfirm', passwordConfirm);
+      formData.append('phone', phone);
+      api.post('/signup', formData, { headers: { 'content-type': 'multipart/form-data' } })
         .then((result) => {
           console.log('result.data du post Register User Form', result.data);
           notify.success(result.data.message);

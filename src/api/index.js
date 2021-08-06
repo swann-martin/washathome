@@ -10,6 +10,6 @@ const liveURL = 'http://54.152.172.181:8080/v1';
 // }
 
 export default axios.create({
-  baseURL: liveURL,
+  baseURL: localURL,
   timeout: 10000,
 });
