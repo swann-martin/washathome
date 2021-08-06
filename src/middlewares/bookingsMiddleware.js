@@ -49,16 +49,17 @@ export default (store) => (next) => (action) => {
       return next(action);
     }
     case UPDATE_BOOKING_STATUS: {
-      const { bookingId, status_id } = action.payload;
+      const status_id = action.payload.status_id;
+      const booking_id = store.getState().bookings.currentBooking.booking_id;
 
-      api.get(`/reservation/${bookingId}/${status_id}`)
+      api.get(`/reservation/${booking_id}/${status_id}`)
         .then((result) => {
           notify.success(result.data.message);
           console.log('update booking success res data', result.data);
           console.log(`Booking {bookingId} updated to ${result.data.status_id}`);
           store.dispatch(updateBookingStatusSuccess({
             status_id: status_id,
-            booking_id: bookingId,
+            booking_id: booking_id,
           }));
           history.push('/bookings');
         })

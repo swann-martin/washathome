@@ -16,6 +16,7 @@ export function findBooking(userBookings, searchedId) {
     if (booking) {
       const action = currentBookingUpdate({
         status_id: booking.resa.status_id,
+        booking_id: booking.resa.idResa,
       });
       store.dispatch(action);
       return booking;
