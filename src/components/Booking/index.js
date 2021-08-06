@@ -18,10 +18,17 @@ const Booking = ({
   >
     <div className="booking-content">
       <h4 className="booking-content-name">{name}</h4>
-      <p className={statusId < 4 ? "booking-content-status booking-content-status booking-content-status" : "booking-content-status booking-content-status--red"}>Status : {status} </p>
+
+      {
+        statusId === 6 ? <p className="booking-content-status booking-content-status--red"> Status : {status} </p>
+          :
+          ((statusId < 5) ? <p className={statusId === 5 ? "booking-content-status--green" : "booking-content-status booking-content-status--purple"}>Status : {status} </p> :
+            <p className={statusId === 1 ? "booking-content-status" : "booking-content-status"}>Status : {status} </p>)
+      }
+
       {price ? <span className="booking-content-price">prix {price}€</span> : ''}
     </div>
-  </Link>
+  </Link >
 );
 
 Booking.propTypes = {
