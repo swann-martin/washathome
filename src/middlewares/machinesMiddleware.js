@@ -8,6 +8,7 @@ import {
   UPDATE_MACHINE,
   DELETE_MACHINE,
   addMachineFormSubmitSuccess,
+  deleteMachineSuccess,
 } from '../actions/machines';
 import history from '../utils/history';
 
@@ -51,9 +52,9 @@ export default (store) => (next) => (action) => {
       formData.append('zip_code', zip_code);
       api.post('/machine', formData, { headers: { 'content-type': 'multipart/form-data' } })
         .then((result) => {
-          store.dispatch(addMachineFormSubmitSuccess(result.data.machine[0]));
           notify.success(result.data.message);
-          console.log('result.data du post addwasher', result.data);
+          console.log('result.data du post addwasher', result.data.machine);
+          store.dispatch(addMachineFormSubmitSuccess(result.data.machine));
           history.push('/');
         })
         .catch((err) => {
@@ -91,9 +92,10 @@ export default (store) => (next) => (action) => {
       const machineId = store.getState().user.machine[0].id;
       api.delete(`/machine/${machineId}`)
         .then((result) => {
-          console.log('result.data du post addwasher', result.data);
+          console.log('result.data du delete addwasher', result.data);
           notify.success(result.data.message);
           history.push('/');
+          store.dispatch(deleteMachineSuccess());
         })
         .catch((err) => {
           console.error(err);

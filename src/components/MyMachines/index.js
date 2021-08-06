@@ -26,6 +26,10 @@ const MyMachines = ({
   const handleFieldChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
   };
+
+  const onFileChange = (evt) => {
+    changeField(evt.target.files[0], evt.target.name);
+  };
   return (
     !isConnected ? <Redirect to="/" /> : (
       <div className="updatewasherform">
@@ -66,7 +70,7 @@ const MyMachines = ({
             <div className="updatewasherform-form-image">
               <h2 className="updatewasherform-form-image-subtitle">Photo de la machine (facultatif)</h2>
               <img className="updatewasherform-form-image-picture" src={picture} alt="machine" />
-              {/* <Field className="register-form-input" type="file" name="picture-input" value="{picture}" placeholder="picture" onChange={changeField} /> */}
+              <input className="register-form-input" type="file" name="picture" placeholder="picture" onChange={onFileChange} />
             </div>
             <div className="updatewasherform-form-btnGroup">
               <button className="updatewasherform-form-btnGroup-submit updatewasherform-form-btnGroup-submit--delete" type="button" onClick={handleDeleteWasher}>Supprimer cette machine</button>

@@ -70,8 +70,6 @@ export const registerUserFormSubmitSuccess = () => ({
   type: REGISTER_USER_FORM_SUBMIT_SUCCES,
 });
 
-
-
 export const profileUserInputChange = (payload) => ({
   type: PROFILE_USER_INPUT_CHANGE,
   payload,

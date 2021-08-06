@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
-import Card from '../Card';
-
 import './styles.scss';
+import notify from '../../notify/index';
 
 const AddWasherForm = ({
   title,
@@ -18,13 +17,15 @@ const AddWasherForm = ({
   changeField,
   changeSelect,
   handleWasherFormSubmit,
+  isConnected,
 }) => {
   const handleFieldChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
   };
-  const history = useHistory();
 
-  const navigateToHome = () => history.push('/');
+  const onFileChange = (evt) => {
+    changeField(evt.target.files[0], evt.target.name);
+  };
 
   return (
     <div className="addwasherform">
@@ -65,7 +66,7 @@ const AddWasherForm = ({
         </div>
         <div className="addwasherform-form-image">
           <h2 className="addwasherform-form-image-subtitle">Photo de la machine (facultatif)</h2>
-          <Field className="register-form-input" type="file" name="picture" value={picture} placeholder="picture" onChange={changeField} />
+          <input className="register-form-input" type="file" name="picture" placeholder="picture" onChange={onFileChange} />
         </div>
         <button className="addwasherform-form-submit" type="submit">Valider l'ajout de la machine</button>
       </form>
