@@ -16,7 +16,7 @@ export const initialState = {
       option3: null,
     },
   },
-  status: 1,
+
   washerBookings: [],
   bringerBookings: [],
   booking: [],
@@ -106,19 +106,10 @@ const reducer = (state = initialState, action = {}) => {
           ...action.payload,
         },
       };
-    case UPDATE_BOOKING_STATUS:
-      return {
-        ...state,
-        currentBooking: {
-          ...state.currentBooking,
-          ...action.payload,
-        },
-      };
     case UPDATE_BOOKING_STATUS_SUCCESS:
       return {
         ...state,
-        booking: {
-          ...state.booking,
+        currentBooking: {
           ...action.payload,
         },
       };

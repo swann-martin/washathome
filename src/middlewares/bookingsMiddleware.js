@@ -56,7 +56,10 @@ export default (store) => (next) => (action) => {
           notify.success(result.data.message);
           console.log('update booking success res data', result.data);
           console.log(`Booking {bookingId} updated to ${result.data.status_id}`);
-          store.dispatch(updateBookingStatusSuccess(result.data.status));
+          store.dispatch(updateBookingStatusSuccess({
+            status_id: status_id,
+            booking_id: bookingId,
+          }));
           history.push('/bookings');
         })
         .catch((err) => {

@@ -11,9 +11,8 @@ const Footer = () => (
     </ul>
     <Link to="/"><img src={logo} alt="logo" className="footer-logo" /></Link>
     <ul className="footer-list">
-      <li className="footer-list-element"><Link to="/team" className="footer-list-element-link">l'équipe</Link></li>
-      <li className="footer-list-element"><Link to="/cgu#rgpd" className="footer-list-element-link">Rgpd</Link></li>
-      <li className="footer-list-element"><Link to="/cgu" className="footer-list-element-link">CGU</Link></li>
+      <li className="footer-list-element"><Link to="/team" className="footer-list-element-link">L'équipe</Link></li>
+      <li className="footer-list-element"><Link to="/cgu#rgpd" className="footer-list-element-link">Mentions légales</Link></li>
     </ul>
 
   </div>

@@ -8,8 +8,13 @@
   background-color: vars.$color-bg-hero;
   color: vars.$white;
   &-title {
-    margin: 3rem 0;
+    margin: 2rem 0;
     font-size: 3rem;
+    font-family: 'Lobster Two', cursive;
+    &--sub {
+      margin: 1rem 0;
+      font-size: 2rem;
+    }
   }
   &-picture {
     border-radius: 20px;
