@@ -18,12 +18,12 @@
   cursor: pointer;
   box-shadow: 2.5px 2.5px 2.5px darken(rgba(vars.$color-action, 0.5), 10%);
   @media screen and (min-width: 700px) {
-    width: 25rem;
-    height: 100px;
+    width: 10rem;
+    height: 10rem;
   }
   transition: all 0.2s ease-in-out;
   &:hover {
-    transform: scale(1.1);
+    background-color: lighten(vars.$color-action, 50%);
   }
   &-content {
     width: 100%;
@@ -41,6 +41,7 @@
       border-radius: 20px;
       background-color: green;
       color: white;
+      font-size: 1rem;
       &--green {
         background-color: green;
         color: vars.$white;
