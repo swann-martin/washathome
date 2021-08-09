@@ -25,9 +25,20 @@ const mapDispatchToProps = (dispatch) => ({
     const action = addMachineInputChange({ [event.target.name]: event.currentTarget.value });
     dispatch(action);
   },
-  handleWasherFormSubmit: (evt) => {
-    evt.preventDefault();
-    const action = addMachineFormSubmit();
+  handleWasherFormSubmit: (event, state) => {
+    event.preventDefault();
+    const action = addMachineFormSubmit(
+      {
+        address: state.machines.inputs.address,
+        title: state.machines.inputs.title,
+        picture: state.machines.inputs.picture,
+        description: state.machines.inputs.description,
+        price: state.machines.input.price,
+        capacity: state.machines.inputs.capacity,
+        zip_code: state.machines.inputs.zip_code,
+        city: state.machines.inputs.city,
+      },
+    );
     dispatch(action);
   },
 });

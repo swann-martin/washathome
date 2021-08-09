@@ -42,8 +42,8 @@ const AddWasherForm = ({
 
       <form
         className="addwasherform-form"
-        onSubmit={() => {
-          isConnected ? handleWasherFormSubmit() : alert('veuillez vous connecter pour ajouter une machine');
+        onSubmit={(evt) => {
+          isConnected ? handleWasherFormSubmit(evt) : alert('veuillez vous connecter pour ajouter une machine');
         }}
         encType="multipart/form-data"
       >
