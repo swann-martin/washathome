@@ -38,6 +38,10 @@ const Header = ({ foundMachines }) => {
       <div className="header-container-top">
         <img className="header-logo" src={logo} alt="logo-Wash@Home" />
         <SearchBar />
+
+        <h2 className="header-container-top-mission">Laver son linge devient facile avec Wash@Home.
+          Nous vous mettons en relation avec des possesseurs de machine à laver près de chez vous !
+        </h2>
       </div>
 
       {

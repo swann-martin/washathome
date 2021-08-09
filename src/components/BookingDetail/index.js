@@ -64,13 +64,15 @@ const BookingDetail = ({
             <p className="booking-details-container-right-item">Etape en cours de la réservation: {booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--status">{booking.resa.status_name}</span> : <span className="booking-details-container-right-item-element">Status réservé</span>}</p>
             <p className="booking-details-container-right-item">{(booking.bringer.pseudo === userPseudo) ? 'Informations que vous avez indiquées: ' : 'Informations indiquées par le client:  '}{booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.resa.dispo}</span> : <span className="booking-details-container-right-item-element">disponibilités</span>}</p>
             <p className="booking-details-container-right-item">Température de nettoyage: {booking ? <span className="booking-details-container-right-item-element booking-details-container-right-item-element--pseudo">{booking.resa.tempResa}°c</span> : <span className="booking-details-container-right-item-element">39°c</span>}</p>
-            <ul className="booking-details-container-right-list">
-              {booking
-                && booking.resa.options.map((option) => (
-                  <li key={option.name}>{option.name} {option.price}</li>
-                ))}
-            </ul>
+            <p className="booking-details-container-right-item">Options séléctionnées:
+              <ul className="booking-details-container-right-list">
+                {booking ? booking.resa.options.map((option) => (
+                  <li key={option.name}>{option.name} {option.price ? `${option.price}€` : ''}</li>
+                )) : <span>Pas d'options</span>
 
+                }
+              </ul>
+            </p>
             {
               /*  affichage de l'adresse seulement si le status est confirmé ou non annulé */
               (booking.bringer.pseudo === userPseudo && booking.resa.status_id > 1 && booking.resa.status_id < 5) &&

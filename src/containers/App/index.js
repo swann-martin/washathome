@@ -5,6 +5,7 @@ const mapStateToProps = (state) => ({
   pressedConnected: state.user.pressedConnected,
   foundMachines: state.machines.foundMachines,
   openMenu: state.user.openMenu,
+  loading: state.user.loading,
 });
 
 const mapDispatchToProps = () => ({});

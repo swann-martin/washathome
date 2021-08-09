@@ -21,6 +21,13 @@
       display: none;
     }
   }
+  &-container-top {
+    &-mission {
+      color: vars.$color-hover;
+      margin: 2rem;
+      line-height: 1.3rem;
+    }
+  }
   .searchbar {
     margin: 3rem auto;
   }
@@ -30,7 +37,7 @@
     border-radius: 10px;
     @media screen and (min-width: 700px) {
       width: 40rem;
-      height: 30rem;
+      height: 25rem;
       margin: 0.5rem auto;
     }
   }
