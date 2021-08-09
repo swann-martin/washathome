@@ -17,8 +17,9 @@ const Booking = ({
     to={link}
   >
     <div className="booking-content">
-      <h4 className="booking-content-name">{name}</h4>
-
+      <div className="booking-content-top">
+        <h4 className="booking-content-name">{name}</h4>
+      </div>
       {
         statusId === 6 ? <p className="booking-content-status booking-content-status--red"> Status : {status} </p>
           :

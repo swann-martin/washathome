@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import PasswordChangeForm from 'src/containers/PasswordChangeForm';
 import Connect from 'src/containers/Connect';
 import Cards from 'src/containers/Cards';
+import Loader from 'react-loader-spinner';
 import Nav from 'src/containers/Nav';
 import AddWasherForm from '../../containers/AddWasherForm';
 import MyMachines from '../../containers/MyMachines';
@@ -27,16 +28,19 @@ import Team from '../../pages/Team';
 // Import style
 import './styles.scss';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const App = ({
   pressedConnected,
   foundMachines,
   openMenu,
+  loading,
 }) => (
 
   <div className="app">
     <Nav />
     <ToastContainer />
+    {loading && <Loader type="Puff" color="#246e89" height={60} width={60} className="loader" />}
     <Switch>
       <Route exact path="/">
         <Header foundMachines={foundMachines} />

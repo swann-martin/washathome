@@ -28,25 +28,29 @@ const Bookings = ({ bringerBookings, washerBookings, isConnected, getBookings, }
               <div className="bookings-container">
 
                 <div className="bookings-container-left">
-                  <h2>En tant que bringer, j'ai réservé une machine pour lavé mon linge chez : </h2>
-                  {
-                    bringerBookings.length > 0 ? (
-                      bringerBookings.map((bringerBooking) => (
-                        <Booking key={bringerBooking.resa.idResa} link={`bookingDetail/${bringerBooking.resa.idResa}`} price={bringerBooking.resa.price} name={bringerBooking.washer.pseudo} statusId={bringerBooking.resa.status_id} status={bringerBooking.resa.status_name} />
-                      ))) : <h3>Vous n'avez pas réservé de machine pour l'instant</h3>
-                  }
+                  <h2 className="bookings-container-left-title">J'ai réservé pour laver mon linge chez&nbsp;: </h2>
+                  <div className="bookings-container-left-list">
+                    {
+                      bringerBookings.length > 0 ? (
+                        bringerBookings.map((bringerBooking) => (
+                          <Booking key={bringerBooking.resa.idResa} link={`bookingDetail/${bringerBooking.resa.idResa}`} price={bringerBooking.resa.price} name={bringerBooking.washer.pseudo} statusId={bringerBooking.resa.status_id} status={bringerBooking.resa.status_name} />
+                        ))) : <h3>Vous n'avez pas réservé de machine pour l'instant</h3>
+                    }
 
+                  </div>
                 </div>
 
                 <div className="bookings-container-right">
-                  <h2>En tant que washer, j'ai fait une machine washerBookings</h2>
-                  {
-                    (washerBookings.length > 0 ? washerBookings.map((booking) => (
-                      <Booking key={booking.resa.idResa} link={`bookingDetail/${booking.resa.idResa}`} price={booking.resa.price} name={booking.bringer.pseudo} statusId={booking.resa.status_id} status={booking.resa.status_name} date={booking.resa.DataResa} />
-                    ))
-                      : <h4>Personne n'a réservé votre machine pour l'instant</h4>
-                    )
-                  }
+                  <h2 className="bookings-container-right-title">J'ai lavé le linge de&nbsp;:</h2>
+                  <div className="bookings-container-right-list">
+                    {
+                      (washerBookings.length > 0 ? washerBookings.map((booking) => (
+                        <Booking key={booking.resa.idResa} link={`bookingDetail/${booking.resa.idResa}`} price={booking.resa.price} name={booking.bringer.pseudo} statusId={booking.resa.status_id} status={booking.resa.status_name} date={booking.resa.DataResa} />
+                      ))
+                        : <h3>Personne n'a réservé votre machine pour l'instant</h3>
+                      )
+                    }
+                  </div>
                 </div>
 
               </div>

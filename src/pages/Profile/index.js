@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 import PasswordChangeForm from 'src/containers/PasswordChangeForm';
 import './style.scss';
+import defaultAvatar from '../../../public/141-200x200.jpg';
 
 const Profile = ({
   firstname,
@@ -16,7 +17,6 @@ const Profile = ({
   deleteUser,
   updateUser,
 }) => {
-
   const [passwordOn, setPasswordOn] = useState(false);
   const togglePasswordOn = () => {
     setPasswordOn(!passwordOn);
@@ -54,7 +54,6 @@ const Profile = ({
             </div>
           </label>
 
-
           <div className="profile-credentials-btn-container">
             <button type="button" className="profile-credentials-btn profile-credentials-btn" onClick={togglePasswordOn}><i className="fas fa-user-cog" /> Changer mon password</button>
             <button type="button" className="profile-credentials-btn profile-credentials-btn--delete" onClick={deleteUser}>Supprimer mon compte</button>
@@ -63,15 +62,13 @@ const Profile = ({
         </div>
       </form>
 
-      {(passwordOn === true) &&
-        <PasswordChangeForm togglePasswordOn={togglePasswordOn} />}
-
+      {(passwordOn === true)
+        && <PasswordChangeForm togglePasswordOn={togglePasswordOn} />}
 
     </div>
 
   );
 };
-
 
 Profile.propTypes = {
   firstname: PropTypes.string,
@@ -89,7 +86,7 @@ Profile.defaultProps = {
   firstname: '',
   lastname: '',
   pseudo: '',
-  avatar: '',
+  avatar: defaultAvatar,
   mail: '',
   phone: '',
   changeField: () => { },

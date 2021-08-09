@@ -2,7 +2,7 @@
 @import 'src/styles/mixins';
 
 .booking-details {
-  background-color: vars.$color-cards;
+  background-color: vars.$color-bg-hero;
   color: vars.$white;
   min-height: 85vh;
   width: 100vw;
@@ -41,15 +41,18 @@
       @media screen and (min-width: 700px) {
         width: 45%;
         margin-left: 2rem;
+        background-color: vars.$color-cards;
+        box-shadow: 0.5px 0.5px 2.5px 2.5px vars.$color-action;
+        padding: 2rem;
+        border-radius: 5px;
         &--big {
           display: flex;
           flex-direction: column;
           justify-content: center;
           width: 70vw;
           height: 70vh;
-          background-color: vars.$color-bg-hero;
-          border-radius: 20px;
-          padding: 1rem;
+          border-radius: 5px;
+          padding: 2rem;
         }
       }
 

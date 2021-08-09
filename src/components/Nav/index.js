@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import logo from 'src/assets/logoWash1.png';
+import defaultAvatar from '../../../public/141-200x200.jpg';
 // import style
 import './styles.scss';
 
@@ -72,8 +73,8 @@ Nav.propTypes = {
 
 Nav.defaultProps = {
   isConnected: false,
-  avatar: 'https://randomuser.me/api/portraits/lego/1.jpg',
-  pseudo: 'Camille',
+  avatar: defaultAvatar,
+  pseudo: '',
   handlePressedConnected: () => { },
   handleOpenMenu: () => { },
 };

@@ -34,20 +34,19 @@
         background-color: lighten(vars.$white, 10%);
       }
     }
-    &--settings,
     &--profile {
       @include btn-white;
       &:hover,
       &:active {
-        background-color: lighten(vars.$white, 10%);
+        background-color: lighten(vars.$color-action, 50%);
       }
-      &--logout {
-        background-color: vars.$black;
-        color: vars.$white;
-        &:hover,
-        &:active {
-          background-color: lighten(vars.$red, 10%);
-        }
+    }
+    &--logout {
+      background-color: vars.$black;
+      color: vars.$white;
+      &:hover,
+      &:active {
+        background-color: lighten(vars.$red, 10%);
       }
     }
   }

@@ -15,6 +15,7 @@ const MyMachines = ({
   handleDeleteWasher,
   title,
   address,
+  capacity,
   zip_code,
   city,
   price,
@@ -58,7 +59,7 @@ const MyMachines = ({
             <div className="updatewasherform-form-capacity">
               <label htmlFor="capacity" className="updatewasherform-form-capacity-select">
                 <span className="updatewasherform-form-capacity-select-text">Le poids maximal de votre machine est</span>
-                <select className="updatewasherform-form-capacity-select-option" name="capacity" id="capacity" onChange={changeSelect}>
+                <select className="updatewasherform-form-capacity-select-option" name="capacity" id="capacity" value={capacity} onChange={changeSelect}>
                   <option className="updatewasherform-form-capacity-select-option-item" value="6">6kg</option>
                   <option className="updatewasherform-form-capacity-select-option-item" value="7">7kg</option>
                   <option className="updatewasherform-form-capacity-select-option-item" value="8">8kg</option>
@@ -105,7 +106,10 @@ MyMachines.propTypes = {
   changeField: PropTypes.func,
   isConnected: PropTypes.bool.isRequired,
   changeSelect: PropTypes.func,
-
+  capacity: PropTypes.oneOf(
+    PropTypes.string,
+    PropTypes.number,
+  ),
 };
 
 MyMachines.defaultProps = {
@@ -120,6 +124,7 @@ MyMachines.defaultProps = {
   price: 0,
   description: '',
   picture: '',
+  capacity: '',
 
 };
 

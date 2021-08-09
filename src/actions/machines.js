@@ -41,8 +41,9 @@ export const addMachineFormSubmitSuccess = (payload) => ({
 });
 
 export const UPDATE_MACHINE = 'UPDATE_MACHINE';
-export const updateMachine = () => ({
+export const updateMachine = (payload) => ({
   type: UPDATE_MACHINE,
+  payload,
 });
 export const DELETE_MACHINE = 'DELETE_MACHINE';
 export const deleteMachine = () => ({
